@@ -1,0 +1,85 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi there",
+                "How are you",
+                "Is anyone there?",
+                "Hey",
+                "Hello",
+                "Good day"
+            ],
+            "responses": [
+                "Hi there, how can I help?",
+		        "Hi, how can I help?",
+		        "Hi I'm Goldy, how can I help?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "intro",
+            "patterns": [
+                "who are you?",
+                "you are?",
+                "what is your name?"
+            ],
+            "responses": [
+                "I'm Goldy",
+		        "My name is Goldy",
+                "I'm Goldy, your virtual assistant"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Nice chatting with you, bye",
+                "Till next time"
+            ],
+            "responses": [
+                "Bye! Have a nice day",
+		        "Goodbye!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Awesome, thanks",
+                "Thanks for helping me"
+            ],
+            "responses": [
+                "Happy to help!",
+	  	        "You're welcome!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": [
+                "Sorry, can't understand you",
+		        "Please input your query"
+			
+            ],
+            "context": [
+                ""
+            ]
+        }
+    ]
+}
