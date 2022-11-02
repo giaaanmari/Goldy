@@ -4,18 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Baloo 2', cursive;
+        }
+    </style>
+
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.2.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.2.min.js"></script>
+
+
+    <!-- beautify ignore:start -->
+    <!-- prettier-ignore -->
+    <py-env>
+        - pandas
+    </py-env>
+    <!-- beautify ignore:end -->
 </head>
 
-<body>
+<body class="bg-default bg-no-repeat bg-cover bg-center bg-fixed">
+
+    <div class="h-screen w-screen backdrop-blur-sm bg-white/20 flex place-content-between">
+
+        <div class="z-30 float-left mr-2">
+            <img src="static/img/adnu-logo.png" alt="ADNU logo" class="h-36 w-36 m-5 drop-shadow-md">
+        </div>
+
+        <div class="z-50 flex flex-col justify-center items-center">
+            <p class="text-gold text-8xl font-bold drop-shadow-md m-2">
+                Hi, I'm Goldy
+            </p>
+            <p class="text-orange text-5xl font-medium m-2">
+                your learning companion
+            </p>
+            <button class="bg-blue_btn text-white font-semibold text-2xl py-3 px-10 m-6 border border-blue_hover rounded-large shadow hover:bg-blue_hover">Ask Goldy</button>
+        </div>
+
+        <div class="z-0 ml-2 flex items-end float-right">
+            <img src="static/img/knight.png" alt="Goldy" class=" p-5 drop-shadow-lg">
+        </div>
+
+    </div>
+
     <py-script>
-        intents
+        
     </py-script>
 </body>
 </html>
