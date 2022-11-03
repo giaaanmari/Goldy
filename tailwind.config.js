@@ -23,15 +23,16 @@ module.exports = {
       blue_btn: '#3EB3F5',
       blue_hover: '#229DE2',
       blue_bg: '#9CDEF6',
+      blue_bg2: '#6dcbed',
       gold: '#FFD700',
       orange: '#FFA800',
       gray: '#363636',
+      inputbox: '#edf8fa',
     },
     fontWeight: {
       regular: 400,
       medium: 500,
       semibold: 600,
-
     },
     borderRadius: {
       'large': '20px'

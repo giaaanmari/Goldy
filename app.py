@@ -31,7 +31,6 @@ for intent in intents['intents']:
         
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
-
 words = [lemmatizer.lemmatize(word_token.lower()) 
          for word_token in words if word_token not in ignore_words]
 words = sorted(list(set(words)))

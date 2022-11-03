@@ -4,9 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goldy</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+
+    <style>
+        body {
+            font-family: 'Baloo 2', cursive;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.2.min.js"></script>
+
+
+    <!-- beautify ignore:start -->
+    <!-- prettier-ignore -->
+    <py-env>
+        - pandas
+    </py-env>
+    <!-- beautify ignore:end -->
 </head>
+
 <body>
+    <div class="relative h-screen w-screen flex-col items-stretch justify-between overflow-hidden">
+        <div class="w-screen bg-blue_bg2 flex justify-between items-center content-center drop-shadow-lg sticky object-top"> <!--header-->
+            <div class="flex items-center content-center">
+                <button class="flex items-center content-center text-white hover:text-gold h-14 mx-6">
+                    <span class="material-symbols-outlined">
+                        arrow_back_ios_new
+                    </span>
+                </button>
+    
+                <div class="flex-col">
+                    <p class="text-3xl text-white font-semibold pt-2 drop-shadow-lg">
+                        Goldy
+                    </p>
+                    <p class="text-white pb-1">
+                        Ateneo de Naga University Chatbot for Grade School
+                    </p>
+                </div>
+            </div>
+    
+            <div class="mx-6">
+                <button class="text-white hover:text-gold text-xl">Sign In</button>
+            </div>
+    
+        </div>
+    
+        <div class="absolute w-screen h-full overflow-y-scroll no-scrollbar p-6">
+            
+    
+        </div>
+    
+        <div class="absolute bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2">
+            <input type="text" placeholder="Ask Goldy" class="bg-inputbox w-full h-full rounded-l-large px-4 py-2 text-gray text-lg shadow-lg border border-gray-300">
+            <button class="w-24 h-full bg-blue_btn hover:bg-blue_hover shadow-lg rounded-r-large text-white text-lg font-medium flex justify-center items-center">
+                send
+            </button>
+
+        </div>
+
+    </div>
+
     
 </body>
 </html>
