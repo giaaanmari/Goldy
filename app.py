@@ -136,8 +136,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-        return render_template('index.html')
+    return render_template('index.html')
 
+@app.route('/chat')
+def chat():
+    return render_template('chatbox.html')
+    
 @app.route('/get')
 def getResponse(ints, intents_json):
     tag = ints[0]['intent']
