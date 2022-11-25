@@ -53,6 +53,35 @@
             ]
         },
         {
+            "tag": "nouns",
+            "patterns": [
+                "What is a noun?",
+                "Noun",
+                "Definition of a noun",
+                "Noun Definition"
+            ],
+            "responses":[
+                "Noun is a word that describes a person, place, things"
+            ]
+        },
+        {
+            "tag": "swear",
+            "patterns": [
+                "Fuck",
+                "Fuck you",                
+                "Idiot",
+                "Shit",
+                "Piss off",
+                "Dickhead",
+                "Bastard",
+                "Go to hell"
+            ],
+            "responses": [
+                "That's not very nice of you",
+                "I won't respond to that"
+            ]
+        },
+        {
             "tag": "thanks",
             "patterns": [
                 "Thanks",
