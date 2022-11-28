@@ -53,18 +53,6 @@
             ]
         },
         {
-            "tag": "nouns",
-            "patterns": [
-                "What is a noun?",
-                "Noun",
-                "Definition of a noun",
-                "Noun Definition"
-            ],
-            "responses":[
-                "Noun is a word that describes a person, place, things"
-            ]
-        },
-        {
             "tag": "swear",
             "patterns": [
                 "Fuck",
@@ -93,6 +81,1117 @@
             "responses": [
                 "Happy to help!",
 	  	        "You're welcome!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "nouns",
+            "patterns": [
+                "What is a noun?",
+                "Noun",
+                "Definition of a noun",
+                "Noun Definition"
+            ],
+            "responses":[
+                "Noun is a word that describes a person, place, things"
+            ]
+        },
+        {
+            "tag": "nouns_types",
+            "patterns": [
+                "What are the types of nouns?",
+                "Types of nouns"
+            ],
+            "responses":[
+                "There are 10 types of nouns: Common nouns, Proper nouns, Singular nouns, Plural nouns, Concrete nouns, Abstract nouns, Collective nouns, Compound nouns, Countable nouns, and Uncountable nouns." 
+            ]
+        },
+        {
+            "tag": "nouns_types_common",
+            "patterns": [
+                "What are common nouns?",
+                "Definition of common nouns"
+            ],
+            "responses":[
+                "Common nouns are words that refer to undefined or generic people, places, or things."
+            ]
+        },
+        {
+            "tag": "nouns_types_common_examples",
+            "patterns": [
+                "What are the examples of common nouns?",
+                "examples of common nouns"
+            ],
+            "responses":[
+                "Five examples of common nouns are: Man, Woman, Dog, Cat, Country"
+            ]
+        },
+        {
+            "tag": "nouns_types_proper",
+            "patterns": [
+                "What are proper nouns?",
+                "Definition of proper nouns"
+            ],
+            "responses":[
+                "Proper nouns are words that help distinguish a specific person, place, or thing." ,
+                "Proper nouns are words that refer to a specific person, place, or thing."
+            ]
+        },
+        {
+            "tag": "nouns_types_proper_examples",
+            "patterns": [
+                "What are the examples of proper nouns?",
+                "examples of proper nouns"
+            ],
+            "responses":[
+                "Five examples of proper nouns are names of a person, place, or thing like: Bob, Spain, Diary of a Wimpy Kid"
+            ]
+        },
+        {
+            "tag": "nouns_types_singular",
+            "patterns": [
+                "What are singular nouns?",
+                "Definition of singular nouns"
+            ],
+            "responses":[
+                "Singular nouns are nouns that refer to only one person, place or thing." 
+            ]
+        },
+        {
+            "tag": "nouns_types_singular_examples",
+            "patterns": [
+                "What are the examples of singular nouns?",
+                "examples of singular nouns"
+            ],
+            "responses":[
+                "Five examples of singular nouns are boat, house, cat, river"
+            ]
+        },
+        {
+            "tag": "nouns_types_plural",
+            "patterns": [
+                "What are plural nouns?",
+                "Definition of plural nouns"
+            ],
+            "responses":[
+                "A plural noun are nouns that refer to more than one person, place, animal, thing, event, or idea." 
+            ]
+        },
+        {
+            "tag": "nouns_types_plural_example",
+            "patterns": [
+                "What are the examples of plural nouns?",
+                "examples of plural nouns"
+            ],
+            "responses":[
+                "Examples of plural nouns are: boats, houses, cats, dogs"
+            ]
+        },
+        {
+            "tag": "nouns_types_concrete",
+            "patterns": [
+                "What are concrete nouns?",
+                "Definition of concrete nouns"
+            ],
+            "responses":[
+                "A concrete noun is something that can be perceived through the five senses such as see, hear, touch, taste, or smell." 
+            ]
+        },
+        {
+            "tag": "nouns_types_abstract",
+            "patterns": [
+                "What are abstract nouns?",
+                "Definition of abstract nouns"
+            ],
+            "responses":[
+                "A abstract noun is something that cannot be perceived through the five senses such as see, hear, touch, taste, or smell." 
+            ]
+        },
+        {
+            "tag": "nouns_types_collective",
+            "patterns": [
+                "What are collective nouns?",
+                "Definition of collective nouns"
+            ],
+            "responses":[
+                "A collective noun is a word that functions as a singular noun while referring to a group of people or things." 
+            ]
+        },
+        {
+            "tag": "nouns_types_compound",
+            "patterns": [
+                "What are compound nouns?",
+                "Definition of compound nouns"
+            ],
+            "responses":[
+                "A compound noun combines two or more words into one but appears as a single word." 
+            ]
+        },
+        {
+            "tag": "nouns_types_countable",
+            "patterns": [
+                "What are countable nouns?",
+                "Definition of countable nouns"
+            ],
+            "responses":[
+                "A countable noun is a word that you can count.",
+                "Known as Count Noun, it is a word that signifies counting."
+            ]
+        },
+        {
+            "tag": "nouns_types_uncountable",
+            "patterns": [
+                "What are uncountable nouns?",
+                "Definition of uncountable nouns"
+            ],
+            "responses":[
+                "A uncountable noun is a word that you can't count.",
+                "Known as Mass Noun, it is a word that you can't signifies counting."
+            ]
+        },
+        {
+            "tag": "nouns_possessive",
+            "patterns": [
+                "What are possessive nouns?",
+                "Definition of possessive nouns",
+                "possessive nouns"
+            ],
+            "responses":[
+                "A uncountable noun is a noun that expresses ownership."
+            ]
+        },
+        {
+            "tag": "sentences_imperative",
+            "patterns": [
+                "What is an imperative sentence?",
+                "imperative sentence"
+            ],
+            "responses":[
+                "An imperative sentence expresses a command, request, or instruction."
+            ]
+        },
+        {
+            "tag": "sentences_exclamatory",
+            "patterns": [
+                "What is an exclamatory sentence?",
+                "exclamatory sentence"
+            ],
+            "responses":[
+                "An exclamatory sentence expresses strong emotions or feelings. It is often used in greetings and warnings."
+            ]
+        },
+        {
+            "tag": "paragraph",
+            "patterns": [
+                "What is a paragraph?"
+            ],
+            "responses": [
+                "A paragraph is a group of sentences that talks about one main idea or topic."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "interjecton",
+            "patterns": [
+                "What is an interjection?",
+                "interjection",
+                "Definition of an interjection"
+            ],
+            "responses":[
+                "Interjections are words used to express a sudden feeling."
+            ]
+        },
+        {
+            "tag": "mainidea",
+            "patterns": [
+                "What is a main idea?",
+                "main idea",
+                "Definition of a main idea"
+            ],
+            "responses": [
+                "A main point is the most important message of the paragraph or text.",
+		        "A main point is what the selection is mostly about.",
+                "A main point is what is being talked about in the paragraph.",
+                "It is a complete sentence that includes the topic and what the author wants to say. However, the main idea may or may not stated"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "supportingdetail",
+            "patterns": [
+                "What is a supporting detail?",
+                "supporting detail",
+                "Definition of a supporting detail"
+            ],
+            "responses": [
+                "Supporting details are other facts or sentences that support or explain the main idea.",
+		        "Supporting details are major details explain and develop the main idea.",
+                "Supporting details are minor details help make the major details clear."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "graphicorganizer",
+            "patterns": [
+                "What is a graphic organizer?"
+            ],
+            "responses": [
+                "A graphic organizer is a teaching and learning tool used to organize information and ideas that are easy to comprehend and internalize.",
+		        "A graphic organizer is a visual display that organizes ideas and shows the relationship between concepts or information. It guides readers in thinking and helping them more to comprehend what they read."
+			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial",
+            "patterns": [
+                "What is a reference material?"
+            ],
+            "responses": [
+                "Reference materials are books and other reading materials that help in researching or answering questions."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_examples",
+            "patterns": [
+                "What are the examples of a reference material?"
+            ],
+            "responses": [
+                "Examples of reference materials are: Almanac, Encyclopedia, Index, Dictionary, Thesaurus ,Online resource/s"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_almanac",
+            "patterns": [
+                "What is an almanac?"
+            ],
+            "responses": [
+                "An almanac contains specific facts, statistical data, and other information related to people, places, events, etc."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_encyclopedia",
+            "patterns": [
+                "What is an encyclopedia?"
+            ],
+            "responses": [
+                "An encyclopedia contains basic information about a broad range of topics and is arranged alphabetically. It usually comes in volumes."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_index",
+            "patterns": [
+                "What is an encyclopedia?"
+            ],
+            "responses": [
+                "An index contains information present in periodicals, books, newspapers, etc."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_dictionary",
+            "patterns": [
+                "What is a dictionary?"
+            ],
+            "responses": [
+                "A dictionary contains words of a given language and provides the definition(s), spelling, pronunciation, and the origin of a particular word."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_thesaurus",
+            "patterns": [
+                "What is a thesaurus?"
+            ],
+            "responses": [
+                "A thesaurus is a book full of synonyms including antonyms."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types",
+            "patterns": [
+                "What are the different kinds of text types?"
+            ],
+            "responses": [
+                "There are 4 types of text: Narration, Information report, Argumentative, Procedural"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_narration",
+            "patterns": [
+                "What is a narration?"
+            ],
+            "responses": [
+                "This type of text narrates a story and entertains its readers. Stories and novels are examples of narration. A narration has basic elements such as characters, setting, and plot."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_information",
+            "patterns": [
+                "What is an information report?"
+            ],
+            "responses": [
+                "This type of text gives information about a person, place, or thing. It provides facts on a specific topic. This can be found in reference materials such as encyclopedias, reference books, technical texts, social studies books, science books, etc."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_argumentative",
+            "patterns": [
+                "What is an argumentative text?"
+            ],
+            "responses": [
+                "This type of text persuades readers to believe something. An argument is the writer’s reason as he/she is either 'for' or 'against' the issue."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_procedural",
+            "patterns": [
+                "What is a procedural text?"
+            ],
+            "responses": [
+                "This type of text follows a sequential order. It lists the materials to be used and the steps in a sequence. A procedural text is usually found in recipes, manuals and instructions that begin with a goal or title."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "prefix",
+            "patterns": [
+                "What is a prefix?"
+            ],
+            "responses": [
+                "Prefixes are a group of letters added at the beginning of a word to change its meaning."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "prefix_examples",
+            "patterns": [
+                "example of a prefix"
+            ],
+            "responses": [
+                "-re, -un, -de, -mis, -over, -under, -non, -bi, and tri"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "suffix",
+            "patterns": [
+                "What is a suffix?"
+            ],
+            "responses": [
+                "Suffixes are a group of letters added at the end of a word to change its meaning."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "suffix_examples",
+            "patterns": [
+                "example of a suffix"
+            ],
+            "responses": [
+                "-ly, -ous, -ness, -er, -en, -ment, -able, -less, -ion and -tion"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "explanationtext",
+            "patterns": [
+                "What is an explanation text?"
+            ],
+            "responses": [
+                "Explanation text is a text that describes how and why things work or happen."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "explanationtext",
+            "patterns": [
+                "What is a technical word?"
+            ],
+            "responses": [
+                "Technical words are subject-specific words.They contain special meanings and are sometimes difficult to understand."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues",
+            "patterns": [
+                "What are context clues?"
+            ],
+            "responses": [
+                "Context clues are clues found within a sentence, paragraph, or passage that a reader can be used to understand the meaning of new or unfamiliar words."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types",
+            "patterns": [
+                "What are the types of context clues?"
+            ],
+            "responses": [
+                "The types of context clues are: Synonyms, Definition, Examples, Appositive"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types_synonyms",
+            "patterns": [
+                "What is a synonym?"
+            ],
+            "responses": [
+                "Synonyms are words that have the same meaning."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types_definition",
+            "patterns": [
+                "What is a definition?"
+            ],
+            "responses": [
+                "Definition is the word is defined directly in the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types_appositive",
+            "patterns": [
+                "What is appositive?"
+            ],
+            "responses": [
+                "The word is further explained by a noun or group of words that come after it. It is usually separated by commas in the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_subject",
+            "patterns": [
+                "What is a subject?"
+            ],
+            "responses": [
+                "The subject is who or what the sentence is all about.",
+                "Subject is who or what in a sentence. can be a noun, the name of a person, place, thing, or idea. It can be a subject pronoun like he, she, it, I, we, they, and you."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_verb",
+            "patterns": [
+                "What is a verb?"
+            ],
+            "responses": [
+                "A verb is an action word being done by the subject in the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_naturalorder",
+            "patterns": [
+                "How do sentences in the natural order"
+            ],
+            "responses": [
+                "In the natural order, the subject comes first before the verb."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_invertedorder",
+            "patterns": [
+                "How do sentences in the inverted order"
+            ],
+            "responses": [
+                "In inverted order, the verb comes first before the subject. Most questions are in this order."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_words",
+            "patterns": [
+                "What are words?"
+            ],
+            "responses": [
+                "words are a sound or combination of sounds that has a meaning and is spoken or written."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_phrases",
+            "patterns": [
+                "What are phrases?"
+            ],
+            "responses": [
+                "are a group of two or more words that express a single idea but do not usually form a complete sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_sentences",
+            "patterns": [
+                "What are sentences?"
+            ],
+            "responses": [
+                "Sentences are a word or a group of words that express a complete thought."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_connectors",
+            "patterns": [
+                "What is the function of the words and, but, and or?"
+            ],
+            "responses": [
+                "The words And, But, and Or connect some parts of the sentence.",
+                "The words And, But, and Or serves as a connector to parts of the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_conjunctions",
+            "patterns": [
+                "What is a conjunction?"
+            ],
+            "responses": [
+                "Conjunctions are words used to connect words, phrases, and sentences."	
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_equalgrammaticalvalue",
+            "patterns": [
+                "What does equal grammatical value mean?"
+            ],
+            "responses": [
+                "a word to another word",
+                "a phrase to another phrase",
+                "a sentence to another sentence"	
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_sevencc",
+            "patterns": [
+                "What are the seven coordinating conjunctions?"
+            ],
+            "responses": [
+                "The seven coordinating conjunctions are for, and, nor, but, or, yet, so.",
+                "for, and, nor, but, or, yet, so. FANBOYS for short",
+                "a sentence to another sentence"	
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause",
+            "patterns": [
+                "What is a clause?"
+            ],
+            "responses": [
+                "A clause is a group of words consisting of a subject and a predicate."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types",
+            "patterns": [
+                "What are the types of clauses?"
+            ],
+            "responses": [
+                "There are two kinds of clauses: independent clause and dependent clause."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types_ic",
+            "patterns": [
+                "What is an independent clause?"
+            ],
+            "responses": [
+                "Independent clause is a group of words which has a complete thought and can stand alone."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types_dc",
+            "patterns": [
+                "What is a dependent clause?"
+            ],
+            "responses": [
+                "Dependent clause is a group of words which needs to be attached to independent clauses for it to make sense."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types_sc",
+            "patterns": [
+                "What is a subordinate clause?"
+            ],
+            "responses": [
+                "Subordinating clauses are words used to introduce dependent clauses."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cause",
+            "patterns": [
+                "What is a cause?"
+            ],
+            "responses": [
+                "Cause is the source, origin, reason or action taken."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "effect",
+            "patterns": [
+                "What is an effect?"
+            ],
+            "responses": [
+                "Effect is the desired outcome or expected result of the given cause."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cause-effect_relationship",
+            "patterns": [
+                "What is the relationship between cause and effect?"
+            ],
+            "responses": [
+                "Cause-and-effect relationship can be express in complex sentences and compound sentences."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "compund_sentences",
+            "patterns": [
+                "What is a compound sentence?"
+            ],
+            "responses": [
+                "Compound sentence is a sentence made up of two independent clauses connected by a coordinating conjunction."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "complex_sentences",
+            "patterns": [
+                "What is a complex sentence?"
+            ],
+            "responses": [
+                "Complex sentences are sentences that made up of one independent clause and one dependent clause that begins with a subordinating conjunction."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory",
+            "patterns": [
+                "What is a short story?"
+            ],
+            "responses": [
+                "A short story is a fictional work of prose that is shorter than a novel. It concentrates on one theme portrayed in a simple plot, often with a specific setting and few characters.",
+                "According to Edgar Allan Poe, a short story is a fictional work which must be read in one sitting only."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element",
+            "patterns": [
+                "What are the elements of a short story?"
+            ],
+            "responses": [
+                "The elements of a short story are: Setting, Characters, Plot, Theme, and Point of View."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_setting",
+            "patterns": [
+                "What is a setting?"
+            ],
+            "responses": [
+                "The setting refers to the time and place in which a story happened. It answers the questions when and where."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_character",
+            "patterns": [
+                "What is a character?"
+            ],
+            "responses": [
+                "Characters refer to people, animals, or anything personified who plays a role in the story. They are considered to be the life of the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_character_elements",
+            "patterns": [
+                "What is the different kinds of a character?"
+            ],
+            "responses": [
+                "Some stories have major/main characters, those whom thestory revolves around. Also, there are additional or support characters that make the story more interesting."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_majorcharacter_types",
+            "patterns": [
+                "What are different types of major characters?"
+            ],
+            "responses": [
+                "There have 2 types of major characters: these are the Protagonist and the antagonist."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_majorcharacter_protagonist",
+            "patterns": [
+                "What is a protagonist?"
+            ],
+            "responses": [
+                "The protagonist is the leading character to whom the story revolves usually good-natured but sometimes flawed."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_majorcharacter_antagonist",
+            "patterns": [
+                "What is a antagonist?"
+            ],
+            "responses": [
+                "The antagonist is the opposite or goes against the protagonist usually portrayed as the bad guy and sometimes causes the conflict."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_plot",
+            "patterns": [
+                "What is a plot?"
+            ],
+            "responses": [
+                "The plot pertains to the series of events in the story. These events are related to each other and help unfold the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_plot_flow",
+            "patterns": [
+                "What is the flow of a plot?"
+            ],
+            "responses": [
+                "The plot flows from Beginning action/exposition, Rising action, Climax, Falling action, Resolution or ending."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_theme",
+            "patterns": [
+                "What is a theme?"
+            ],
+            "responses": [
+                "The theme refers to the central idea or belief presented by the author in the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov",
+            "patterns": [
+                "What is a point of view?"
+            ],
+            "responses": [
+                "The point of view of a story determines who is telling it and the narrator's relationship to the characters in the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_types",
+            "patterns": [
+                "What are different points of view?"
+            ],
+            "responses": [
+                "The point of view has 3 different points: First person, Second person, and Third person."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_1",
+            "patterns": [
+                "What is a first person point of view?"
+            ],
+            "responses": [
+                "The first person point of view is the narrator is a person in the story, telling the story from their own perspective."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_2",
+            "patterns": [
+                "What is a second person point of view?"
+            ],
+            "responses": [
+                "The second person point of view is the reader is part of the story.",
+                "The second person point of view is the The narrator describes the reader's actions, thoughts, and background of the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_3",
+            "patterns": [
+                "What is a third person point of view?"
+            ],
+            "responses": [
+                "The narrator exists outside the events of the story, and relates the actions of the characters by referring to their names or by the third-person pronouns he, she, or they."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_reality",
+            "patterns": [
+                "How would I know if the story is a reality?",
+                "How would I know if the story based on real life?"
+            ],
+            "responses": [
+                "Stories can be considered reality if they talk about facts, historical events, and real-life scenarios."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_fantasy",
+            "patterns": [
+                "How would I know if the story is a make believe?",
+                "How would I know if the story based on fiction?"
+            ],
+            "responses": [
+                "A story is make-believe if it deals with fictional characters, events, and/or settings."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense",
+            "patterns": [
+                "What are tense?"
+
+            ],
+            "responses": [
+                "Tense refers to the time indicated by the verb."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense",
+            "patterns": [
+                "What are tense?"
+
+            ],
+            "responses": [
+                "Tense refers to the time indicated by the verb."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense_past_simple",
+            "patterns": [
+                "What is a past tense?"
+
+            ],
+            "responses": [
+                "Past tense indicates that the action is already done."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense_present_simple",
+            "patterns": [
+                "What is a present tense?"
+
+            ],
+            "responses": [
+                "Present tense indicates that the action is being done at the moment."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense_future_simple",
+            "patterns": [
+                "What is a future tense?"
+
+            ],
+            "responses": [
+                "Future tense indicates that the action will be done in the future."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "informationaltext",
+            "patterns": [
+                "What is an informational text?"
+
+            ],
+            "responses": [
+                "An informational text is a nonfiction writing that aims to provide information to the readers about a certain topic."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "descriptivetext",
+            "patterns": [
+                "What is an descriptive text?"
+
+            ],
+            "responses": [
+                "A descriptive text is a type of informational text that gives thorough details about a particular topic."
             ],
             "context": [
                 ""
