@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id" content="353575143157-n1hjiolkfuiqlqq9inej39pcdb90c7er.apps.googleusercontent.com">
 
   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
   <link href="{{url_for('static',filename='./css/output.css')}}" rel="stylesheet">
@@ -19,7 +20,8 @@
   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
   <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.2.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <style>
         body {
@@ -37,19 +39,10 @@
         }
     </style>
 
-<div class="absolute w-screen flex-col items-stretch justify-between overflow-hidden">
+<div class="z-40 fixed w-screen flex-col items-stretch justify-between overflow-hidden">
     <div class="w-screen bg-blue_bg2 flex justify-between items-center content-center drop-shadow-lg sticky object-top"> <!--header-->
         <div class="flex items-center content-center">
-            <a href="/">
-                <button class="flex items-center content-center text-white hover:text-gold h-14 mx-6">
-                    <span class="material-symbols-outlined">
-                        Go back
-                    </span>
-                </button>
-            </a>
-            
-
-            <div class="flex-col">
+            <div class="flex-col mx-6">
                 <p class="text-3xl text-white font-semibold pt-2 drop-shadow-lg">
                     Goldy
                 </p>
@@ -60,12 +53,26 @@
         </div>
 
         <div class="mx-6">
-            <button class="text-white hover:text-gold text-xl">Sign In</button>
+            <button class="text-white hover:text-gold text-xl">
+              <a href="/" onclick="signOut();">Sign Out</a>
+            </button>
+
+            <!-- <details class="w-[170px]">
+              <summary class="flex items-center gap-[10px] justify-end cursor-pointer">
+                <span class="text-white">Name</span>
+              </summary>
+              <div class="absolute bg-black/60 backdrop-blur-[20px] h-full w-full z-[7]">
+                <div class="flex items-center justify-end w-full py-[5px]"><a href="/" onclick="signOut();" class="text-white hover:text-gold z-xl">SIGN OUT</a></div>
+              </div>
+            </details> -->
+
         </div>
+
     </div>
 </div>
 
 </head>
+
 <body>
   <section class="msger">
     <header class="msger-header">
@@ -73,21 +80,25 @@
         <i class="fas fa-bug"></i> Chatbot <i class="fas fa-bug"></i>
       </div>
     </header>
-    <main class="msger-chat">
-      <div class="msg left-msg">
+
+    <main class="msger-chat px-14 py-14 mb-24 scrollbar-hide overflow-hidden">
+      <!-- <div class="msg left-msg">
         <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
-        <div class="msg-bubble">
+        <div class="msg-bubble w-full h-full">
           <div class="msg-info">
             <p class="msg-info-name">Chatbot</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
-    <form class="msger-inputarea absolute bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2">
+
+    <form class="msger-inputarea z-40 bottom-0 h-20 w-screen flex justify-between items-center mt-10 p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
       <input type="text" class="msger-input bg-inputbox w-full h-full rounded-l-large px-4 py-2 text-gray text-lg shadow-lg border border-gray-300" id="textInput" placeholder="Enter your message here">
       <button type="submit" class="msger-send-btn w-24 h-full bg-blue_btn hover:bg-blue_hover shadow-lg rounded-r-large text-white text-lg font-medium flex justify-center items-center">Send</button>
     </form>
+
   </section>
+
   <!-- partial -->
   <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
   <script>
@@ -95,44 +106,59 @@
     const msgerInput = get(".msger-input");
     const msgerChat = get(".msger-chat");
     // Icons made by Freepik from www.flaticon.com
-    const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
-    const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+    // const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
+    // const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
     const BOT_NAME = "Goldy";
     const PERSON_NAME = "You";
+
     msgerForm.addEventListener("submit", event => {
       event.preventDefault();
       const msgText = msgerInput.value;
       if (!msgText) return;
-      appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+      appendMessage(PERSON_NAME, "static/img/user.png", "right", msgText, "row-reverse");
       msgerInput.value = "";
       botResponse(msgText);
     });
-    function appendMessage(name, img, side, text) {
-      //   Simple solution for small apps
+
+    function appendMessage(name, img, side, text, flow) {
+      
       const msgHTML = `
-      <div class="msg ${side}-msg">
-        <div class="msg-img" style="background-image: url(${img})"></div>
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <p class="msg-info-name">${name}</p>
-            <p class="msg-text">${text}</p>
-          </div>  
-        </div>
-      </div>
-      `;
+          <div class="msg float-${side} flex flex-${flow} w-full">
+            <div>
+              <img src=${img} class="msg-img h-12 w-12 m-5 drop-shadow-md">
+            </div>
+            <div class="msg-bubble">
+              <div class="msg-info text-gray">
+                <p class="msg-info-name">${name}</p>
+                <p class="msg-text bg-blue_txtbox rounded-full px-4 py-2">${text}</p>
+              </div>  
+            </div>
+          </div>
+          `;
+
       msgerChat.insertAdjacentHTML("beforeend", msgHTML);
       msgerChat.scrollTop += 500;
+
     }
     function botResponse(rawText) {
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         const msgText = data;
-        appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+        appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row");
       });
     }
+    
     // Utils
     function get(selector, root = document) {
       return root.querySelector(selector);
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      session.clear();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
     }
   </script>
 </body>

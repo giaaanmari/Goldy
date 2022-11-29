@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="353575143157-n1hjiolkfuiqlqq9inej39pcdb90c7er.apps.googleusercontent.com">
 
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
@@ -24,6 +25,7 @@
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.2.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
     <!-- beautify ignore:start -->
@@ -43,14 +45,18 @@
 
         <div class="z-50 flex flex-col justify-center items-center">
             <p class="bg-gradient-to-b from-orange via-gold to-orange text-transparent bg-clip-text text-8xl font-bold drop-shadow-md m-2">
-                Hi, I'm Goldy
+                <a>Hi, I'm Goldy</a>
             </p>
             <p class="text-orange text-5xl font-medium m-2">
                 your learning companion
             </p>
             <a href="/chat">
-                <button class="bg-blue_btn text-white font-semibold text-2xl py-3 px-10 m-6 border border-blue_hover rounded-large shadow hover:bg-blue_hover">Ask Goldy</button>
+                <button class="bg-blue_btn text-white font-semibold text-2xl py-3 px-10 m-6 border border-blue_hover rounded-large shadow hover:bg-blue_hover">Sign In</button>
             </a>
+
+            <!-- <button class="g-signin2 bg-blue_btn text-white font-semibold text-2xl py-3 px-10 m-6 border border-blue_hover rounded-large shadow hover:bg-blue_hover" data-onsuccess="onSignIn">
+                Sign In
+            </button> -->
             
         </div>
 
@@ -60,8 +66,15 @@
 
     </div>
 
-    <py-script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
         
-    </py-script>
+    </script>
 </body>
 </html>
