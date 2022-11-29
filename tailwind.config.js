@@ -28,6 +28,7 @@ module.exports = {
       orange: '#FFA800',
       gray: '#363636',
       inputbox: '#edf8fa',
+      white: '#FFFFFF',
     },
     fontWeight: {
       regular: 400,
