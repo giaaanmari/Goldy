@@ -81,10 +81,10 @@
       </div>
     </header>
 
-    <main class="msger-chat px-5 py-14">
+    <main class="msger-chat px-14 py-14 mb-24 scrollbar-hide overflow-hidden">
       <!-- <div class="msg left-msg">
         <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
-        <div class="msg-bubble bg-blue_txtbox rounded w-full h-full">
+        <div class="msg-bubble w-full h-full">
           <div class="msg-info">
             <p class="msg-info-name">Chatbot</p>
           </div>
@@ -92,7 +92,7 @@
       </div> -->
     </main>
 
-    <form class="fixed msger-inputarea bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
+    <form class="msger-inputarea z-40 bottom-0 h-20 w-screen flex justify-between items-center mt-10 p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
       <input type="text" class="msger-input bg-inputbox w-full h-full rounded-l-large px-4 py-2 text-gray text-lg shadow-lg border border-gray-300" id="textInput" placeholder="Enter your message here">
       <button type="submit" class="msger-send-btn w-24 h-full bg-blue_btn hover:bg-blue_hover shadow-lg rounded-r-large text-white text-lg font-medium flex justify-center items-center">Send</button>
     </form>
@@ -123,7 +123,7 @@
     function appendMessage(name, img, side, text, flow) {
       
       const msgHTML = `
-          <div class="msg float-${side} flex flex-${flow} w-full overflow-hidden-x">
+          <div class="msg float-${side} flex flex-${flow} w-full">
             <div>
               <img src=${img} class="msg-img h-12 w-12 m-5 drop-shadow-md">
             </div>
@@ -138,6 +138,7 @@
 
       msgerChat.insertAdjacentHTML("beforeend", msgHTML);
       msgerChat.scrollTop += 500;
+
     }
     function botResponse(rawText) {
       // Bot Response
