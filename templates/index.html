@@ -50,7 +50,7 @@
             <p class="text-orange text-5xl font-medium m-2">
                 your learning companion
             </p>
-            <a href="/chat">
+            <a href="/login">
                 <button class="bg-blue_btn text-white font-semibold text-2xl py-3 px-10 m-6 border border-blue_hover rounded-large shadow hover:bg-blue_hover">Sign In</button>
             </a>
 
@@ -65,16 +65,5 @@
         </div>
 
     </div>
-
-    <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-        
-    </script>
 </body>
 </html>
