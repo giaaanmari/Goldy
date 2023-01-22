@@ -54,7 +54,7 @@
 
         <div class="mx-6">
             <button class="text-white hover:text-gold text-xl">
-              <a href="/" onclick="signOut();">Sign Out</a>
+              <a href="/logout">Sign Out</a>
             </button>
 
             <!-- <details class="w-[170px]">
@@ -81,10 +81,10 @@
       </div>
     </header>
 
-    <main class="msger-chat px-14 py-14 mb-24 scrollbar-hide overflow-hidden">
+    <main class="msger-chat px-5 py-14">
       <!-- <div class="msg left-msg">
         <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
-        <div class="msg-bubble w-full h-full">
+        <div class="msg-bubble bg-blue_txtbox rounded w-full h-full">
           <div class="msg-info">
             <p class="msg-info-name">Chatbot</p>
           </div>
@@ -119,11 +119,12 @@
       msgerInput.value = "";
       botResponse(msgText);
     });
+    
 
     function appendMessage(name, img, side, text, flow) {
       
       const msgHTML = `
-          <div class="msg float-${side} flex flex-${flow} w-full">
+          <div class="msg float-${side} flex flex-${flow} w-full overflow-hidden-x">
             <div>
               <img src=${img} class="msg-img h-12 w-12 m-5 drop-shadow-md">
             </div>
@@ -138,26 +139,12 @@
 
       msgerChat.insertAdjacentHTML("beforeend", msgHTML);
       msgerChat.scrollTop += 500;
-
     }
     function botResponse(rawText) {
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         const msgText = data;
         appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row");
-      });
-    }
-    
-    // Utils
-    function get(selector, root = document) {
-      return root.querySelector(selector);
-    }
-
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      session.clear();
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
       });
     }
   </script>
