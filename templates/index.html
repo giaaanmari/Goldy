@@ -40,7 +40,7 @@
     <div class="h-screen w-screen backdrop-blur-sm bg-white/20 flex place-content-between">
 
         <div class="z-30 float-left mr-2">
-            <img src="static/img/adnu-logo.png" alt="ADNU logo" class="h-36 w-36 m-5 drop-shadow-md">
+            <img src="static/img/adnu-logo.png" alt="ADNU logo" class="h-16 w-16 mx-4 my-2 drop-shadow-md">
         </div>
 
         <div class="z-50 flex flex-col justify-center items-center">
@@ -65,5 +65,16 @@
         </div>
 
     </div>
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+        
+    </script>
 </body>
 </html>
