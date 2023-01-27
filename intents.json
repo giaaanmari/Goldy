@@ -1,4073 +1,1213 @@
 {
-  "intents": [
-      {
-          "tag": "greeting",
-          "patterns": [
-              "Hi there",
-              "How are you",
-              "Is anyone there?",
-              "Hey",
-              "Hello",
-              "Good day"
-          ],
-          "responses": [
-              "Hi there, how can I help?",
-          "Hi, how can I help?",
-          "Hi I'm Goldy, how can I help?"
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "intro",
-          "patterns": [
-              "who are you?",
-              "you are?",
-              "what is your name?"
-          ],
-          "responses": [
-              "I'm Goldy",
-          "My name is Goldy",
-              "I'm Goldy, your virtual assistant"
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "goodbye",
-          "patterns": [
-              "Bye",
-              "See you later",
-              "Goodbye",
-              "Nice chatting with you, bye",
-              "Till next time"
-          ],
-          "responses": [
-              "Bye! Have a nice day",
-          "Goodbye!"
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "swear",
-          "patterns": [
-              "Fuck",
-              "Fuck you",                
-              "Idiot",
-              "Shit",
-              "Piss off",
-              "Dickhead",
-              "Bastard",
-              "Go to hell"
-          ],
-          "responses": [
-              "That's not very nice of you",
-              "I won't respond to that"
-          ]
-      },
-      {
-          "tag": "thanks",
-          "patterns": [
-              "Thanks",
-              "Thank you",
-              "That's helpful",
-              "Awesome, thanks",
-              "Thanks for helping me"
-          ],
-          "responses": [
-              "Happy to help!",
-            "You're welcome!"
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "nouns",
-          "patterns": [
-              "What is a noun?",
-              "Noun",
-              "Definition of a noun",
-              "Noun Definition"
-          ],
-          "responses":[
-              "A noun is a word that can describes a person, place, things"
-          ]
-      },
-      {
-          "tag": "nouns_types",
-          "patterns": [
-              "What are the types of nouns?",
-              "Types of nouns"
-          ],
-          "responses":[
-              "There are 10 types of nouns: Common nouns, Proper nouns, Singular nouns, Plural nouns, Concrete nouns, Abstract nouns, Collective nouns, Compound nouns, Countable nouns, and Uncountable nouns." 
-          ]
-      },
-      {
-          "tag": "nouns_types_common",
-          "patterns": [
-              "What are common nouns?",
-              "Definition of common nouns"
-          ],
-          "responses":[
-              "Common nouns are words that refer to undefined or generic people, places, or things."
-          ]
-      },
-      {
-          "tag": "nouns_types_common_examples",
-          "patterns": [
-              "What are the examples of common nouns?",
-              "examples of common nouns"
-          ],
-          "responses":[
-              "Five examples of common nouns are: Man, Woman, Dog, Cat, Country"
-          ]
-      },
-      {
-          "tag": "nouns_types_proper",
-          "patterns": [
-              "What are proper nouns?",
-              "Definition of proper nouns"
-          ],
-          "responses":[
-              "Proper nouns are words that help distinguish a specific person, place, or thing." ,
-              "Proper nouns are words that refer to a specific person, place, or thing."
-          ]
-      },
-      {
-          "tag": "nouns_types_proper_examples",
-          "patterns": [
-              "What are the examples of proper nouns?",
-              "examples of proper nouns"
-          ],
-          "responses":[
-              "Five examples of proper nouns are names of a person, place, or thing like: Bob, Spain, Diary of a Wimpy Kid"
-          ]
-      },
-      {
-          "tag": "nouns_types_singular",
-          "patterns": [
-              "What are singular nouns?",
-              "Definition of singular nouns"
-          ],
-          "responses":[
-              "Singular nouns are nouns that refer to only one person, place or thing." 
-          ]
-      },
-      {
-          "tag": "nouns_types_singular_examples",
-          "patterns": [
-              "What are the examples of singular nouns?",
-              "examples of singular nouns"
-          ],
-          "responses":[
-              "Five examples of singular nouns are boat, house, cat, river"
-          ]
-      },
-      {
-          "tag": "nouns_types_plural",
-          "patterns": [
-              "What are plural nouns?",
-              "Definition of plural nouns"
-          ],
-          "responses":[
-              "A plural noun are nouns that refer to more than one person, place, animal, thing, event, or idea." 
-          ]
-      },
-      {
-          "tag": "nouns_types_plural_example",
-          "patterns": [
-              "What are the examples of plural nouns?",
-              "examples of plural nouns"
-          ],
-          "responses":[
-              "Examples of plural nouns are: boats, houses, cats, dogs"
-          ]
-      },
-      {
-          "tag": "nouns_types_concrete",
-          "patterns": [
-              "What are concrete nouns?",
-              "Definition of concrete nouns"
-          ],
-          "responses":[
-              "A concrete noun is something that can be perceived through the five senses such as see, hear, touch, taste, or smell." 
-          ]
-      },
-      {
-          "tag": "nouns_types_abstract",
-          "patterns": [
-              "What are abstract nouns?",
-              "Definition of abstract nouns"
-          ],
-          "responses":[
-              "A abstract noun is something that cannot be perceived through the five senses such as see, hear, touch, taste, or smell." 
-          ]
-      },
-      {
-          "tag": "nouns_types_collective",
-          "patterns": [
-              "What are collective nouns?",
-              "Definition of collective nouns"
-          ],
-          "responses":[
-              "A collective noun is a word that functions as a singular noun while referring to a group of people or things." 
-          ]
-      },
-      {
-          "tag": "nouns_types_compound",
-          "patterns": [
-              "What are compound nouns?",
-              "Definition of compound nouns"
-          ],
-          "responses":[
-              "A compound noun combines two or more words into one but appears as a single word." 
-          ]
-      },
-      {
-          "tag": "nouns_types_countable",
-          "patterns": [
-              "What are countable nouns?",
-              "Definition of countable nouns"
-          ],
-          "responses":[
-              "A countable noun is a word that you can count.",
-              "Known as Count Noun, it is a word that signifies counting."
-          ]
-      },
-      {
-          "tag": "nouns_types_uncountable",
-          "patterns": [
-              "What are uncountable nouns?",
-              "Definition of uncountable nouns"
-          ],
-          "responses":[
-              "A uncountable noun is a word that you can't count.",
-              "Known as Mass Noun, it is a word that you can't signifies counting."
-          ]
-      },
-      {
-          "tag": "nouns_possessive",
-          "patterns": [
-              "What are possessive nouns?",
-              "Definition of possessive nouns",
-              "possessive nouns"
-          ],
-          "responses":[
-              "A uncountable noun is a noun that expresses ownership."
-          ]
-      },
-      {
-          "tag": "sentences_imperative",
-          "patterns": [
-              "What is an imperative sentence?",
-              "imperative sentence"
-          ],
-          "responses":[
-              "An imperative sentence expresses a command, request, or instruction."
-          ]
-      },
-      {
-          "tag": "sentences_exclamatory",
-          "patterns": [
-              "What is an exclamatory sentence?",
-              "exclamatory sentence"
-          ],
-          "responses":[
-              "An exclamatory sentence expresses strong emotions or feelings. It is often used in greetings and warnings."
-          ]
-      },
-      {
-          "tag": "paragraph",
-          "patterns": [
-              "What is a paragraph?"
-          ],
-          "responses": [
-              "A paragraph is a group of sentences that talks about one main idea or topic."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "interjecton",
-          "patterns": [
-              "What is an interjection?",
-              "interjection",
-              "Definition of an interjection"
-          ],
-          "responses":[
-              "Interjections are words used to express a sudden feeling."
-          ]
-      },
-      {
-          "tag": "mainidea",
-          "patterns": [
-              "What is a main idea?",
-              "main idea",
-              "Definition of a main idea"
-          ],
-          "responses": [
-              "A main point is the most important message of the paragraph or text.",
-          "A main point is what the selection is mostly about.",
-              "A main point is what is being talked about in the paragraph.",
-              "It is a complete sentence that includes the topic and what the author wants to say. However, the main idea may or may not stated"
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "supportingdetail",
-          "patterns": [
-              "What is a supporting detail?",
-              "supporting detail",
-              "Definition of a supporting detail"
-          ],
-          "responses": [
-              "Supporting details are other facts or sentences that support or explain the main idea.",
-          "Supporting details are major details explain and develop the main idea.",
-              "Supporting details are minor details help make the major details clear."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "graphicorganizer",
-          "patterns": [
-              "What is a graphic organizer?"
-          ],
-          "responses": [
-              "A graphic organizer is a teaching and learning tool used to organize information and ideas that are easy to comprehend and internalize.",
-          "A graphic organizer is a visual display that organizes ideas and shows the relationship between concepts or information. It guides readers in thinking and helping them more to comprehend what they read."
-    
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial",
-          "patterns": [
-              "What is a reference material?"
-          ],
-          "responses": [
-              "Reference materials are books and other reading materials that help in researching or answering questions."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial_examples",
-          "patterns": [
-              "What are the examples of a reference material?",
-              "give an examples of reference material?"
-          ],
-          "responses": [
-              "Examples of reference materials are: Almanac, Encyclopedia, Index, Dictionary, Thesaurus ,Online resource/s"			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial_almanac",
-          "patterns": [
-              "What is an almanac?"
-          ],
-          "responses": [
-              "An almanac contains specific facts, statistical data, and other information related to people, places, events, etc."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial_encyclopedia",
-          "patterns": [
-              "What is an encyclopedia?"
-          ],
-          "responses": [
-              "An encyclopedia contains basic information about a broad range of topics and is arranged alphabetically. It usually comes in volumes."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial_index",
-          "patterns": [
-              "What is an encyclopedia?"
-          ],
-          "responses": [
-              "An index contains information present in periodicals, books, newspapers, etc."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial_dictionary",
-          "patterns": [
-              "What is a dictionary?"
-          ],
-          "responses": [
-              "A dictionary contains words of a given language and provides the definition(s), spelling, pronunciation, and the origin of a particular word."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "referencematerial_thesaurus",
-          "patterns": [
-              "What is a thesaurus?"
-          ],
-          "responses": [
-              "A thesaurus is a book full of synonyms including antonyms."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "text_types",
-          "patterns": [
-              "What are the different kinds of text types?"
-          ],
-          "responses": [
-              "There are 4 types of text: Narration, Information report, Argumentative, Procedural"			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "text_types_narration",
-          "patterns": [
-              "What is a narration?"
-          ],
-          "responses": [
-              "This type of text narrates a story and entertains its readers. Stories and novels are examples of narration. A narration has basic elements such as characters, setting, and plot."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "text_types_information",
-          "patterns": [
-              "What is an information report?"
-          ],
-          "responses": [
-              "This type of text gives information about a person, place, or thing. It provides facts on a specific topic. This can be found in reference materials such as encyclopedias, reference books, technical texts, social studies books, science books, etc."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "text_types_argumentative",
-          "patterns": [
-              "What is an argumentative text?"
-          ],
-          "responses": [
-              "This type of text persuades readers to believe something. An argument is the writer’s reason as he/she is either 'for' or 'against' the issue."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "text_types_procedural",
-          "patterns": [
-              "What is a procedural text?"
-          ],
-          "responses": [
-              "This type of text follows a sequential order. It lists the materials to be used and the steps in a sequence. A procedural text is usually found in recipes, manuals and instructions that begin with a goal or title."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "prefix",
-          "patterns": [
-              "What is a prefix?"
-          ],
-          "responses": [
-              "Prefixes are a group of letters added at the beginning of a word to change its meaning."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "prefix_examples",
-          "patterns": [
-              "example of a prefix"
-          ],
-          "responses": [
-              "-re, -un, -de, -mis, -over, -under, -non, -bi, and tri"			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "suffix",
-          "patterns": [
-              "What is a suffix?"
-          ],
-          "responses": [
-              "Suffixes are a group of letters added at the end of a word to change its meaning."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "suffix_examples",
-          "patterns": [
-              "example of a suffix"
-          ],
-          "responses": [
-              "-ly, -ous, -ness, -er, -en, -ment, -able, -less, -ion and -tion"			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "explanationtext",
-          "patterns": [
-              "What is an explanation text?"
-          ],
-          "responses": [
-              "Explanation text is a text that describes how and why things work or happen."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "explanationtext",
-          "patterns": [
-              "What is a technical word?"
-          ],
-          "responses": [
-              "Technical words are subject-specific words.They contain special meanings and are sometimes difficult to understand."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contextclues",
-          "patterns": [
-              "What are context clues?"
-          ],
-          "responses": [
-              "Context clues are clues found within a sentence, paragraph, or passage that a reader can be used to understand the meaning of new or unfamiliar words."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contextclues_types",
-          "patterns": [
-              "What are the types of context clues?"
-          ],
-          "responses": [
-              "The types of context clues are: Synonyms, Definition, Examples, Appositive"			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contextclues_types_synonyms",
-          "patterns": [
-              "What is a synonym?"
-          ],
-          "responses": [
-              "Synonyms are words that have the same meaning."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contextclues_types_definition",
-          "patterns": [
-              "What is a definition?"
-          ],
-          "responses": [
-              "Definition is the word is defined directly in the sentence."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contextclues_types_appositive",
-          "patterns": [
-              "What is appositive?"
-          ],
-          "responses": [
-              "The word is further explained by a noun or group of words that come after it. It is usually separated by commas in the sentence."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sv_subject",
-          "patterns": [
-              "What is a subject?"
-          ],
-          "responses": [
-              "The subject is who or what the sentence is all about.",
-              "Subject is who or what in a sentence. can be a noun, the name of a person, place, thing, or idea. It can be a subject pronoun like he, she, it, I, we, they, and you."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sv_verb",
-          "patterns": [
-              "What is a verb?"
-          ],
-          "responses": [
-              "A verb is an action word being done by the subject in the sentence."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sv_naturalorder",
-          "patterns": [
-              "How do sentences in the natural order"
-          ],
-          "responses": [
-              "In the natural order, the subject comes first before the verb."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sv_invertedorder",
-          "patterns": [
-              "How do sentences in the inverted order"
-          ],
-          "responses": [
-              "In inverted order, the verb comes first before the subject. Most questions are in this order."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_words",
-          "patterns": [
-              "What are words?"
-          ],
-          "responses": [
-              "words are a sound or combination of sounds that has a meaning and is spoken or written."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_phrases",
-          "patterns": [
-              "What are phrases?"
-          ],
-          "responses": [
-              "are a group of two or more words that express a single idea but do not usually form a complete sentence."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_sentences",
-          "patterns": [
-              "What are sentences?"
-          ],
-          "responses": [
-              "Sentences are a word or a group of words that express a complete thought."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_connectors",
-          "patterns": [
-              "What is the function of the words and, but, and or?"
-          ],
-          "responses": [
-              "The words And, But, and Or connect some parts of the sentence.",
-              "The words And, But, and Or serves as a connector to parts of the sentence."			
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_conjunctions",
-          "patterns": [
-              "What is a conjunction?"
-          ],
-          "responses": [
-              "Conjunctions are words used to connect words, phrases, and sentences."	
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_equalgrammaticalvalue",
-          "patterns": [
-              "What does equal grammatical value mean?"
-          ],
-          "responses": [
-              "a word to another word",
-              "a phrase to another phrase",
-              "a sentence to another sentence"	
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cc_sevencc",
-          "patterns": [
-              "What are the seven coordinating conjunctions?"
-          ],
-          "responses": [
-              "The seven coordinating conjunctions are for, and, nor, but, or, yet, so.",
-              "for, and, nor, but, or, yet, so. FANBOYS for short",
-              "a sentence to another sentence"	
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sc_clause",
-          "patterns": [
-              "What is a clause?"
-          ],
-          "responses": [
-              "A clause is a group of words consisting of a subject and a predicate."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sc_clause_types",
-          "patterns": [
-              "What are the types of clauses?"
-          ],
-          "responses": [
-              "There are two kinds of clauses: independent clause and dependent clause."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sc_clause_types_ic",
-          "patterns": [
-              "What is an independent clause?"
-          ],
-          "responses": [
-              "Independent clause is a group of words which has a complete thought and can stand alone."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sc_clause_types_dc",
-          "patterns": [
-              "What is a dependent clause?"
-          ],
-          "responses": [
-              "Dependent clause is a group of words which needs to be attached to independent clauses for it to make sense."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sc_clause_types_sc",
-          "patterns": [
-              "What is a subordinate clause?"
-          ],
-          "responses": [
-              "Subordinating clauses are words used to introduce dependent clauses."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cause",
-          "patterns": [
-              "What is a cause?"
-          ],
-          "responses": [
-              "Cause is the source, origin, reason or action taken."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "effect",
-          "patterns": [
-              "What is an effect?"
-          ],
-          "responses": [
-              "Effect is the desired outcome or expected result of the given cause."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cause-effect_relationship",
-          "patterns": [
-              "What is the relationship between cause and effect?"
-          ],
-          "responses": [
-              "Cause-and-effect relationship can be express in complex sentences and compound sentences."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "compund_sentences",
-          "patterns": [
-              "What is a compound sentence?"
-          ],
-          "responses": [
-              "Compound sentence is a sentence made up of two independent clauses connected by a coordinating conjunction."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "complex_sentences",
-          "patterns": [
-              "What is a complex sentence?"
-          ],
-          "responses": [
-              "Complex sentences are sentences that made up of one independent clause and one dependent clause that begins with a subordinating conjunction."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory",
-          "patterns": [
-              "What is a short story?"
-          ],
-          "responses": [
-              "A short story is a fictional work of prose that is shorter than a novel. It concentrates on one theme portrayed in a simple plot, often with a specific setting and few characters.",
-              "According to Edgar Allan Poe, a short story is a fictional work which must be read in one sitting only."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element",
-          "patterns": [
-              "What are the elements of a short story?"
-          ],
-          "responses": [
-              "The elements of a short story are: Setting, Characters, Plot, Theme, and Point of View."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_setting",
-          "patterns": [
-              "What is a setting?"
-          ],
-          "responses": [
-              "The setting refers to the time and place in which a story happened. It answers the questions when and where."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_character",
-          "patterns": [
-              "What is a character?"
-          ],
-          "responses": [
-              "Characters refer to people, animals, or anything personified who plays a role in the story. They are considered to be the life of the story."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_character_elements",
-          "patterns": [
-              "What is the different kinds of a character?"
-          ],
-          "responses": [
-              "Some stories have major/main characters, those whom thestory revolves around. Also, there are additional or support characters that make the story more interesting."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_majorcharacter_types",
-          "patterns": [
-              "What are different types of major characters?"
-          ],
-          "responses": [
-              "There have 2 types of major characters: these are the Protagonist and the antagonist."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_majorcharacter_protagonist",
-          "patterns": [
-              "What is a protagonist?"
-          ],
-          "responses": [
-              "The protagonist is the leading character to whom the story revolves usually good-natured but sometimes flawed."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_majorcharacter_antagonist",
-          "patterns": [
-              "What is a antagonist?"
-          ],
-          "responses": [
-              "The antagonist is the opposite or goes against the protagonist usually portrayed as the bad guy and sometimes causes the conflict."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_plot",
-          "patterns": [
-              "What is a plot?"
-          ],
-          "responses": [
-              "The plot pertains to the series of events in the story. These events are related to each other and help unfold the story."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_plot_flow",
-          "patterns": [
-              "What is the flow of a plot?"
-          ],
-          "responses": [
-              "The plot flows from Beginning action/exposition, Rising action, Climax, Falling action, Resolution or ending."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_theme",
-          "patterns": [
-              "What is a theme?"
-          ],
-          "responses": [
-              "The theme refers to the central idea or belief presented by the author in the story."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_pov",
-          "patterns": [
-              "What is a point of view?"
-          ],
-          "responses": [
-              "The point of view of a story determines who is telling it and the narrator's relationship to the characters in the story."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_pov_types",
-          "patterns": [
-              "What are different points of view?"
-          ],
-          "responses": [
-              "The point of view has 3 different points: First person, Second person, and Third person."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_pov_1",
-          "patterns": [
-              "What is a first person point of view?"
-          ],
-          "responses": [
-              "The first person point of view is the narrator is a person in the story, telling the story from their own perspective."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_pov_2",
-          "patterns": [
-              "What is a second person point of view?"
-          ],
-          "responses": [
-              "The second person point of view is the reader is part of the story.",
-              "The second person point of view is the The narrator describes the reader's actions, thoughts, and background of the story."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_pov_3",
-          "patterns": [
-              "What is a third person point of view?"
-          ],
-          "responses": [
-              "The narrator exists outside the events of the story, and relates the actions of the characters by referring to their names or by the third-person pronouns he, she, or they."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_reality",
-          "patterns": [
-              "How would I know if the story is a reality?",
-              "How would I know if the story based on real life?"
-          ],
-          "responses": [
-              "Stories can be considered reality if they talk about facts, historical events, and real-life scenarios."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "shortstory_element_fantasy",
-          "patterns": [
-              "How would I know if the story is a make believe?",
-              "How would I know if the story based on fiction?"
-          ],
-          "responses": [
-              "A story is make-believe if it deals with fictional characters, events, and/or settings."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "tense",
-          "patterns": [
-              "What are tense?"
-
-          ],
-          "responses": [
-              "Tense refers to the time indicated by the verb."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "tense",
-          "patterns": [
-              "What are tense?"
-
-          ],
-          "responses": [
-              "Tense refers to the time indicated by the verb."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "tense_past_simple",
-          "patterns": [
-              "What is a past tense?"
-
-          ],
-          "responses": [
-              "Past tense indicates that the action is already done."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "tense_present_simple",
-          "patterns": [
-              "What is a present tense?"
-
-          ],
-          "responses": [
-              "Present tense indicates that the action is being done at the moment."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "tense_future_simple",
-          "patterns": [
-              "What is a future tense?"
-
-          ],
-          "responses": [
-              "Future tense indicates that the action will be done in the future."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "informationaltext",
-          "patterns": [
-              "What is an informational text?"
-
-          ],
-          "responses": [
-              "An informational text is a nonfiction writing that aims to provide information to the readers about a certain topic."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "descriptivetext",
-          "patterns": [
-              "What is an descriptive text?"
-
-          ],
-          "responses": [
-              "A descriptive text is a type of informational text that gives thorough details about a particular topic."
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "self_introduction",
-          "patterns": [
-              "What is your name?"
-
-          ],
-          "responses": [
-              "My name is Goldy"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "self_introduction_live",
-          "patterns": [
-              "Where do you live?"
-
-          ],
-          "responses": [
-              "I live in a webspace"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "self_introduction_age",
-          "patterns": [
-              "How old are you?"
-
-          ],
-          "responses": [
-              "I am still learning and growing"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "self_introduction_sibling",
-          "patterns": [
-              "How many siblings do you have?"
-
-          ],
-          "responses": [
-              "I have no siblings"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "self_introduction_sibling",
-          "patterns": [
-              "How many siblings do you have?"
-
-          ],
-          "responses": [
-              "I have no siblings"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "self_introduction_pets",
-          "patterns": [
-              "Do you have pets?"
-
-          ],
-          "responses": [
-              "I don't have any pets"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "basic_parts_self_introduction",
-          "patterns": [
-              "How to introduce your self?"
-
-          ],
-          "responses": [
-              "Tell your complete name, age, place where you live, and school where you study",
-              "Tell your parent’s name and number of siblings.",
-              "Tell your favorites and hobbies."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "ways_self_introduction",
-          "patterns": [
-              "How to properly introduce my self?"
-
-          ],
-          "responses": [
-              "You should stand up when you meet someone",
-              "Wear a big smile to make others feel welcome",
-              "Speak loudly and clearly"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression1",
-          "patterns": [
-              "When you wake up in the morning, what should you say?"
-
-          ],
-          "responses": [
-              "We should say Good morning"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression2",
-          "patterns": [
-              "When you are ready to go to bed and sleep, what do you say?"
-
-          ],
-          "responses": [
-              "We should say Good night"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression3",
-          "patterns": [
-              "Whenever someone gives you a gift, what should you say?"
-
-          ],
-          "responses": [
-              "We should say Thank You"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression4",
-          "patterns": [
-              "When you ask for something, what should you say?"
-
-          ],
-          "responses": [
-              "We should say Please"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression5",
-          "patterns": [
-              "When you accidentally hit your brother or sister, what should you say?"
-
-          ],
-          "responses": [
-              "We should say Sorry"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression6",
-          "patterns": [
-              "Whenever you want to borrow, what should you say? "
-
-          ],
-          "responses": [
-              "We should say May I borrow"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression7",
-          "patterns": [
-              "what should I say when someone said Thank you "
-
-          ],
-          "responses": [
-              "we should say you're welcome"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Greetings_and_polite_expression8",
-          "patterns": [
-              "what should I say when someone said Sorry "
-
-          ],
-          "responses": [
-              "we should say it's okay"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Vowels",
-          "patterns": [
-              "What are the letters a, e, i, o, u called? "
-
-          ],
-          "responses": [
-              "They are called vowels"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Vowels2",
-          "patterns": [
-              "How many vowels are there in the alphabet"
-
-          ],
-          "responses": [
-              "There are 5 vowels"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "consonants",
-          "patterns": [
-              "What are the letters b, c, d, f, g, h, j, k… called?"
-
-          ],
-          "responses": [
-              "They are called consonants"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "consonants1",
-          "patterns": [
-              "how many consonants are there in the alphabet"
-
-          ],
-          "responses": [
-              "there are 21 consonants in the alphabet"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Plural_nouns",
-          "patterns": [
-              "When will I add es to a noun if its plural"
-
-          ],
-          "responses": [
-              "If the noun ends in s, x, ch, sh, and z"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Declarative",
-          "patterns": [
-              "What is a declarative sentence?"
-
-          ],
-          "responses": [
-              "Declarative is from the word declare which means to tell"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Interrogative",
-          "patterns": [
-              "What is a Intterogative sentence?"
-
-          ],
-          "responses": [
-              "Interrogative is from the word interrogate which means to ask"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Interrogative",
-          "patterns": [
-              "What is a Intterogative sentence?"
-
-          ],
-          "responses": [
-              "Interrogative is from the word interrogate which means to ask"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "capitalize_common",
-          "patterns": [
-              "When can I capialize a common noun"
-
-          ],
-          "responses": [
-              "We can capitalize a common noun if it's at the start of the sentence"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "capitalize_common",
-          "patterns": [
-              "When can I capialize a common noun"
-
-          ],
-          "responses": [
-              "We can capitalize a common noun if it's at the start of the sentence"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "common_noun_rule3",
-          "patterns": [
-              "What do I add to singular nouns ending with fe or f"
-
-          ],
-          "responses": [
-              "We change fe or f to v then add -es to form its plural."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Elements_of_a_story",
-          "patterns": [
-              "What are the elements of a story"
-
-          ],
-          "responses": [
-              "We have the character, Setting, Plot, and the moral."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Text_type_or_text_Structure",
-          "patterns": [
-              "What are the types of text structure"
-
-          ],
-          "responses": [
-              "We have the Description, Sequence,  Comparison and Contrast, Cause and Effect, and Problem-Solving."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "problem",
-          "patterns": [
-              "What is a problem in a story"
-
-          ],
-          "responses": [
-              "It is something that causes trouble or a dilemma for the characters."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "solution",
-          "patterns": [
-              "What is a solution in a story"
-
-          ],
-          "responses": [
-              "It is the way for the characters to fix or solve the problem."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "solution",
-          "patterns": [
-              "What is a solution in a story"
-
-          ],
-          "responses": [
-              "It is the way for the characters to fix or solve the problem."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "procedure_text",
-          "patterns": [
-              "What is a procedure text"
-
-          ],
-          "responses": [
-              "It follows a certain order"
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "procedure_text_words",
-          "patterns": [
-              "What is a Procedural/ Sequence Signal words"
-
-          ],
-          "responses": [
-              "this are first, second, third, then, next, before  after, afterward, lastly, finally, following or sequential dates/events."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "affix",
-          "patterns": [
-              "What is a affix"
-
-          ],
-          "responses": [
-              "An affix is a group of letters added to a root word to change its meaning."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "types_of_affix",
-          "patterns": [
-              "What are affix"
-
-          ],
-          "responses": [
-              "An affix is either a prefix or a suffix."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "print_material",
-          "patterns": [
-              "What are print materials"
-
-          ],
-          "responses": [
-              "Print media uses printed materials to spread information. Examples of these are newspapers."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "types_print_material",
-          "patterns": [
-              "examples of print materials"
-
-          ],
-          "responses": [
-              "these are newspapers, magazines, books, fliers, and pamphlets."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "nonprint_material",
-          "patterns": [
-              "what is a non-print materials"
-
-          ],
-          "responses": [
-              "Non-print materials are resources that do not store information on paper. Here are some of them:"
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "nonprint_material",
-          "patterns": [
-              "what is a non-print materials"
-
-          ],
-          "responses": [
-              "Non-print materials are resources that do not store information on paper. Here are some of them:"
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Bias",
-          "patterns": [
-              "What is bias"
-
-          ],
-          "responses": [
-              "Bias is a tendency to lean in a certain direction, either in favor of or against a particular thing."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "propaganda",
-          "patterns": [
-              "What is propaganda "
-
-          ],
-          "responses": [
-              "Propaganda is the dissemination of information facts, arguments, rumors, half-truths, or lies to influence public opinion."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "persuasive_essay",
-          "patterns": [
-              "What is a persuasive essay "
-
-          ],
-          "responses": [
-              "It aims to persuade or convince its readers to do certain things."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_persuasive_essay",
-          "patterns": [
-              "What are the parts of a persuasive essay "
-
-          ],
-          "responses": [
-              "It has an Introduction, Body, and Conclusion."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "word_formation_blending",
-          "patterns": [
-              "What is a blending  "
-
-          ],
-          "responses": [
-              "Blending is the process where we combine two words to form a new word."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "word_formation_clipping",
-          "patterns": [
-              "What is a clipping  "
-
-          ],
-          "responses": [
-              "Clipping is the process where we cut a word into a shorter one and that becomes the new word."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "word_formation_clipping",
-          "patterns": [
-              "What is a clipping  "
-
-          ],
-          "responses": [
-              "Clipping is the process where we cut a word into a shorter one and that becomes the new word."
-  
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "word_formation_compounding",
-          "patterns": [
-              "What is a compounding  "
-
-          ],
-          "responses": [
-              "Compounding is a kind of word formation where two or more words are combined to create a new word with a completely different meaning."
-
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "word_formation_compounding",
-          "patterns": [
-              "What is a compounding  "
-
-          ],
-          "responses": [
-              "Compounding is a kind of word formation where two or more words are combined to create a new word with a completely different meaning."
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "descriptive_adjective",
-          "patterns": [
-              "What is a descriptive adjective  "
-
-          ],
-          "responses": [
-              "Descriptive Adjectives are adjectives that describe qualities of a noun or pronoun such as smell, texture, appearance, and shape."
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "two_kinds_descriptive_adjective",
-          "patterns": [
-              "What are the types descriptive adjective  "
-
-          ],
-          "responses": [
-              " We have common adjectives, and proper adjectives."
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "common_adjective",
-          "patterns": [
-              "What is a common adjective  "
-
-          ],
-          "responses": [
-              " common adjectives are words that describe color, size, shape, taste, and texture and they do not start with capital letter."
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "common_adjective",
-          "patterns": [
-              "What is a common adjective  "
-
-          ],
-          "responses": [
-              " common adjectives are words that describe color, size, shape, taste, and texture and they do not start with capital letter."
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "proper_adjective",
-          "patterns": [
-              "What is a proper adjective  "
-
-          ],
-          "responses": [
-              "proper adjectives are words that refer to the origin of the noun; start with a capital letter"
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "limiting_adjective",
-          "patterns": [
-              "What is a limiting adjective  "
-
-          ],
-          "responses": [
-              "Limiting adjectives limit a noun by specifying the noun being referred to. These adjectives usually answer the following questions:"
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cause_1",
-          "patterns": [
-              "What is a cause?  "
-
-          ],
-          "responses": [
-              "A cause refers to situations that makes something happen"
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "effect_1",
-          "patterns": [
-              "What is a effect?  "
-
-          ],
-          "responses": [
-              "A effect refers to an outcome or a result because of a certain situation"
-              
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "signal_words",
-          "patterns": [
-              "How can i know if its a cause amd effect paragraph?  "
-
-          ],
-          "responses": [
-              "The following signal words can be used to link the cause and the effect because, so, which is why, as a result, if…then,"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cause_ane_effect_paragraph",
-          "patterns": [
-              "what is a cause and effect paragraph?  "
-
-          ],
-          "responses": [
-              "It is a kind of paragraph which analyzes or discusses the reasons why something happened/is happening."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "compare",
-          "patterns": [
-              "what is comparison?  "
-
-          ],
-          "responses": [
-              "It's process of identifying the common traits/characteristics between two people/things being compared. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contrast",
-          "patterns": [
-              "what is contrast?"
-
-          ],
-          "responses": [
-              "It's process of identifying the differences. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "contrast",
-          "patterns": [
-              "what is contrast?"
-
-          ],
-          "responses": [
-              "It's process of identifying the differences. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "fact",
-          "patterns": [
-              "what is a fact?"
-
-          ],
-          "responses": [
-              "A fact is a statement that is proven to be true."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "opinion",
-          "patterns": [
-              "what is a opinion?"
-
-          ],
-          "responses": [
-              "A opinion is a statement that express how you feel or think towards something or someone."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "verb",
-          "patterns": [
-              "what is a verb?"
-
-          ],
-          "responses": [
-              "A verb is a word that shows action."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "verb",
-          "patterns": [
-              "what is a verb?"
-
-          ],
-          "responses": [
-              "A verb is a word that shows action."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "modal",
-          "patterns": [
-              "what is a modal?"
-
-          ],
-          "responses": [
-              "A modal is a word that epxress permission, ability,  possibility, necessity, advice, and request."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "modal",
-          "patterns": [
-              "what is a modal?"
-
-          ],
-          "responses": [
-              "A modal is a word that epxress permission, ability,  possibility, necessity, advice, and request."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "adverb",
-          "patterns": [
-              "what is an adverb?"
-
-          ],
-          "responses": [
-              "A adveb is a word that describe or modify: verbs, adverbs, and adjectives"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "adverb",
-          "patterns": [
-              "what is an adverb?"
-
-          ],
-          "responses": [
-              "A adverb is a word that describe or modify: verbs, adverbs, and adjectives"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "Types_of_sentence",
-          "patterns": [
-              "what are the types of sentences?"
-
-          ],
-          "responses": [
-              "The types of sentences are simple, compound, and complex sentences."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "simple_sentence",
-          "patterns": [
-              "what is a simple sentence ?"
-
-          ],
-          "responses": [
-              " It's made up of a pair of subject and predicate.",
-              "It's either the subject or the predicate can be simple or compound."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "compound_sentence",
-          "patterns": [
-              "what is a compound sentence ?"
-
-          ],
-          "responses": [
-              "It's made up of 2 independent clauses connected by a coordinating conjunction",
-              "It's coordinating conjunction include (FANBOYS): for, and, nor, but, or, yet, so"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "complex_sentence",
-          "patterns": [
-              "what is a complex sentence ?"
-
-          ],
-          "responses": [
-              "It's made up of 1 independent clause and 1 dependent clause that begins with a subordinating conjunction",
-              "It's coordinating conjunctions include, but are not limited too: for, and, nor, but, or,yet, so"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "asking_permission",
-          "patterns": [
-              "How to ask for permission?"
-
-          ],
-          "responses": [
-              "When asking for a permission, make sure that you explain your situation. It is important to reassure someone you are asking you permission from."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "asking_request",
-          "patterns": [
-              "How to ask for a request?"
-
-          ],
-          "responses": [
-              "When making a request, be clear with your intentions. Just like in asking for permission, it is also polite to explain your situation. Using cues like “may I…?” and “please” also let people know that you are making a request."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "asking_request",
-          "patterns": [
-              "How to ask for a request?"
-
-          ],
-          "responses": [
-              "When making a request, be clear with your intentions. Just like in asking for permission, it is also polite to explain your situation. Using cues like may I? and please also let people know that you are making a request."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "CVC",
-          "patterns": [
-              "What is the CVC pattern?"
-
-          ],
-          "responses": [
-              "CVC stands for consonant + vowel + consonant ."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "CVC",
-          "patterns": [
-              "What is the CVC pattern?"
-
-          ],
-          "responses": [
-              "CVC stands for consonant + vowel + consonant ."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "nouns_1",
-          "patterns": [
-              "What is a noun?"
-
-          ],
-          "responses": [
-              "A noun is a name that refers to a person, thing, animal, or event. Nouns help you name different things around you."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "singular",
-          "patterns": [
-              "What is a singular noun?"
-
-          ],
-          "responses": [
-              "A singular noun means there is only one, it can be a person, thing, animal, place or event."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "plural",
-          "patterns": [
-              "What is a plural  noun?"
-
-          ],
-          "responses": [
-              "A plural noun means that there is more than one person, thing, animal, place, or event."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "A_or_an",
-          "patterns": [
-              "When do I use A?"
-
-          ],
-          "responses": [
-              "We use A if the next word starts with a consonant"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "A_or_an",
-          "patterns": [
-              "When do I use An?"
-
-          ],
-          "responses": [
-              "We use An if the next word starts with a vowel"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "rhyming_words",
-          "patterns": [
-              "What is a rhyming word?"
-
-          ],
-          "responses": [
-              "Rhyming words are words that have the same or similar ending sound. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "poem",
-          "patterns": [
-              "What is a poem?"
-
-          ],
-          "responses": [
-              "A poem is a type of text that makes use of rhyming words. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "CVC",
-          "patterns": [
-              "What is a CvC pattern?"
-
-          ],
-          "responses": [
-              "A CVC pattern means consonant vowel consonant "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "pronouns",
-          "patterns": [
-              "What is a pronoun?"
-
-          ],
-          "responses": [
-              "Pronouns are words that we use to replace nouns in sentences "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "subject_pronouns",
-          "patterns": [
-              "What is a subject pronoun?"
-
-          ],
-          "responses": [
-              "Subject pronouns are usually found at the start of a sentence. We use pronouns to replace the nouns to avoid using nouns again and again "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "details_character",
-          "patterns": [
-              "What is a Character?"
-
-          ],
-          "responses": [
-              "Characters are the people, animals, or creatures in the story. Characters think, feel, or act in the story. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "details_setting",
-          "patterns": [
-              "What is a Setting?"
-
-          ],
-          "responses": [
-              "Setting is the time and the place where the story happens. It answers the questions When? and Where? "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "details_plot",
-          "patterns": [
-              "What is a plot?"
-
-          ],
-          "responses": [
-              "Plot is the sequence of events that happened in the story "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "I_You",
-          "patterns": [
-              "When do I use I in a sentence ?"
-
-          ],
-          "responses": [
-              "The pronoun I is used when a person is talking about himself or herself "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "I_You",
-          "patterns": [
-              "When do I use you in a sentence ?"
-
-          ],
-          "responses": [
-              "The pronoun You is used when you address the person you are talking to. "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "We_they",
-          "patterns": [
-              "When do I use We in a sentence ?"
-
-          ],
-          "responses": [
-              "The pronoun we is used when you talk about yourself and another person.  "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "We_they",
-          "patterns": [
-              "When do I use they in a sentence ?"
-
-          ],
-          "responses": [
-              "The pronoun they is used when you refer to a group of people or animals "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sequencing",
-          "patterns": [
-              "How do I sequence events?"
-
-          ],
-          "responses": [
-              "We put the parts of a story according to the order of how each event happened "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "sequencing1",
-          "patterns": [
-              "What is sequence events?"
-
-          ],
-          "responses": [
-              "It is puttting the parts of a story according to the order of how each event happened "                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "this_that",
-          "patterns": [
-              "When do I use this is?"
-
-          ],
-          "responses": [
-              "We use this is to point at one thing that is near the speaker."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "this_that1",
-          "patterns": [
-              "When do I use that is?"
-
-          ],
-          "responses": [
-              "We use that to point at one thing that is far away from the speaker"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "these_those",
-          "patterns": [
-              "When do I use these are?"
-
-          ],
-          "responses": [
-              "We use these are to point out two or more things near the speaker"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "these_those1",
-          "patterns": [
-              "When do I use those are?"
-
-          ],
-          "responses": [
-              "We use those are to point out two or more things."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "simple_present_tense",
-          "patterns": [
-              "What is a simple present tense ?"
-
-          ],
-          "responses": [
-              "Simple present tense is used to talk about an action which happens every day, at the moment, or habitually."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "compund_word",
-          "patterns": [
-              "What is a compound word ?"
-
-          ],
-          "responses": [
-              "A compound words are formed when two words are put together to form a new word"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "synonyms",
-          "patterns": [
-              "What is an synonym ?"
-
-          ],
-          "responses": [
-              " synonym is a word that has a similar or same meaning"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "antonyms",
-          "patterns": [
-              "What is an antonym ?"
-
-          ],
-          "responses": [
-              " antonym is a word that has a opposite meaning"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "adjectives",
-          "patterns": [
-              "What is an adjective ?"
-
-          ],
-          "responses": [
-              "adjectives are describing word, we can use color size or shape."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "phonogram",
-          "patterns": [
-              "What is an phonogram ?"
-
-          ],
-          "responses": [
-              "A phonogram is a letter or combination of letters that represent a sound."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cardinal_ordinal",
-          "patterns": [
-              "What is a cardinal adjective ?"
-
-          ],
-          "responses": [
-              "Cardinal adjective tells us the number of items. It tells us how many objects, people, animals or places we are talking about"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "cardinal_ordinal1",
-          "patterns": [
-              "What is a ordinal adjective ?"
-
-          ],
-          "responses": [
-              "Ordinal adjective tells us the order of things in a set. It also shows us the ranking or position of things."                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "preposition",
-          "patterns": [
-              "What is a preposition ?"
-
-          ],
-          "responses": [
-              "Prepositions are words that tell you the position of a thing or a person to another thing. It usually answers the question that begins with Where?"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book",
-          "patterns": [
-              "What are the parts of the book?"
-
-          ],
-          "responses": [
-              "The parts of the book is the cover, spine, table of contents, body of the book, index, and glossary"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_cover",
-          "patterns": [
-              "What is the cover of book?"
-
-          ],
-          "responses": [
-              "It show you the title of the book and the name/s of its author/s, and/ or illustrators.",
-              "It is an outside part of a book. I protect the pages of a book and keep it safe"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_cover",
-          "patterns": [
-              "What is the cover of a book?"
-
-          ],
-          "responses": [
-              "It show you the title of the book and the name/s of its author/s, and/ or illustrators.",
-              "It is an outside part of a book. I protect the pages of a book and keep it safe"                
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_spine",
-          "patterns": [
-              "What is the spine of a book?"
-
-          ],
-          "responses": [
-              "It binds the pages of a book and usually contain the title of a book and the name of its author."
-             
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_tableofcontent",
-          "patterns": [
-              "What is the table of contents of a book?"
-
-          ],
-          "responses": [
-              "It list down the chapter titles and the page numbers where you can find the contents of a book."
-             
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_body",
-          "patterns": [
-              "What is the body of the book?"
-
-          ],
-          "responses": [
-              "It has the main contents of the book."
-             
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_Index",
-          "patterns": [
-              "What is the index of the book?"
-
-          ],
-          "responses": [
-              "It has the list of the topics alphabetically at the end of the book."
-             
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "parts_of_book_glossary",
-          "patterns": [
-              "What is the glossary of the book?"
-
-          ],
-          "responses": [
-              "It is a simplified dictionary in a book.",
-              "It contain words from a book that you find difficult to understand",
-              "provides you with their meaning so that you will understand the text."
-             
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "common_noun",
-          "patterns": [
-              "What is a common noun?"
-
-          ],
-          "responses": [
-              "These are words that refer to general names of people, places, things, and events.",
-              "These nouns start with a small letter, and they do not begin with a capital letter."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "proper_noun",
-          "patterns": [
-              "What is a proper noun?"
-
-          ],
-          "responses": [
-              "These are words that refer to specific names of places, people, things, and events.",
-              "These nouns begin with a capital letter, and they do not begin with a small lette."
-      
-          ],
-          "context": [
-              ""
-          ]
-      },
-      {
-          "tag": "plural_noun_change",
-          "patterns": [
-              "when will I change the noun the its plural form ?"
-
-          ],
-          "responses": [
-              "for regular nouns, add s.",
-              "for singular nouns ending in s, sh, x, ch, and z, add es.",
-              "for nouns ending in y preceded by a consonant, change y to i and add es",
-              "for nouns ending in o, add s or es"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "irregular_noun",
-          "patterns": [
-              "What is an irregular noun?"
-
-          ],
-          "responses": [
-              "Plural nouns that do not end in the letter s or es are called irregular nouns."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "irregular_noun_change",
-          "patterns": [
-              "What are the rules of irregular noun?"
-
-          ],
-          "responses": [
-              "Some nouns form their plural form by changing their vowels.",
-              "Some nouns form their plural form by adding a syllable",
-              "Some nouns that end in f, change f to -ve and add -s",
-              "Some nouns have the same singular and plural forms."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "poetry",
-          "patterns": [
-              "What is poetry?"
-
-          ],
-          "responses": [
-              "Poetry is a type of literature or artistic writing that attempts to stir a reader's imagination or emotions"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "poetry_parts",
-          "patterns": [
-              "What are the parts of poetry?"
-
-          ],
-          "responses": [
-              "There are only two parts of a poem the stanza and lines"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "poetry_parts_stanza",
-          "patterns": [
-              "What is a stanza?"
-
-          ],
-          "responses": [
-              "Stanzas are a series of lines that are grouped together and separated from other groups of lines or stanzas by a skipped line."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "poetry_parts_lines",
-          "patterns": [
-              "What is a line in poetry?"
-
-          ],
-          "responses": [
-              "A line can be a sentence or a phrase, and, a stanza is equivalent to a paragraph in an essay."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "rhymes",
-          "patterns": [
-              "What is a rhyme?"
-
-          ],
-          "responses": [
-              "Rhyme is the repetition of similar sounds. In poetry."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "rhymes_scheme",
-          "patterns": [
-              "What is a rhyme scheme in poetry?"
-
-          ],
-          "responses": [
-              "A rhyme scheme is usually identified with lower case letters, and a new letter is used to identify each new end sound."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "rhymes_persona",
-          "patterns": [
-              "What is a persona in poetry?"
-
-          ],
-          "responses": [
-              "refers to the one speaking in the poem."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "rhymes_addressee",
-          "patterns": [
-              "What is a addressee in poetry?"
-
-          ],
-          "responses": [
-              "refers to the receiver of the message of the poem."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "rhymes_tone",
-          "patterns": [
-              "What is a tone in poetry?"
-
-          ],
-          "responses": [
-              "refers to the general emotion that the poem conveys."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "rhymes_theme",
-          "patterns": [
-              "What is a theme in poetry?"
-
-          ],
-          "responses": [
-              "refers to the general idea that the message of the poem is based on"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "poem_elemetns",
-          "patterns": [
-              "What are the elemetns of a poem or poetry?"
-
-          ],
-          "responses": [
-              " there is the structure, rhyme, persona, addressee, tone, and theme"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "consonant",
-          "patterns": [
-              "What are consonant letters?"
-
-          ],
-          "responses": [
-              " Consonants are letters that are not vowels., they can be at the beginning, middle or end of word"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "verbs",
-          "patterns": [
-              "What are verbs?"
-
-          ],
-          "responses": [
-              " It answers the question, What is he/she doing?"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "linking_verbs",
-          "patterns": [
-              "What is a linking verb?"
-
-          ],
-          "responses": [
-              " A linking verb connects the subject and the predicate or other information about the subject"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "alphabetizing",
-          "patterns": [
-              "What is a alphabetical order?"
-
-          ],
-          "responses": [
-              "it means putting words in order of the alphabets"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "alphabetizing",
-          "patterns": [
-              "What to do if both letters are the same which will go first?"
-
-          ],
-          "responses": [
-              "To alphabetize words that begin with the same first letter you will look at the second letter."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "phrase_sentence",
-          "patterns": [
-              "How can I tell if its a phrase or sentence "
-
-          ],
-          "responses": [
-              "sentences start with a capital letter and end with a punctuation mark.",
-              "phrases starts in a small letter and does not end in a punctuation mark ."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "outcome_predict",
-          "patterns": [
-              "what is predict"
-
-          ],
-          "responses": [
-              "To predict means to guess."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "outcome_predict",
-          "patterns": [
-              "what is outcome"
-
-          ],
-          "responses": [
-              "outcome means the result."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "outcome_predict",
-          "patterns": [
-              "what is predicting outcomes"
-
-          ],
-          "responses": [
-              "it is when you try to guess what will happen next or find the result."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "theme",
-          "patterns": [
-              "what is a theme"
-
-          ],
-          "responses": [
-              "The theme is the main idea or what the story is generally about."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "theme1",
-          "patterns": [
-              "how to know the theme"
-
-          ],
-          "responses": [
-              "we need to look at the story title.",
-              "Try to read the story carefully and focus on what is happening in the story"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "repetition",
-          "patterns": [
-              "what is repetition"
-
-          ],
-          "responses": [
-              "it is a repeated phrase or word in a poem"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "refrain",
-          "patterns": [
-              "what is refrain"
-
-          ],
-          "responses": [
-              " is a form of repetition where a group of words/phrases are repeated in certain parts in a poem, song, or speech."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "refrain",
-          "patterns": [
-              "where can i see repetition and refrain"
-
-          ],
-          "responses": [
-              " Repetition and refrain can both be found in poems, speeches, songs,and other reading materials."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "listening",
-          "patterns": [
-              "what is listening"
-
-          ],
-          "responses": [
-              " it is askill, in which we can receive sound through ears, and transform them into meaningful messages."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "responding",
-          "patterns": [
-              "what is responding"
-
-          ],
-          "responses": [
-              " Responding is saying or doing something as a reaction to what has been said or done."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "demonstrative_noun",
-          "patterns": [
-              "what is demonstrative noun"
-
-          ],
-          "responses": [
-              " this are words used to point to something or someone."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "demonstrative_noun_example",
-          "patterns": [
-              "what are examples of demonstrative noun"
-
-          ],
-          "responses": [
-              " this can be this, these, that, and those."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "this",
-          "patterns": [
-              "what are this as a demonstrative noun"
-
-          ],
-          "responses": [
-              " it is used to refer to a singular object that is near us or something that we can hold or touch."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "these",
-          "patterns": [
-              "what are these as a demonstrative noun"
-
-          ],
-          "responses": [
-              " it is used to refer to things that are more than one and are near us. "
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "that",
-          "patterns": [
-              "what are that as a demonstrative noun"
-
-          ],
-          "responses": [
-              " it is used to refer to a singular object that is far from us or something that we cant hold or touch"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "those",
-          "patterns": [
-              "what are those as a demonstrative noun"
-
-          ],
-          "responses": [
-              " it is used to refer to things that are more than one and are far from us or something that we can't hold or touch."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "peronal_pronouns",
-          "patterns": [
-              "what is a personal pronoun"
-
-          ],
-          "responses": [
-              " A personal pronoun is a word used as a substitute for a person's name. It takes the place of a noun."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "peronal_pronouns_example",
-          "patterns": [
-              "what are examples of singular personal pronoun"
-
-          ],
-          "responses": [
-              " examples of singular personal pronouns are I, Me, He, She, Him, Her, and It."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "peronal_pronouns_examples",
-          "patterns": [
-              "what are examples of plural personal pronoun"
-
-          ],
-          "responses": [
-              " examples of singular personal pronouns are We, Us, and you."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "preposition_example",
-          "patterns": [
-              "what are examples of preposition"
-
-          ],
-          "responses": [
-              " examples of preposition are on, in , and under."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "preposition_1",
-          "patterns": [
-              "what is a preposition"
-
-          ],
-          "responses": [
-              "prepositions indicate where someone or something is"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "sentence",
-          "patterns": [
-              "what is a sentence"
-
-          ],
-          "responses": [
-              "it should express a complete thought",
-              "it always begin with a capital letter",
-              "ends with a punctuation mark period [ . ], question mark [ ? ], or exclamation point [ ! ]"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "non-sentence",
-          "patterns": [
-              "what is a non-sentence"
-
-          ],
-          "responses": [
-              "it does not express a complete thought",
-              "does not always begin with a capital lette",
-              "do not end with a punctuation mark"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "description",
-          "patterns": [
-              "what is a description"
-
-          ],
-          "responses": [
-              "It is a  text type that provides descriptive details or characteristics of a certain topic",
-              "It is a text type that provides descriptive details or characteristics of a certain topic It also uses signal words to help you identify the description in each text."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "description_signal_word_example",
-          "patterns": [
-              "what are examples of description signal words"
-
-          ],
-          "responses": [
-              "for example, specifically, another kind, in addition to, characteristics include, also, etc."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "sensory_words",
-          "patterns": [
-              "what is a sensory word"
-
-          ],
-          "responses": [
-              "help readers to have their own personal experience of what they are reading,"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "prefix_1",
-          "patterns": [
-              "what is  prefix"
-
-          ],
-          "responses": [
-              " Prefixes are a group of letters added at the beginning of a word to change its meaning"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "prefix_example_1",
-          "patterns": [
-              "what is  prefix examples"
-
-          ],
-          "responses": [
-              " -re, -un, -de, -mis, -over, -under, -non, -bi, and tri"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "suffix_example_1",
-          "patterns": [
-              "what is  suffix examples"
-
-          ],
-          "responses": [
-              " ly, -ous, -ness, -er, -en, -ment, -able, -less, -ion and -tion"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "suffix_1",
-          "patterns": [
-              "what is  suffix "
-
-          ],
-          "responses": [
-              " Suffixes are group of letters added at the end of a word to change its meaning"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "reference_material",
-          "patterns": [
-              "what are reference materials "
-
-          ],
-          "responses": [
-              " are books and other reading materials that help in researching or answering questions."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "denotation",
-          "patterns": [
-              "what is denotation "
-
-          ],
-          "responses": [
-              " it refers to the dictionary or literal meaning of a word"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "connotation",
-          "patterns": [
-              "what is connotation "
-
-          ],
-          "responses": [
-              " is the meaning and emotion that people associate with the word. A word may have a positive or negative connotation. "
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "analogy",
-          "patterns": [
-              "what is analogy "
-
-          ],
-          "responses": [
-              " used to show comparison and relationship of ideas to one another "
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_classification",
-          "patterns": [
-              "what is  word classification "
-
-          ],
-          "responses": [
-              " is the process of determining the function of words in the sentence in terms of the part of speech they belong to in the sentence."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "contextclues1",
-          "patterns": [
-              "what is a context clue "
-
-          ],
-          "responses": [
-              " are words or phrases used to help understand the unfamiliar word in a text."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "contextclues_type",
-          "patterns": [
-              "what are types of context clue "
-
-          ],
-          "responses": [
-              " we have defenition and exemplification."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "defenition",
-          "patterns": [
-              "what is a defenition"
-
-          ],
-          "responses": [
-              " defines or describes the exact meaning of a word in the sentence."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "defenition2",
-          "patterns": [
-              "what is a defenition"
-
-          ],
-          "responses": [
-              " uses the punctuations such as: comma  dashes  or parentheses  "
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "defenition3",
-          "patterns": [
-              "what is a defenition"
-
-          ],
-          "responses": [
-              " uses signal words: is, are, is defined as, means, refers to, and in other word  "
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "exemplification",
-          "patterns": [
-              "what is a exemplification"
-
-          ],
-          "responses": [
-              " uses examples to reveal the meaning of an unfamiliar word in a sentence."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "exemplification1",
-          "patterns": [
-              "what is a exemplification"
-
-          ],
-          "responses": [
-              " uses signal words: like, such as, for example, for instance, including, and types/kind."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "count_nouns",
-          "patterns": [
-              "what is a count noun"
-
-          ],
-          "responses": [
-              "  are nouns that can be counted or countable.",
-              "They have plural forms and numbers are used to count them"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "mass_nouns",
-          "patterns": [
-              "what is a mass noun"
-
-          ],
-          "responses": [
-              " are nouns that cannot be counted or uncountable.",
-              "They don't have plural forms and they don't require articles before them."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "possessive_noun",
-          "patterns": [
-              "what is a possessive noun"
-
-          ],
-          "responses": [
-              " is used to show ownership or possession."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "collective_noun",
-          "patterns": [
-              "what is a collective noun"
-
-          ],
-          "responses": [
-              " names a group of people, things, and animals.",
-              "is used to group individual nouns ",
-              "is mostly treated as singular even if it is comprised of multiple members"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      
-      {
-          "tag": "adjectives_1",
-          "patterns": [
-              "what is an adjective"
-
-          ],
-          "responses": [
-              " words that are used to describe nouns and pronouns in a sentence"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "adjectives_degree_1",
-          "patterns": [
-              "what are the three degree of comparison of an adjective"
-
-          ],
-          "responses": [
-              " we have positive, comparative, and supperlative"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "positive",
-          "patterns": [
-              "what is positive degree of comparison of an adjective"
-
-          ],
-          "responses": [
-              " It is the simple form used to describe a noun or a pronoun"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "comparative",
-          "patterns": [
-              "what is comparative degree of comparison of an adjective"
-
-          ],
-          "responses": [
-              "Add er at the end of a word to form the comparative degree. For adjectives with three or more syllables, use less or more"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "superlative",
-          "patterns": [
-              "what is superlative degree of comparison of an adjective"
-
-          ],
-          "responses": [
-              "Add est at the end of a word to form its superlative degree. For adjectives with three or more syllables, use least or most"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "adverbs",
-          "patterns": [
-              "what is an adverb"
-
-          ],
-          "responses": [
-              "a word that answers the question how, where, when, and how often"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "adverbs_manner",
-          "patterns": [
-              "what is an adverb of manner"
-
-          ],
-          "responses": [
-              "describes a verb and answers the question how"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "adverbs_time",
-          "patterns": [
-              "what is an adverb of time"
-
-          ],
-          "responses": [
-              "describes a verb and answers the question when"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "adverbs_place",
-          "patterns": [
-              "what is an adverb of place"
-
-          ],
-          "responses": [
-              "describes a verb and answers the question where"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "author_purpose",
-          "patterns": [
-              "what is an authors purpose on what he wrote"
-
-          ],
-          "responses": [
-              "is the reason why the author wrote the text.It can be to inform, entertain, and/or persuade"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "author_tone",
-          "patterns": [
-              "what is an authors tone on what he wrote"
-
-          ],
-          "responses": [
-              "refers to the author's attitude and feelings."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "author_mood",
-          "patterns": [
-              "what is an authors mood"
-
-          ],
-          "responses": [
-              "refers to the atmosphere and how it makes the reader feel while reading the text."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_formation",
-          "patterns": [
-              "what is word formation"
-
-          ],
-          "responses": [
-              "is the process of forming new words in English through three different ways namely blending, clipping, and compounding"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_blending",
-          "patterns": [
-              "what is blending in word formation"
-
-          ],
-          "responses": [
-              " the process where we combine two words to form a new word. The added original words are not used as a whole"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_clipping",
-          "patterns": [
-              "what is clipping in word formation"
-
-          ],
-          "responses": [
-              "is the process where we cut a word into a shorter one and that becomes the new word. The original word and the new word have the same meaning."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_compounding_type",
-          "patterns": [
-              "what are the three types of compounding words "
-
-          ],
-          "responses": [
-              "we have the open compound, close compound and hypenated."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_compounding_type1",
-          "patterns": [
-              "how is an open compound formed "
-
-          ],
-          "responses": [
-              " are formed when two words are separated by a space but are used together to create a new word with a specific meaning."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_compounding_type2",
-          "patterns": [
-              "how is an close compound formed "
-
-          ],
-          "responses": [
-              " These are formed when two words are combined to create a new word."
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      {
-          "tag": "word_compounding_type3",
-          "patterns": [
-              "how is hypenated formed "
-
-          ],
-          "responses": [
-              " These are formed when two separate words are joined together by a hyphen"
-  
-          ],
-              "context": [
-                  ""
-          ]
-      },
-      
-      {
-          "tag": "noanswer",
-          "patterns": [],
-          "responses": [
-              "Sorry, can't understand you",
-          "Please input your query"
-    
-          ],
-          "context": [
-              ""
-          ]
-      }
-  ]
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi there",
+                "How are you",
+                "Is anyone there?",
+                "Hey",
+                "Hello",
+                "Good day"
+            ],
+            "responses": [
+                "Hi there, how can I help?",
+		        "Hi, how can I help?",
+		        "Hi I'm Goldy, how can I help?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "intro",
+            "patterns": [
+                "who are you?",
+                "you are?",
+                "what is your name?"
+            ],
+            "responses": [
+                "I'm Goldy",
+		        "My name is Goldy",
+                "I'm Goldy, your virtual assistant"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Nice chatting with you, bye",
+                "Till next time"
+            ],
+            "responses": [
+                "Bye! Have a nice day",
+		        "Goodbye!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "swear",
+            "patterns": [
+                "Fuck",
+                "Fuck you",                
+                "Idiot",
+                "Shit",
+                "Piss off",
+                "Dickhead",
+                "Bastard",
+                "Go to hell"
+            ],
+            "responses": [
+                "That's not very nice of you",
+                "I won't respond to that"
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Awesome, thanks",
+                "Thanks for helping me"
+            ],
+            "responses": [
+                "Happy to help!",
+	  	        "You're welcome!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "nouns",
+            "patterns": [
+                "What is a noun?",
+                "Noun",
+                "Definition of a noun",
+                "Noun Definition"
+            ],
+            "responses":[
+                "Noun is a word that describes a person, place, things"
+            ]
+        },
+        {
+            "tag": "nouns_types",
+            "patterns": [
+                "What are the types of nouns?",
+                "Types of nouns"
+            ],
+            "responses":[
+                "There are 10 types of nouns: Common nouns, Proper nouns, Singular nouns, Plural nouns, Concrete nouns, Abstract nouns, Collective nouns, Compound nouns, Countable nouns, and Uncountable nouns." 
+            ]
+        },
+        {
+            "tag": "nouns_types_common",
+            "patterns": [
+                "What are common nouns?",
+                "Definition of common nouns"
+            ],
+            "responses":[
+                "Common nouns are words that refer to undefined or generic people, places, or things."
+            ]
+        },
+        {
+            "tag": "nouns_types_common_examples",
+            "patterns": [
+                "What are the examples of common nouns?",
+                "examples of common nouns"
+            ],
+            "responses":[
+                "Five examples of common nouns are: Man, Woman, Dog, Cat, Country"
+            ]
+        },
+        {
+            "tag": "nouns_types_proper",
+            "patterns": [
+                "What are proper nouns?",
+                "Definition of proper nouns"
+            ],
+            "responses":[
+                "Proper nouns are words that help distinguish a specific person, place, or thing." ,
+                "Proper nouns are words that refer to a specific person, place, or thing."
+            ]
+        },
+        {
+            "tag": "nouns_types_proper_examples",
+            "patterns": [
+                "What are the examples of proper nouns?",
+                "examples of proper nouns"
+            ],
+            "responses":[
+                "Five examples of proper nouns are names of a person, place, or thing like: Bob, Spain, Diary of a Wimpy Kid"
+            ]
+        },
+        {
+            "tag": "nouns_types_singular",
+            "patterns": [
+                "What are singular nouns?",
+                "Definition of singular nouns"
+            ],
+            "responses":[
+                "Singular nouns are nouns that refer to only one person, place or thing." 
+            ]
+        },
+        {
+            "tag": "nouns_types_singular_examples",
+            "patterns": [
+                "What are the examples of singular nouns?",
+                "examples of singular nouns"
+            ],
+            "responses":[
+                "Five examples of singular nouns are boat, house, cat, river"
+            ]
+        },
+        {
+            "tag": "nouns_types_plural",
+            "patterns": [
+                "What are plural nouns?",
+                "Definition of plural nouns"
+            ],
+            "responses":[
+                "A plural noun are nouns that refer to more than one person, place, animal, thing, event, or idea." 
+            ]
+        },
+        {
+            "tag": "nouns_types_plural_example",
+            "patterns": [
+                "What are the examples of plural nouns?",
+                "examples of plural nouns"
+            ],
+            "responses":[
+                "Examples of plural nouns are: boats, houses, cats, dogs"
+            ]
+        },
+        {
+            "tag": "nouns_types_concrete",
+            "patterns": [
+                "What are concrete nouns?",
+                "Definition of concrete nouns"
+            ],
+            "responses":[
+                "A concrete noun is something that can be perceived through the five senses such as see, hear, touch, taste, or smell." 
+            ]
+        },
+        {
+            "tag": "nouns_types_abstract",
+            "patterns": [
+                "What are abstract nouns?",
+                "Definition of abstract nouns"
+            ],
+            "responses":[
+                "A abstract noun is something that cannot be perceived through the five senses such as see, hear, touch, taste, or smell." 
+            ]
+        },
+        {
+            "tag": "nouns_types_collective",
+            "patterns": [
+                "What are collective nouns?",
+                "Definition of collective nouns"
+            ],
+            "responses":[
+                "A collective noun is a word that functions as a singular noun while referring to a group of people or things." 
+            ]
+        },
+        {
+            "tag": "nouns_types_compound",
+            "patterns": [
+                "What are compound nouns?",
+                "Definition of compound nouns"
+            ],
+            "responses":[
+                "A compound noun combines two or more words into one but appears as a single word." 
+            ]
+        },
+        {
+            "tag": "nouns_types_countable",
+            "patterns": [
+                "What are countable nouns?",
+                "Definition of countable nouns"
+            ],
+            "responses":[
+                "A countable noun is a word that you can count.",
+                "Known as Count Noun, it is a word that signifies counting."
+            ]
+        },
+        {
+            "tag": "nouns_types_uncountable",
+            "patterns": [
+                "What are uncountable nouns?",
+                "Definition of uncountable nouns"
+            ],
+            "responses":[
+                "A uncountable noun is a word that you can't count.",
+                "Known as Mass Noun, it is a word that you can't signifies counting."
+            ]
+        },
+        {
+            "tag": "nouns_possessive",
+            "patterns": [
+                "What are possessive nouns?",
+                "Definition of possessive nouns",
+                "possessive nouns"
+            ],
+            "responses":[
+                "A uncountable noun is a noun that expresses ownership."
+            ]
+        },
+        {
+            "tag": "sentences_imperative",
+            "patterns": [
+                "What is an imperative sentence?",
+                "imperative sentence"
+            ],
+            "responses":[
+                "An imperative sentence expresses a command, request, or instruction."
+            ]
+        },
+        {
+            "tag": "sentences_exclamatory",
+            "patterns": [
+                "What is an exclamatory sentence?",
+                "exclamatory sentence"
+            ],
+            "responses":[
+                "An exclamatory sentence expresses strong emotions or feelings. It is often used in greetings and warnings."
+            ]
+        },
+        {
+            "tag": "paragraph",
+            "patterns": [
+                "What is a paragraph?"
+            ],
+            "responses": [
+                "A paragraph is a group of sentences that talks about one main idea or topic."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "interjecton",
+            "patterns": [
+                "What is an interjection?",
+                "interjection",
+                "Definition of an interjection"
+            ],
+            "responses":[
+                "Interjections are words used to express a sudden feeling."
+            ]
+        },
+        {
+            "tag": "mainidea",
+            "patterns": [
+                "What is a main idea?",
+                "main idea",
+                "Definition of a main idea"
+            ],
+            "responses": [
+                "A main point is the most important message of the paragraph or text.",
+		        "A main point is what the selection is mostly about.",
+                "A main point is what is being talked about in the paragraph.",
+                "It is a complete sentence that includes the topic and what the author wants to say. However, the main idea may or may not stated"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "supportingdetail",
+            "patterns": [
+                "What is a supporting detail?",
+                "supporting detail",
+                "Definition of a supporting detail"
+            ],
+            "responses": [
+                "Supporting details are other facts or sentences that support or explain the main idea.",
+		        "Supporting details are major details explain and develop the main idea.",
+                "Supporting details are minor details help make the major details clear."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "graphicorganizer",
+            "patterns": [
+                "What is a graphic organizer?"
+            ],
+            "responses": [
+                "A graphic organizer is a teaching and learning tool used to organize information and ideas that are easy to comprehend and internalize.",
+		        "A graphic organizer is a visual display that organizes ideas and shows the relationship between concepts or information. It guides readers in thinking and helping them more to comprehend what they read."
+			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial",
+            "patterns": [
+                "What is a reference material?"
+            ],
+            "responses": [
+                "Reference materials are books and other reading materials that help in researching or answering questions."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_examples",
+            "patterns": [
+                "What are the examples of a reference material?"
+            ],
+            "responses": [
+                "Examples of reference materials are: Almanac, Encyclopedia, Index, Dictionary, Thesaurus ,Online resource/s"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_almanac",
+            "patterns": [
+                "What is an almanac?"
+            ],
+            "responses": [
+                "An almanac contains specific facts, statistical data, and other information related to people, places, events, etc."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_encyclopedia",
+            "patterns": [
+                "What is an encyclopedia?"
+            ],
+            "responses": [
+                "An encyclopedia contains basic information about a broad range of topics and is arranged alphabetically. It usually comes in volumes."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_index",
+            "patterns": [
+                "What is an encyclopedia?"
+            ],
+            "responses": [
+                "An index contains information present in periodicals, books, newspapers, etc."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_dictionary",
+            "patterns": [
+                "What is a dictionary?"
+            ],
+            "responses": [
+                "A dictionary contains words of a given language and provides the definition(s), spelling, pronunciation, and the origin of a particular word."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "referencematerial_thesaurus",
+            "patterns": [
+                "What is a thesaurus?"
+            ],
+            "responses": [
+                "A thesaurus is a book full of synonyms including antonyms."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types",
+            "patterns": [
+                "What are the different kinds of text types?"
+            ],
+            "responses": [
+                "There are 4 types of text: Narration, Information report, Argumentative, Procedural"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_narration",
+            "patterns": [
+                "What is a narration?"
+            ],
+            "responses": [
+                "This type of text narrates a story and entertains its readers. Stories and novels are examples of narration. A narration has basic elements such as characters, setting, and plot."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_information",
+            "patterns": [
+                "What is an information report?"
+            ],
+            "responses": [
+                "This type of text gives information about a person, place, or thing. It provides facts on a specific topic. This can be found in reference materials such as encyclopedias, reference books, technical texts, social studies books, science books, etc."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_argumentative",
+            "patterns": [
+                "What is an argumentative text?"
+            ],
+            "responses": [
+                "This type of text persuades readers to believe something. An argument is the writer’s reason as he/she is either 'for' or 'against' the issue."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "text_types_procedural",
+            "patterns": [
+                "What is a procedural text?"
+            ],
+            "responses": [
+                "This type of text follows a sequential order. It lists the materials to be used and the steps in a sequence. A procedural text is usually found in recipes, manuals and instructions that begin with a goal or title."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "prefix",
+            "patterns": [
+                "What is a prefix?"
+            ],
+            "responses": [
+                "Prefixes are a group of letters added at the beginning of a word to change its meaning."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "prefix_examples",
+            "patterns": [
+                "example of a prefix"
+            ],
+            "responses": [
+                "-re, -un, -de, -mis, -over, -under, -non, -bi, and tri"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "suffix",
+            "patterns": [
+                "What is a suffix?"
+            ],
+            "responses": [
+                "Suffixes are a group of letters added at the end of a word to change its meaning."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "suffix_examples",
+            "patterns": [
+                "example of a suffix"
+            ],
+            "responses": [
+                "-ly, -ous, -ness, -er, -en, -ment, -able, -less, -ion and -tion"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "explanationtext",
+            "patterns": [
+                "What is an explanation text?"
+            ],
+            "responses": [
+                "Explanation text is a text that describes how and why things work or happen."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "explanationtext",
+            "patterns": [
+                "What is a technical word?"
+            ],
+            "responses": [
+                "Technical words are subject-specific words.They contain special meanings and are sometimes difficult to understand."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues",
+            "patterns": [
+                "What are context clues?"
+            ],
+            "responses": [
+                "Context clues are clues found within a sentence, paragraph, or passage that a reader can be used to understand the meaning of new or unfamiliar words."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types",
+            "patterns": [
+                "What are the types of context clues?"
+            ],
+            "responses": [
+                "The types of context clues are: Synonyms, Definition, Examples, Appositive"			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types_synonyms",
+            "patterns": [
+                "What is a synonym?"
+            ],
+            "responses": [
+                "Synonyms are words that have the same meaning."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types_definition",
+            "patterns": [
+                "What is a definition?"
+            ],
+            "responses": [
+                "Definition is the word is defined directly in the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "contextclues_types_appositive",
+            "patterns": [
+                "What is appositive?"
+            ],
+            "responses": [
+                "The word is further explained by a noun or group of words that come after it. It is usually separated by commas in the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_subject",
+            "patterns": [
+                "What is a subject?"
+            ],
+            "responses": [
+                "The subject is who or what the sentence is all about.",
+                "Subject is who or what in a sentence. can be a noun, the name of a person, place, thing, or idea. It can be a subject pronoun like he, she, it, I, we, they, and you."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_verb",
+            "patterns": [
+                "What is a verb?"
+            ],
+            "responses": [
+                "A verb is an action word being done by the subject in the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_naturalorder",
+            "patterns": [
+                "How do sentences in the natural order"
+            ],
+            "responses": [
+                "In the natural order, the subject comes first before the verb."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sv_invertedorder",
+            "patterns": [
+                "How do sentences in the inverted order"
+            ],
+            "responses": [
+                "In inverted order, the verb comes first before the subject. Most questions are in this order."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_words",
+            "patterns": [
+                "What are words?"
+            ],
+            "responses": [
+                "words are a sound or combination of sounds that has a meaning and is spoken or written."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_phrases",
+            "patterns": [
+                "What are phrases?"
+            ],
+            "responses": [
+                "are a group of two or more words that express a single idea but do not usually form a complete sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_sentences",
+            "patterns": [
+                "What are sentences?"
+            ],
+            "responses": [
+                "Sentences are a word or a group of words that express a complete thought."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_connectors",
+            "patterns": [
+                "What is the function of the words and, but, and or?"
+            ],
+            "responses": [
+                "The words And, But, and Or connect some parts of the sentence.",
+                "The words And, But, and Or serves as a connector to parts of the sentence."			
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_conjunctions",
+            "patterns": [
+                "What is a conjunction?"
+            ],
+            "responses": [
+                "Conjunctions are words used to connect words, phrases, and sentences."	
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_equalgrammaticalvalue",
+            "patterns": [
+                "What does equal grammatical value mean?"
+            ],
+            "responses": [
+                "a word to another word",
+                "a phrase to another phrase",
+                "a sentence to another sentence"	
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cc_sevencc",
+            "patterns": [
+                "What are the seven coordinating conjunctions?"
+            ],
+            "responses": [
+                "The seven coordinating conjunctions are for, and, nor, but, or, yet, so.",
+                "for, and, nor, but, or, yet, so. FANBOYS for short",
+                "a sentence to another sentence"	
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause",
+            "patterns": [
+                "What is a clause?"
+            ],
+            "responses": [
+                "A clause is a group of words consisting of a subject and a predicate."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types",
+            "patterns": [
+                "What are the types of clauses?"
+            ],
+            "responses": [
+                "There are two kinds of clauses: independent clause and dependent clause."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types_ic",
+            "patterns": [
+                "What is an independent clause?"
+            ],
+            "responses": [
+                "Independent clause is a group of words which has a complete thought and can stand alone."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types_dc",
+            "patterns": [
+                "What is a dependent clause?"
+            ],
+            "responses": [
+                "Dependent clause is a group of words which needs to be attached to independent clauses for it to make sense."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sc_clause_types_sc",
+            "patterns": [
+                "What is a subordinate clause?"
+            ],
+            "responses": [
+                "Subordinating clauses are words used to introduce dependent clauses."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cause",
+            "patterns": [
+                "What is a cause?"
+            ],
+            "responses": [
+                "Cause is the source, origin, reason or action taken."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "effect",
+            "patterns": [
+                "What is an effect?"
+            ],
+            "responses": [
+                "Effect is the desired outcome or expected result of the given cause."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cause-effect_relationship",
+            "patterns": [
+                "What is the relationship between cause and effect?"
+            ],
+            "responses": [
+                "Cause-and-effect relationship can be express in complex sentences and compound sentences."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "compund_sentences",
+            "patterns": [
+                "What is a compound sentence?"
+            ],
+            "responses": [
+                "Compound sentence is a sentence made up of two independent clauses connected by a coordinating conjunction."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "complex_sentences",
+            "patterns": [
+                "What is a complex sentence?"
+            ],
+            "responses": [
+                "Complex sentences are sentences that made up of one independent clause and one dependent clause that begins with a subordinating conjunction."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory",
+            "patterns": [
+                "What is a short story?"
+            ],
+            "responses": [
+                "A short story is a fictional work of prose that is shorter than a novel. It concentrates on one theme portrayed in a simple plot, often with a specific setting and few characters.",
+                "According to Edgar Allan Poe, a short story is a fictional work which must be read in one sitting only."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element",
+            "patterns": [
+                "What are the elements of a short story?"
+            ],
+            "responses": [
+                "The elements of a short story are: Setting, Characters, Plot, Theme, and Point of View."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_setting",
+            "patterns": [
+                "What is a setting?"
+            ],
+            "responses": [
+                "The setting refers to the time and place in which a story happened. It answers the questions when and where."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_character",
+            "patterns": [
+                "What is a character?"
+            ],
+            "responses": [
+                "Characters refer to people, animals, or anything personified who plays a role in the story. They are considered to be the life of the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_character_elements",
+            "patterns": [
+                "What is the different kinds of a character?"
+            ],
+            "responses": [
+                "Some stories have major/main characters, those whom thestory revolves around. Also, there are additional or support characters that make the story more interesting."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_majorcharacter_types",
+            "patterns": [
+                "What are different types of major characters?"
+            ],
+            "responses": [
+                "There have 2 types of major characters: these are the Protagonist and the antagonist."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_majorcharacter_protagonist",
+            "patterns": [
+                "What is a protagonist?"
+            ],
+            "responses": [
+                "The protagonist is the leading character to whom the story revolves usually good-natured but sometimes flawed."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_majorcharacter_antagonist",
+            "patterns": [
+                "What is a antagonist?"
+            ],
+            "responses": [
+                "The antagonist is the opposite or goes against the protagonist usually portrayed as the bad guy and sometimes causes the conflict."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_plot",
+            "patterns": [
+                "What is a plot?"
+            ],
+            "responses": [
+                "The plot pertains to the series of events in the story. These events are related to each other and help unfold the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_plot_flow",
+            "patterns": [
+                "What is the flow of a plot?"
+            ],
+            "responses": [
+                "The plot flows from Beginning action/exposition, Rising action, Climax, Falling action, Resolution or ending."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_theme",
+            "patterns": [
+                "What is a theme?"
+            ],
+            "responses": [
+                "The theme refers to the central idea or belief presented by the author in the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov",
+            "patterns": [
+                "What is a point of view?"
+            ],
+            "responses": [
+                "The point of view of a story determines who is telling it and the narrator's relationship to the characters in the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_types",
+            "patterns": [
+                "What are different points of view?"
+            ],
+            "responses": [
+                "The point of view has 3 different points: First person, Second person, and Third person."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_1",
+            "patterns": [
+                "What is a first person point of view?"
+            ],
+            "responses": [
+                "The first person point of view is the narrator is a person in the story, telling the story from their own perspective."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_2",
+            "patterns": [
+                "What is a second person point of view?"
+            ],
+            "responses": [
+                "The second person point of view is the reader is part of the story.",
+                "The second person point of view is the The narrator describes the reader's actions, thoughts, and background of the story."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_pov_3",
+            "patterns": [
+                "What is a third person point of view?"
+            ],
+            "responses": [
+                "The narrator exists outside the events of the story, and relates the actions of the characters by referring to their names or by the third-person pronouns he, she, or they."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_reality",
+            "patterns": [
+                "How would I know if the story is a reality?",
+                "How would I know if the story based on real life?"
+            ],
+            "responses": [
+                "Stories can be considered reality if they talk about facts, historical events, and real-life scenarios."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "shortstory_element_fantasy",
+            "patterns": [
+                "How would I know if the story is a make believe?",
+                "How would I know if the story based on fiction?"
+            ],
+            "responses": [
+                "A story is make-believe if it deals with fictional characters, events, and/or settings."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense",
+            "patterns": [
+                "What are tense?"
+
+            ],
+            "responses": [
+                "Tense refers to the time indicated by the verb."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense",
+            "patterns": [
+                "What are tense?"
+
+            ],
+            "responses": [
+                "Tense refers to the time indicated by the verb."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense_past_simple",
+            "patterns": [
+                "What is a past tense?"
+
+            ],
+            "responses": [
+                "Past tense indicates that the action is already done."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense_present_simple",
+            "patterns": [
+                "What is a present tense?"
+
+            ],
+            "responses": [
+                "Present tense indicates that the action is being done at the moment."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "tense_future_simple",
+            "patterns": [
+                "What is a future tense?"
+
+            ],
+            "responses": [
+                "Future tense indicates that the action will be done in the future."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "informationaltext",
+            "patterns": [
+                "What is an informational text?"
+
+            ],
+            "responses": [
+                "An informational text is a nonfiction writing that aims to provide information to the readers about a certain topic."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "descriptivetext",
+            "patterns": [
+                "What is an descriptive text?"
+
+            ],
+            "responses": [
+                "A descriptive text is a type of informational text that gives thorough details about a particular topic."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": [
+                "Sorry, can't understand you",
+		        "Please input your query"
+			
+            ],
+            "context": [
+                ""
+            ]
+        }
+    ]
 }

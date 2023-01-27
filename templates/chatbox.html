@@ -37,6 +37,46 @@
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
         }
+
+        .typing {
+          position: relative;
+        }
+
+        .dot{
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: gray;
+          /* animation: blink 1.5s infinite; */
+          animation-fill-mode: both;
+          /* position: absolute; */
+        }
+
+        /* @keyframes blink {
+          0% {
+            opacity: .1;
+          }
+          20% {
+            opacity: 1;
+          }
+          100% {
+            opacity: .1;
+          }
+        } */
+
+        /* .typing .dot:nth-child(1) {
+          animation-delay: .1s;
+          margin-left: 10px;
+        } */
+        /* .typing .dot:nth-child(2) {
+          animation-delay: .2s;
+          margin-left: 10px;
+        }
+        .typing .dot:nth-child(3) {
+          animation-delay: .4s;
+          margin-left: 10px;
+        } */
+
     </style>
 
 <div class="z-40 fixed w-screen flex-col items-stretch justify-between overflow-hidden">
@@ -54,7 +94,7 @@
 
         <div class="mx-6">
             <button class="text-white hover:text-gold text-xl">
-              <a href="/logout">Sign Out</a>
+              <a href="/logout" onclick="signOut();">Sign Out</a>
             </button>
 
             <!-- <details class="w-[170px]">
@@ -73,7 +113,7 @@
 
 </head>
 
-<body>
+<body class="scrollbar-hide">
   <section class="msger">
     <header class="msger-header">
       <div class="msger-header-title">
@@ -81,15 +121,20 @@
       </div>
     </header>
 
-    <main class="msger-chat px-5 py-14">
+    <main class="msger-chat px-0.5 py-14 mb-5 overflow-hidden">
       <!-- <div class="msg left-msg">
         <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
-        <div class="msg-bubble bg-blue_txtbox rounded w-full h-full">
+        <div class="msg-bubble w-full h-full">
           <div class="msg-info">
             <p class="msg-info-name">Chatbot</p>
           </div>
         </div>
       </div> -->
+      
+      
+
+
+
     </main>
 
     <form class="fixed msger-inputarea bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
@@ -119,19 +164,31 @@
       msgerInput.value = "";
       botResponse(msgText);
     });
-    
 
-    function appendMessage(name, img, side, text, flow) {
-      
+    function appendMessage(name, img, side, text, flow) { //make while loop
+      // if(name == "Goldy") {
+      //   var hideTxt = text;
+
+      //   const text = `
+      //     <div class="flex justify-between my-1.5">
+      //       <div class="animate-bounce w-2 h-2 mx-1 rounded-full bg-lightgray"></div>
+      //       <div class="animate-bounce w-2 h-2 rounded-full bg-lightgray"></div>
+      //       <div class="animate-bounce w-2 h-2 mx-1 rounded-full bg-lightgray"></div>
+      //     </div>
+      //   `;
+
+      //   // text = hideTxt;
+      // }
+    
       const msgHTML = `
-          <div class="msg float-${side} flex flex-${flow} w-full overflow-hidden-x">
+          <div class="msg float-${side} flex flex-${flow} w-full">
             <div>
               <img src=${img} class="msg-img h-12 w-12 m-5 drop-shadow-md">
             </div>
             <div class="msg-bubble">
               <div class="msg-info text-gray">
                 <p class="msg-info-name">${name}</p>
-                <p class="msg-text bg-blue_txtbox rounded-full px-4 py-2">${text}</p>
+                <div class="msg-text bg-blue_txtbox rounded-full px-4 py-2 h-full">${text}</div>
               </div>  
             </div>
           </div>
@@ -140,11 +197,25 @@
       msgerChat.insertAdjacentHTML("beforeend", msgHTML);
       msgerChat.scrollTop += 500;
     }
+
     function botResponse(rawText) {
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         const msgText = data;
         appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row");
+      });
+    }
+    
+    // Utils
+    function get(selector, root = document) {
+      return root.querySelector(selector);
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      session.clear();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
       });
     }
   </script>

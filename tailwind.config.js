@@ -17,6 +17,10 @@ module.exports = {
       },
       fontSize: {
       },
+      animation: {
+        'bounce-2': 'bounce 2s infinite',
+        'bounce-3': 'bounce 3s infinite'
+      }
     },
     colors: {
       blue_txtbox: '#E2F1FF',
@@ -27,6 +31,7 @@ module.exports = {
       gold: '#FFD700',
       orange: '#FFA800',
       gray: '#363636',
+      lightgray: '#8e94a3',
       inputbox: '#edf8fa',
       white: '#FFFFFF',
     },

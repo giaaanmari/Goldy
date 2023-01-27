@@ -1,3 +1,12 @@
+#### IMPORT LIBRARIES
+
+import os
+import requests
+import pathlib
+import google.oauth2.credentials
+from google.oauth2 import id_token
+from google_auth_oauthlib.flow import Flow
+from pip._vendor import cachecontrol
 import nltk
 nltk.download('popular')
 from nltk.stem import WordNetLemmatizer
@@ -12,6 +21,8 @@ intents = json.loads(open('intents.json').read())
 words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 
+
+#### PRE-PROCCESSING
 def clean_up_sentence(sentence):
     # tokenize the pattern - split words into array
     sentence_words = nltk.word_tokenize(sentence)
@@ -63,12 +74,61 @@ def chatbot_response(msg):
     return res
 
 
-from flask import Flask, render_template, request
+#### REFERENCE OF HTML, GOOGLE API
+
+from flask import Flask, session, abort, redirect, request, render_template
+
 app = Flask(__name__)
 app.static_folder = 'static'
+app.secret_key = "secret" #OAuth 2.0 secret key
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+GOOGLE_CLIENT_ID = "327218355433-fi8hnego4ul4jgim97venfov1hpp8cql.apps.googleusercontent.com"  #enter your client id you got from Google console
+client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")  #set the path to where the .json file you got Google console is
+
+flow = Flow.from_client_secrets_file(  #Flow is OAuth 2.0 a class that stores all the information on how we want to authorize our users
+    client_secrets_file=client_secrets_file,
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],  #here we are specifing what do we get after the authorization
+    redirect_uri="http://127.0.0.1:5000/callback"  #and the redirect URI is the point where the user will end up after the authorization
+)
+
+def login_is_required(function):  #a function to check if the user is authorized or not
+    def wrapper(*args, **kwargs):
+        if "google_id" not in session:  #authorization required
+            return abort(401)
+        else:
+            return function()
+
+    return wrapper
+
 @app.route("/")
 def home():
     return render_template("index.html")
+@app.route("/login")  #the page where the user can login
+def login():
+    authorization_url, state = flow.authorization_url()  #asking the flow class for the authorization (login) url
+    session["state"] = state
+    return redirect(authorization_url)
+@app.route("/callback")  #this is the page that will handle the callback process meaning process after the authorization
+def callback():
+    flow.fetch_token(authorization_response=request.url)
+
+    if not session["state"] == request.args["state"]:
+        abort(500)  #state does not match!
+
+    credentials = flow.credentials
+    request_session = requests.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
+
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials._id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
+
+    session["google_id"] = id_info.get("sub")  #defing the results to show on the page
+    session["name"] = id_info.get("name")
+    return redirect("/chat")  #the final page where the authorized users will end up
 @app.route("/chat")
 def chat():
     return render_template("chatbox.html")
@@ -76,5 +136,9 @@ def chat():
 def get_bot_response():
     userText = request.args.get('msg')
     return chatbot_response(userText)
+@app.route("/logout")  #the logout page and function
+def logout():
+    session.clear()
+    return redirect("/")
 if __name__ == "__main__":
     app.run()
