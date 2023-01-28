@@ -27,6 +27,7 @@
         body {
             font-family: 'Baloo 2', cursive;
         }
+
         /* Hide scrollbar for Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -38,45 +39,53 @@
             scrollbar-width: none;  /* Firefox */
         }
 
-        .typing {
-          position: relative;
+        /* typing dots animation */
+        .tiblock {
+            align-items: center;
+            display: flex;
+            height: 18px;
         }
 
-        .dot{
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background-color: gray;
-          /* animation: blink 1.5s infinite; */
-          animation-fill-mode: both;
-          /* position: absolute; */
+        .ticontainer .tidot {
+            background-color: #90949c;
         }
 
-        /* @keyframes blink {
-          0% {
-            opacity: .1;
-          }
-          20% {
-            opacity: 1;
-          }
-          100% {
-            opacity: .1;
-          }
-        } */
-
-        /* .typing .dot:nth-child(1) {
-          animation-delay: .1s;
-          margin-left: 10px;
-        } */
-        /* .typing .dot:nth-child(2) {
-          animation-delay: .2s;
-          margin-left: 10px;
+        .tidot {
+            -webkit-animation: mercuryTypingAnimation 1.5s infinite ease-in-out;
+            border-radius: 100%;
+            display: inline-block;
+            height: 8px;
+            width: 8px;
+            margin-right: 4px;
         }
-        .typing .dot:nth-child(3) {
-          animation-delay: .4s;
-          margin-left: 10px;
-        } */
 
+        @-webkit-keyframes mercuryTypingAnimation{
+            0% {-webkit-transform: translateY(0px)}
+            28% {-webkit-transform: translateY(-5px)}
+            44% {-webkit-transform: translateY(0px)}
+        }
+
+        .tidot:nth-child(1) {-webkit-animation-delay: 200ms;}
+        .tidot:nth-child(2) {-webkit-animation-delay: 300ms;}
+        .tidot:nth-child(3) {-webkit-animation-delay: 400ms;}
+        /* typing dots animation - end*/
+
+        #hide {
+          animation: hideAnimation 0.2s 2s;
+          animation-fill-mode: forwards;
+        }
+
+        @keyframes hideAnimation {
+          from {
+            opacity: 100%;
+          }
+          to {
+            opacity: 0%;
+            visibility: hidden;
+            height: 0;
+            width: 0;
+          }
+        }
     </style>
 
 <div class="z-40 fixed w-screen flex-col items-stretch justify-between overflow-hidden">
@@ -130,11 +139,6 @@
           </div>
         </div>
       </div> -->
-      
-      
-
-
-
     </main>
 
     <form class="fixed msger-inputarea bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
@@ -164,21 +168,35 @@
       msgerInput.value = "";
       botResponse(msgText);
     });
+    
+    const typing = `<div id="hide" class="msg float-left flex flex-row w-full">
+      <div>
+        <img src="static/img/knight.png" class="msg-img h-12 w-12 m-5 drop-shadow-md">
+      </div>
+      <div class="msg-bubble">
+        <div class="msg-info text-gray">
+          <p class="msg-info-name">Goldy</p>
+          <div class="msg-text bg-blue_txtbox rounded-full px-4 py-2 h-full">
+            <div class="ticontainer">
+              <div class="tiblock">
+                  <div class="tidot"></div>
+                  <div class="tidot"></div>
+                  <div class="tidot"></div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>`;
 
     function appendMessage(name, img, side, text, flow) { //make while loop
-      // if(name == "Goldy") {
-      //   var hideTxt = text;
-
-      //   const text = `
-      //     <div class="flex justify-between my-1.5">
-      //       <div class="animate-bounce w-2 h-2 mx-1 rounded-full bg-lightgray"></div>
-      //       <div class="animate-bounce w-2 h-2 rounded-full bg-lightgray"></div>
-      //       <div class="animate-bounce w-2 h-2 mx-1 rounded-full bg-lightgray"></div>
-      //     </div>
-      //   `;
-
-      //   // text = hideTxt;
-      // }
+      var time = 0;
+      if(name == "Goldy") {
+        setTimeout(() => {
+          msgerChat.insertAdjacentHTML("beforeend", typing);
+        }, 1000);
+        time = 3500;
+      }
     
       const msgHTML = `
           <div class="msg float-${side} flex flex-${flow} w-full">
@@ -194,7 +212,10 @@
           </div>
           `;
 
-      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      setTimeout(() => {
+        msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      }, time);
+
       msgerChat.scrollTop += 500;
     }
 
