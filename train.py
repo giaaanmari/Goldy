@@ -5,13 +5,15 @@ import json
 import pickle
 import numpy as np
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout
+from keras.layers import Dense, Activation, Dropout, GaussianNoise
 from keras.optimizers import SGD
+import matplotlib.pyplot as plt
+
 import random
 words=[]
 classes = []
 documents = []
-ignore_words = ['?', '!']
+ignore_words = ['?', '!', '.']
 data_file = open('intents.json').read()
 intents = json.loads(data_file)
 for intent in intents['intents']:
@@ -70,13 +72,33 @@ print("Training data created")
 model = Sequential()
 model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
-model.add(Dropout(0.5))
+model.add(GaussianNoise(0.1))
+model.add(Dense(64, activation='tanh'))
+model.add(Dropout(0.1))
+model.add(Dense(64, activation='tanh'))
+model.add(Dropout(0.2))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 # Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
 sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 #fitting and saving the model 
-hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=500, batch_size=8, validation_split=0.1, verbose=2)
 model.save('model.h5', hist)
+plt.plot(hist.history['accuracy'])
+plt.plot(hist.history['val_accuracy'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+# summarize history for loss
+plt.plot(hist.history['loss'])
+plt.plot(hist.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
 print("model created")
