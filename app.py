@@ -9,23 +9,30 @@ from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import nltk
 nltk.download('popular')
+nltk.download('words')
 from nltk.stem import WordNetLemmatizer
+from nltk.metrics.distance import jaccard_distance
+from nltk.util import ngrams
+from nltk.corpus import words
 lemmatizer = WordNetLemmatizer()
 import pickle
+from autocorrect import Speller
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
 import json
 import random
-intents = json.loads(open('intents.json').read())
+intents = json.loads(open('data.json').read())
 words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
+context = None
 
-
+default_responses = ["sorry i could not understand."]
+spell = Speller(lang='en')
 #### PRE-PROCCESSING
 def clean_up_sentence(sentence):
     # tokenize the pattern - split words into array
-    sentence_words = nltk.word_tokenize(sentence)
+    sentence_words = [spell(w) for w in (nltk.word_tokenize(sentence))]
     # stem each word - create short form for word
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
@@ -64,7 +71,15 @@ def getResponse(ints, intents_json):
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
         if(i['tag']== tag):
-            result = random.choice(i['responses'])
+            if 'context' not in intents or 'context' in intents and intents['context'] == context:
+                possible_responses = i['responses']
+                if 'context' in intents:
+                    context = intents['context']
+                else:
+                    context = None                        
+                result = random.choice(possible_responses)
+            else:
+                result = random.choice(default_responses)
             break
     return result
 
@@ -123,7 +138,8 @@ def callback():
     id_info = id_token.verify_oauth2_token(
         id_token=credentials._id_token,
         request=token_request,
-        audience=GOOGLE_CLIENT_ID
+        audience=GOOGLE_CLIENT_ID,
+        clock_skew_in_seconds=0
     )
 
     session["google_id"] = id_info.get("sub")  #defing the results to show on the page
