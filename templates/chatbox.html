@@ -101,20 +101,10 @@
             </div>
         </div>
 
-        <div class="mx-6">
-            <button class="text-white hover:text-gold text-xl">
-              <a href="/logout" onclick="signOut();">Sign Out</a>
-            </button>
-
-            <!-- <details class="w-[170px]">
-              <summary class="flex items-center gap-[10px] justify-end cursor-pointer">
-                <span class="text-white">Name</span>
-              </summary>
-              <div class="absolute bg-black/60 backdrop-blur-[20px] h-full w-full z-[7]">
-                <div class="flex items-center justify-end w-full py-[5px]"><a href="/" onclick="signOut();" class="text-white hover:text-gold z-xl">SIGN OUT</a></div>
-              </div>
-            </details> -->
-
+        <div class="profile mx-6">
+          <button class="text-white hover:text-gold text-xl">
+            <a href="/" onclick="signOut();">Sign Out</a>
+          </button>
         </div>
 
     </div>
@@ -154,9 +144,6 @@
     const msgerForm = get(".msger-inputarea");
     const msgerInput = get(".msger-input");
     const msgerChat = get(".msger-chat");
-    // Icons made by Freepik from www.flaticon.com
-    // const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
-    // const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
     const BOT_NAME = "Goldy";
     const PERSON_NAME = "You";
 
@@ -174,9 +161,8 @@
         <img src="static/img/knight.png" class="msg-img h-12 w-12 m-5 drop-shadow-md">
       </div>
       <div class="msg-bubble">
-        <div class="msg-info text-gray">
-          <p class="msg-info-name">Goldy</p>
-          <div class="msg-text bg-blue_txtbox rounded-full px-4 py-2 h-full">
+        <div class="msg-info text-gray mt-5">
+          <div class="msg-text bg-txtbox rounded-xl px-4 py-2 h-full">
             <div class="ticontainer">
               <div class="tiblock">
                   <div class="tidot"></div>
@@ -204,9 +190,8 @@
               <img src=${img} class="msg-img h-12 w-12 m-5 drop-shadow-md">
             </div>
             <div class="msg-bubble">
-              <div class="msg-info text-gray">
-                <p class="msg-info-name">${name}</p>
-                <div class="msg-text bg-blue_txtbox rounded-full px-4 py-2 h-full">${text}</div>
+              <div class="msg-info text-gray mt-5">
+                <div class="msg-text bg-txtbox rounded-xl px-4 py-2 h-full max-w-3xl flex-wrap">${text}</div>
               </div>  
             </div>
           </div>
