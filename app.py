@@ -1,3 +1,5 @@
+#!C:\Program Files (x86)\Python37-32\python
+
 #### IMPORT LIBRARIES
 
 import os
@@ -22,7 +24,7 @@ from keras.models import load_model
 model = load_model('model.h5')
 import json
 import random
-intents = json.loads(open('data.json').read())
+intents = json.loads(open('intents.json').read())
 words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 context = None
@@ -67,20 +69,23 @@ def predict_class(sentence, model):
     return return_list
 
 def getResponse(ints, intents_json):
-    tag = ints[0]['intent']
-    list_of_intents = intents_json['intents']
-    for i in list_of_intents:
-        if(i['tag']== tag):
-            if 'context' not in intents or 'context' in intents and intents['context'] == context:
-                possible_responses = i['responses']
-                if 'context' in intents:
-                    context = intents['context']
+    try:
+        tag = ints[0]['intent']
+        list_of_intents = intents_json['intents']
+        for i in list_of_intents:
+            if(i['tag']==tag):
+                if 'context' not in intents or 'context' in intents and intents['contents'] == context:
+                    possible_responses = i['responses']
+                    if 'context' in intents:
+                        context = intents['context']
+                    else:
+                        context = None
+                    result = random.choice(possible_responses)
                 else:
-                    context = None                        
-                result = random.choice(possible_responses)
-            else:
-                result = random.choice(default_responses)
-            break
+                    result = random.choice(default_responses)
+                break
+    except:
+        result = default_responses
     return result
 
 def chatbot_response(msg):
