@@ -101,8 +101,9 @@
             </div>
         </div>
 
-        <div class="profile mx-6">
-          <button class="text-white hover:text-gold text-xl">
+        <div class="profile mx-6 py-1 px-2 rounded-lg border-solid border-2 border-blue_btn hover:border-blue_hover hover:drop-shadow-lg">
+          <button class="text-white text-xl flex place-items-center">
+            <img src="https://img.icons8.com/sf-black/64/FFFFFF/logout-rounded.png" class="h-8 w-8"/>
             <a href="/" onclick="signOut();">Sign Out</a>
           </button>
         </div>
@@ -121,14 +122,6 @@
     </header>
 
     <main class="msger-chat px-0.5 py-14 mb-5 overflow-hidden">
-      <!-- <div class="msg left-msg">
-        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
-        <div class="msg-bubble w-full h-full">
-          <div class="msg-info">
-            <p class="msg-info-name">Chatbot</p>
-          </div>
-        </div>
-      </div> -->
     </main>
 
     <form class="fixed msger-inputarea bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
@@ -162,7 +155,7 @@
       </div>
       <div class="msg-bubble">
         <div class="msg-info text-gray mt-5">
-          <div class="msg-text bg-txtbox rounded-xl px-4 py-2 h-full">
+          <div class="msg-text bg-blue_txtbox rounded-r-lg rounded-tl-lg px-4 py-2 h-full">
             <div class="ticontainer">
               <div class="tiblock">
                   <div class="tidot"></div>
@@ -177,11 +170,14 @@
 
     function appendMessage(name, img, side, text, flow) { //make while loop
       var time = 0;
+      var s = "l-lg", s1 = "tr-lg";
       if(name == "Goldy") {
         setTimeout(() => {
           msgerChat.insertAdjacentHTML("beforeend", typing);
         }, 1000);
         time = 3500;
+        s = "r-lg";
+        s1 = "tl-lg";
       }
     
       const msgHTML = `
@@ -191,7 +187,7 @@
             </div>
             <div class="msg-bubble">
               <div class="msg-info text-gray mt-5">
-                <div class="msg-text bg-txtbox rounded-xl px-4 py-2 h-full max-w-3xl flex-wrap">${text}</div>
+                <div class="msg-text bg-blue_txtbox rounded-${s} rounded-${s1} px-4 py-2 h-full">${text}</div>
               </div>  
             </div>
           </div>
