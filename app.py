@@ -1,10 +1,9 @@
-#!C:\Program Files (x86)\Python37-32\python
-
 #### IMPORT LIBRARIES
 
 import os
 import requests
 import pathlib
+from difflib import get_close_matches
 import google.oauth2.credentials
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
@@ -13,12 +12,11 @@ import nltk
 nltk.download('popular')
 nltk.download('words')
 from nltk.stem import WordNetLemmatizer
-from nltk.metrics.distance import jaccard_distance
-from nltk.util import ngrams
 from nltk.corpus import words
+from nltk.corpus import stopwords
 lemmatizer = WordNetLemmatizer()
 import pickle
-from autocorrect import Speller
+from spellchecker import SpellChecker
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
@@ -28,15 +26,16 @@ intents = json.loads(open('intents.json').read())
 words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 context = None
-
-default_responses = ["sorry i could not understand."]
-spell = Speller(lang='en')
+similarity_threshold = 0.6
+default_responses = ["Sorry, I don't understand"]
+spell = SpellChecker()
 #### PRE-PROCCESSING
+
 def clean_up_sentence(sentence):
     # tokenize the pattern - split words into array
-    sentence_words = [spell(w) for w in (nltk.word_tokenize(sentence))]
+    sentence_words = [w for w in (nltk.word_tokenize(sentence))]
     # stem each word - create short form for word
-    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
+    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words if word not in set(stopwords.words('english'))]
     return sentence_words
 
 # return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
@@ -69,34 +68,36 @@ def predict_class(sentence, model):
     return return_list
 
 def getResponse(ints, intents_json):
-    try:
-        tag = ints[0]['intent']
-        list_of_intents = intents_json['intents']
-        for i in list_of_intents:
-            if(i['tag']==tag):
-                if 'context' not in intents or 'context' in intents and intents['contents'] == context:
-                    possible_responses = i['responses']
-                    if 'context' in intents:
-                        context = intents['context']
-                    else:
-                        context = None
-                    result = random.choice(possible_responses)
+    tag = ints[0]['intent']
+    list_of_intents = intents_json['intents']
+    for i in list_of_intents:
+        if(i['tag']== tag):
+            if 'context' not in intents or 'context' in intents and intents['context'] == context:
+                possible_responses = i['responses']
+                if 'context' in intents:
+                    context = intents['context']
                 else:
-                    result = random.choice(default_responses)
-                break
-    except:
-        result = default_responses
+                    context = None                        
+                result = random.choice(possible_responses)
+            else:
+                result = random.choice(default_responses)
+            break
     return result
-
+     
 def chatbot_response(msg):
-    ints = predict_class(msg, model)
-    res = getResponse(ints, intents)
+    if spell.correction(msg) == msg:
+        ints = predict_class(msg, model)
+        res = getResponse(ints, intents)
+    else:
+        ints = predict_class(msg, model)
+        res = f"Did you mean '{spell.correction(msg)}' instead of '{msg}'?"
     return res
 
 
 #### REFERENCE OF HTML, GOOGLE API
 
 from flask import Flask, session, abort, redirect, request, render_template
+import logging
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -161,5 +162,9 @@ def get_bot_response():
 def logout():
     session.clear()
     return redirect("/")
+@app.errorhandler(500)
+def server_error(e):
+    logging.exception('An error occurred during a request')
+    return 'An internal error occurred', 500
 if __name__ == "__main__":
     app.run()
