@@ -68,6 +68,7 @@ def predict_class(sentence, model):
     return return_list
 
 def getResponse(ints, intents_json):
+    global default_responses
     tag = ints[0]['intent']
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
@@ -79,9 +80,9 @@ def getResponse(ints, intents_json):
                 else:
                     context = None                        
                 result = random.choice(possible_responses)
-            else:
-                result = random.choice(default_responses)
-            break
+        else:
+            result = random.choice(default_responses)
+        break
     return result
 
 flag = False
