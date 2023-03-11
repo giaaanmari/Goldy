@@ -16,7 +16,7 @@ from nltk.corpus import words
 from nltk.corpus import stopwords
 lemmatizer = WordNetLemmatizer()
 import pickle
-from spellchecker import SpellChecker
+from autocorrect import Speller
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
@@ -28,7 +28,7 @@ classes = pickle.load(open('labels.pkl','rb'))
 context = None
 similarity_threshold = 0.6
 default_responses = ["Sorry, I don't understand"]
-spell = SpellChecker()
+spell = Speller(lang='en')
 #### PRE-PROCCESSING
 
 def clean_up_sentence(sentence):
@@ -83,14 +83,43 @@ def getResponse(ints, intents_json):
                 result = random.choice(default_responses)
             break
     return result
-     
-def chatbot_response(msg):
-    if spell.correction(msg) == msg:
-        ints = predict_class(msg, model)
-        res = getResponse(ints, intents)
+
+flag = False
+text = []
+
+def chatbot_response(input_msg):
+    input_msg = input_msg.lower()
+    global text
+    global flag
+    
+    correct_msg = spell(input_msg)
+
+    if flag:
+        if correct_msg == "yes":
+            output_word=[correct_msg for correct_msg in text]
+            output_txt=" ".join(output_word)
+
+            ints = predict_class(output_txt, model)
+            res = getResponse(ints, intents)
+            flag = False
+        elif correct_msg == "no":
+            res = f"Okay. Could you please clarify your question so I can assist you better?"
+            flag = False
+        else:
+            res = f"Sorry, I am still learning. Please enter your message again."
+            flag = False
+        
     else:
-        ints = predict_class(msg, model)
-        res = f"Did you mean '{spell.correction(msg)}' instead of '{msg}'?"
+        text.append(correct_msg)
+        if correct_msg == input_msg:
+            ints = predict_class(input_msg, model)
+            res = getResponse(ints, intents)
+            text.clear()
+            flag = False
+        else:
+            res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
+            flag = True
+
     return res
 
 
@@ -151,20 +180,25 @@ def callback():
     session["google_id"] = id_info.get("sub")  #defing the results to show on the page
     session["name"] = id_info.get("name")
     return redirect("/chat")  #the final page where the authorized users will end up
+
 @app.route("/chat")
 def chat():
     return render_template("chatbox.html")
+
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
     return chatbot_response(userText)
+
 @app.route("/logout")  #the logout page and function
 def logout():
     session.clear()
     return redirect("/")
+
 @app.errorhandler(500)
 def server_error(e):
     logging.exception('An error occurred during a request')
     return 'An internal error occurred', 500
+
 if __name__ == "__main__":
     app.run()
