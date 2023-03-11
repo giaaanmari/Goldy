@@ -80,9 +80,11 @@ def getResponse(ints, intents_json):
                 else:
                     context = None                        
                 result = random.choice(possible_responses)
+            else:
+                result = random.choice(default_responses)
+            break
         else:
             result = random.choice(default_responses)
-        break
     return result
 
 flag = False
