@@ -27,7 +27,9 @@ words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 context = None
 similarity_threshold = 0.6
-default_responses = ["Sorry, I don't understand"]
+default_responses = ["I'm sorry, I didn't quite understand what you said. Can you please try asking me again in a different way?",
+                     "I'm sorry, I don't have the answer to that question right now. But don't worry, I'll keep learning and hopefully, I'll be able to help you with your question soon.",
+                     "Hmm, I'm not quite sure what you're asking. Can you please give me more information or context about your question?"]
 spell = Speller(lang='en')
 #### PRE-PROCCESSING
 
