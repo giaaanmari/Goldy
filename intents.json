@@ -4982,7 +4982,7 @@
                 "what is demonstrative noun"
             ],
             "responses": [
-                " this are words used to point to something or someone."
+                "demonstrative nouns are words used to point to something or someone."
             ],
             "context": [
                 "pronoun_type"
@@ -4994,7 +4994,7 @@
                 "what are examples of demonstrative noun"
             ],
             "responses": [
-                " this can be this, these, that, and those."
+                " An example of a demonstrative noun can be this, these, that, and those."
             ],
             "context": [
                 "pronoun_type_demonstrative_example"
@@ -5212,7 +5212,7 @@
                 "What is a limiting adjective"
             ],
             "responses": [
-                "Limiting adjectives limit a noun by specifying the noun being referred to. These adjectives usually answer the following questions:"
+                "Limiting adjectives limits a noun by specifying the noun being referred to. These adjectives usually answer the following questions:"
             ],
             "context": [
                 "adject_type"
@@ -5224,7 +5224,7 @@
                 "what is an adjective"
             ],
             "responses": [
-                " words that are used to describe nouns and pronouns in a sentence"
+                " an adjective are words that are used to describe nouns and pronouns in a sentence"
             ],
             "context": [
                 "adjective"
@@ -5236,7 +5236,7 @@
                 "what are the three degree of comparison of an adjective"
             ],
             "responses": [
-                " we have positive, comparative, and supperlative"
+                "the three degree of comparision of an adjective are positive, comparative, and supperlative"
             ],
             "context": [
                 "adject_degree_type"
@@ -5248,7 +5248,7 @@
                 "what is positive degree of comparison of an adjective"
             ],
             "responses": [
-                " It is the simple form used to describe a noun or a pronoun"
+                "positivie degree is the simple form used to describe a noun or a pronoun"
             ],
             "context": [
                 "adject_degree_type_positive"
@@ -5260,7 +5260,7 @@
                 "what is comparative degree of comparison of an adjective"
             ],
             "responses": [
-                "Add er at the end of a word to form the comparative degree. For adjectives with three or more syllables, use less or more"
+                "comparative degree is when we add er at the end of a word to form the comparative degree. For adjectives with three or more syllables, use less or more"
             ],
             "context": [
                 "adject_degree_type_comparative"
@@ -5272,7 +5272,7 @@
                 "what is superlative degree of comparison of an adjective"
             ],
             "responses": [
-                "Add est at the end of a word to form its superlative degree. For adjectives with three or more syllables, use least or most"
+                "superlative degree is when we add est at the end of a word to form its superlative degree. For adjectives with three or more syllables, use least or most"
             ],
             "context": [
                 "adject_degree_type_superlative"
@@ -5332,7 +5332,7 @@
                 "What are verbs?"
             ],
             "responses": [
-                " It answers the question, What is he/she doing?"
+                " verbs can answer the question, What is he/she doing?"
             ],
             "context": [
                 "verb"
@@ -5353,10 +5353,10 @@
         {
             "tag": "action_verb",
             "patterns": [
-                ""
+                "what is a action verb"
             ],
             "responses": [
-                ""
+                "an action verb is a verb that expresses something that a person, animal, object, or process in nature (such as a storm) can do rather than expressing a state of being."
             ],
             "context": [
                 "verb_type"
@@ -5365,10 +5365,10 @@
         {
             "tag": "helping_verb",
             "patterns": [
-                ""
+                "what is a helping verb?"
             ],
             "responses": [
-                ""
+                "a helping verb helps the main verb of a sentence by adding grammatical information to it, like tense, voice, or possibility"
             ],
             "context": [
                 "verb_type"
@@ -5449,10 +5449,10 @@
         {
             "tag": "adverbs_manner",
             "patterns": [
-                "what is an adverb of manner"
+                "what is an adverb of manner?"
             ],
             "responses": [
-                "describes a verb and answers the question how"
+                "an adverb of manner describes a verb and answers the question how"
             ],
             "context": [
                 "adverb_type"
@@ -5464,7 +5464,7 @@
                 "what is an adverb of time"
             ],
             "responses": [
-                "describes a verb and answers the question when"
+                "an adverb of time describes a verb and answers the question when"
             ],
             "context": [
                 "adverb_type"
@@ -5476,7 +5476,7 @@
                 "what is an adverb of place"
             ],
             "responses": [
-                "describes a verb and answers the question where"
+                "an adverb of place describes a verb and answers the question where"
             ],
             "context": [
                 "adverb_type"
@@ -5488,7 +5488,7 @@
                 "what is an adverb"
             ],
             "responses": [
-                "a word that answers the question how, where, when, and how often"
+                "an adverb is a word that answers the question how, where, when, and how often"
             ],
             "context": [
                 "adverb"
@@ -5497,10 +5497,10 @@
         {
             "tag": "conjunctive_adverb",
             "patterns": [
-                ""
+                "what is a conjunctive adverb"
             ],
             "responses": [
-                ""
+                "Conjunctive adverbs are transition words or phrases"
             ],
             "context": [
                 "adverb_type"
@@ -5509,10 +5509,10 @@
         {
             "tag": "frequency_adverb",
             "patterns": [
-                ""
+                "What is a frequency adverb"
             ],
             "responses": [
-                ""
+                "frequency adverb describes how often an action happens"
             ],
             "context": [
                 "adverb_type"
@@ -5560,7 +5560,7 @@
                 "How do sentences in the natural order"
             ],
             "responses": [
-                "In the natural order, the subject comes first before the verb."
+                "In the natural order, this means the subject comes first before the verb."
             ],
             "context": [
                 "sentence_natural_order"
@@ -5572,7 +5572,7 @@
                 "How do sentences in the inverted order"
             ],
             "responses": [
-                "In inverted order, the verb comes first before the subject. Most questions are in this order."
+                "In inverted order, this means the verb comes first before the subject. Most questions are in this order."
             ],
             "context": [
                 "sentence_inverted_order"
@@ -5584,7 +5584,7 @@
                 "What is a declarative sentence?"
             ],
             "responses": [
-                "Declarative is from the word declare which means to tell"
+                "Declarative sentence is from the word declare which means to tell"
             ],
             "context": [
                 "sentence_type"
@@ -5596,7 +5596,7 @@
                 "What is a Intterogative sentence?"
             ],
             "responses": [
-                "Interrogative is from the word interrogate which means to ask"
+                "Interrogative sentence is from the word interrogate which means to ask"
             ],
             "context": [
                 "sentence_type"
@@ -5752,7 +5752,7 @@
         {
             "tag": "referencematerial_index",
             "patterns": [
-                "What is an encyclopedia?"
+                "What is an index?"
             ],
             "responses": [
                 "An index contains information present in periodicals, books, newspapers, etc."
@@ -5803,7 +5803,7 @@
                 "What is a narration?"
             ],
             "responses": [
-                "This type of text narrates a story and entertains its readers. Stories and novels are examples of narration. A narration has basic elements such as characters, setting, and plot."
+                "narration is a type of text narrates a story and entertains its readers. Stories and novels are examples of narration. A narration has basic elements such as characters, setting, and plot."
             ],
             "context": [
                 "text_type"
@@ -5815,7 +5815,7 @@
                 "What is an information report?"
             ],
             "responses": [
-                "This type of text gives information about a person, place, or thing. It provides facts on a specific topic. This can be found in reference materials such as encyclopedias, reference books, technical texts, social studies books, science books, etc."
+                "information report is a type of text that gives information about a person, place, or thing. It provides facts on a specific topic. This can be found in reference materials such as encyclopedias, reference books, technical texts, social studies books, science books, etc."
             ],
             "context": [
                 "text_type"
@@ -5827,7 +5827,7 @@
                 "What is an argumentative text?"
             ],
             "responses": [
-                "This type of text persuades readers to believe something. An argument is the writer’s reason as he/she is either 'for' or 'against' the issue."
+                "argumentative text is a type of text that persuades readers to believe something. An argument is the writer’s reason as he/she is either 'for' or 'against' the issue."
             ],
             "context": [
                 "text_type"
@@ -5839,7 +5839,7 @@
                 "What is a procedural text?"
             ],
             "responses": [
-                "This type of text follows a sequential order. It lists the materials to be used and the steps in a sequence. A procedural text is usually found in recipes, manuals and instructions that begin with a goal or title."
+                "Procedural text is a type of text that follows a sequential order. It lists the materials to be used and the steps in a sequence. A procedural text is usually found in recipes, manuals and instructions that begin with a goal or title."
             ],
             "context": [
                 "text_type"
@@ -5899,7 +5899,7 @@
                 "What is a definition?"
             ],
             "responses": [
-                "Definition is the word is defined directly in the sentence."
+                "Definition is the word defined directly in the sentence."
             ],
             "context": [
                 "contextclues_type"
