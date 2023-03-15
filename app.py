@@ -100,10 +100,10 @@ def chatbot_response(input_msg):
     correct_msg = spell(input_msg)
 
     if flag:
-        if correct_msg == "yes":
-            output_word=[correct_msg for correct_msg in text]
-            output_txt=" ".join(output_word)
+        output_word=[correct_msg for correct_msg in text]
+        output_txt=" ".join(output_word)
 
+        if correct_msg == "yes" or correct_msg in output_txt:
             ints = predict_class(output_txt, model)
             res = getResponse(ints, intents)
             flag = False
