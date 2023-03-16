@@ -126,7 +126,7 @@
 
     <form class="fixed msger-inputarea bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
       <input type="text" class="msger-input bg-inputbox w-full h-full rounded-l-large px-4 py-2 text-gray text-lg shadow-lg border border-gray-300" id="textInput" placeholder="Enter your message here">
-      <button type="submit" class="msger-send-btn w-24 h-full bg-blue_btn hover:bg-blue_hover shadow-lg rounded-r-large text-white text-lg font-medium flex justify-center items-center">Send</button>
+      <button type="submit" id="send" class="msger-send-btn w-24 h-full bg-blue_btn hover:bg-blue_hover shadow-lg rounded-r-large text-white text-lg font-medium flex justify-center items-center">Send</button>
     </form>
 
   </section>
@@ -139,13 +139,21 @@
     const msgerChat = get(".msger-chat");
     const BOT_NAME = "Goldy";
     const PERSON_NAME = "You";
+    const welcomeMsg = "Hi there, I am Goldy! I'm here to help you and you can ask me anything!"
+    const send = document.getElementById("send");
+
+    appendMessage(BOT_NAME, "static/img/knight.png", "left", welcomeMsg, "row", "r-lg", "tr-lg");
 
     msgerForm.addEventListener("submit", event => {
       event.preventDefault();
       const msgText = msgerInput.value;
       if (!msgText) return;
-      appendMessage(PERSON_NAME, "static/img/user.png", "right", msgText, "row-reverse");
+      appendMessage(PERSON_NAME, "static/img/user.png", "right", msgText, "row-reverse", "l-lg", "tr-lg");
       msgerInput.value = "";
+
+      send.disabled = true;
+      send.classList.add("disabled");
+
       botResponse(msgText);
     });
     
@@ -168,18 +176,14 @@
       </div>
     </div>`;
 
-    function appendMessage(name, img, side, text, flow) { //make while loop
-      var time = 0;
-      var s = "l-lg", s1 = "tr-lg";
-      if(name == "Goldy") {
-        setTimeout(() => {
-          msgerChat.insertAdjacentHTML("beforeend", typing);
-        }, 1000);
-        time = 3500;
-        s = "r-lg";
-        s1 = "tl-lg";
-      }
-    
+    function goldyTyping() {
+      setTimeout(() => {
+        msgerChat.insertAdjacentHTML("beforeend", typing);
+      }, 1000);
+    }
+
+    function appendMessage(name, img, side, text, flow, s, s1) {
+
       const msgHTML = `
           <div class="msg float-${side} flex flex-${flow} w-full">
             <div>
@@ -192,11 +196,17 @@
             </div>
           </div>
           `;
-
-      setTimeout(() => {
+      
+      if(name == "You") {
         msgerChat.insertAdjacentHTML("beforeend", msgHTML);
-      }, time);
-
+      } else if(name == "Goldy") {
+        goldyTyping();
+        setTimeout(() => {
+          msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+          send.disabled = false;
+          send.classList.remove("disabled");
+        }, 5000);
+      }      
       msgerChat.scrollTop += 500;
     }
 
@@ -204,7 +214,7 @@
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         const msgText = data;
-        appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row");
+        appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row", "r-lg", "tr-lg");
       });
     }
     
