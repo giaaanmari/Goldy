@@ -142,13 +142,13 @@
     const welcomeMsg = "Hi there, I am Goldy! I'm here to help you and you can ask me anything!"
     const send = document.getElementById("send");
 
-    appendMessage(BOT_NAME, "static/img/knight.png", "left", welcomeMsg, "row", "r-lg", "tr-lg");
+    appendMessage(BOT_NAME, "static/img/knight.png", "left", welcomeMsg, "row", "r-lg", "tl-lg");
 
     msgerForm.addEventListener("submit", event => {
       event.preventDefault();
       const msgText = msgerInput.value;
       if (!msgText) return;
-      appendMessage(PERSON_NAME, "static/img/user.png", "right", msgText, "row-reverse", "l-lg", "tr-lg");
+      appendMessage(PERSON_NAME, "static/img/user.png", "right", msgText, "row-reverse", "l-lg", "tr-lg", "pl");
       msgerInput.value = "";
 
       send.disabled = true;
@@ -156,25 +156,26 @@
 
       botResponse(msgText);
     });
-    
-    const typing = `<div id="hide" class="msg float-left flex flex-row w-full">
-      <div>
-        <img src="static/img/knight.png" class="msg-img h-12 w-12 m-5 drop-shadow-md">
-      </div>
-      <div class="msg-bubble">
-        <div class="msg-info text-gray mt-5">
-          <div class="msg-text bg-blue_txtbox rounded-r-lg rounded-tl-lg px-4 py-2 h-full">
-            <div class="ticontainer">
-              <div class="tiblock">
-                  <div class="tidot"></div>
-                  <div class="tidot"></div>
-                  <div class="tidot"></div>
-              </div>
+
+    const typing = `
+          <div id="hide" class="msg w-screen float-left flex flex-row">
+            <div class="self-end">
+              <img src="static/img/knight.png" class="msg-img h-10 w-10 min-w-12 mx-2 drop-shadow-md">
             </div>
-          </div>
-        </div>  
-      </div>
-    </div>`;
+            <div class="msg-bubble">
+              <div class="msg-info text-gray mt-5">
+                <div class="msg-text bg-blue_txtbox rounded-r-lg rounded-tl-lg px-4 py-2 h-full w-fit">
+                  <div class="ticontainer">
+                    <div class="tiblock">
+                        <div class="tidot"></div>
+                        <div class="tidot"></div>
+                        <div class="tidot"></div>
+                    </div>
+                  </div>  
+                </div>
+              </div>  
+            </div>
+          </div>`;
 
     function goldyTyping() {
       setTimeout(() => {
@@ -182,18 +183,19 @@
       }, 1000);
     }
 
-    function appendMessage(name, img, side, text, flow, s, s1) {
+    function appendMessage(name, img, side, text, flow, s, s1, p_side) {
 
       const msgHTML = `
-          <div class="msg float-${side} flex flex-${flow} w-full">
-            <div>
-              <img src=${img} class="msg-img h-12 w-12 m-5 drop-shadow-md">
+          <div class="msg w-screen float-${side} flex flex-${flow}">
+            <div class="self-end">
+              <img src=${img} class="msg-img h-10 w-10 min-w-12 mx-2 drop-shadow-md">
             </div>
-            <div class="msg-bubble">
-              <div class="msg-info text-gray mt-5">
-                <div class="msg-text bg-blue_txtbox rounded-${s} rounded-${s1} px-4 py-2 h-full">${text}</div>
+            <div class="msg-bubble w-3/5">
+              <div class="msg-info text-gray mt-5 float-${side}">
+                <div class="msg-text bg-blue_txtbox rounded-${s} rounded-${s1} px-4 py-2 h-full w-fit">${text}</div>
               </div>  
             </div>
+            <div class="w-2/5"></div>
           </div>
           `;
       
@@ -214,7 +216,7 @@
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         const msgText = data;
-        appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row", "r-lg", "tr-lg");
+        appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row", "r-lg", "tl-lg", "pr");
       });
     }
     
