@@ -1,3 +1,5 @@
+#### IMPORT LIBRARIES
+
 import os
 import requests
 import pathlib
@@ -14,7 +16,6 @@ from nltk.corpus import words
 from nltk.corpus import stopwords
 lemmatizer = WordNetLemmatizer()
 import pickle
-# from autocorrect import Speller
 import enchant
 import numpy as np
 from keras.models import load_model
@@ -26,13 +27,11 @@ words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 context = None
 similarity_threshold = 0.6
+dictionary = enchant.Dict("en_US")
 default_responses = ["I'm sorry, I didn't quite understand what you said. Can you please try asking me again in a different way?",
                      "I'm sorry, I don't have the answer to that question right now. But don't worry, I'll keep learning and hopefully, I'll be able to help you with your question soon.",
                      "Hmm, I'm not quite sure what you're asking. Can you please give me more information or context about your question?"]
-
-# spell = Speller(lang='en')
-dictionary = enchant.Dict("en_US")
-
+#### PRE-PROCCESSING
 
 def clean_up_sentence(sentence):
     # tokenize the pattern - split words into array
@@ -72,7 +71,10 @@ def predict_class(sentence, model):
 
 def getResponse(ints, intents_json):
     global default_responses
-    tag = ints[0]['intent']
+    if len(ints) > 0:
+        tag = ints[0]['intent']
+    else:
+        tag = None
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
         if(i['tag']== tag):
@@ -82,21 +84,13 @@ def getResponse(ints, intents_json):
                     context = intents['context']
                 else:
                     context = None                        
-                result = random.choice(possible_responses)
-            else:
-                result = random.choice(default_responses)
+                return random.choice(possible_responses)
             break
-
-        else:
-            result = random.choice(default_responses)
-    return result
-
     return random.choice(default_responses)
 
 def spellcheck(msg):
     corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
     return corrected_words
-
 
 flag = False
 text = []
@@ -106,9 +100,7 @@ def chatbot_response(input_msg):
     global text
     global flag
     
-
     correct_msg = spellcheck(input_msg)
-
 
     if flag:
         output_word=[correct_msg for correct_msg in text]
@@ -124,7 +116,6 @@ def chatbot_response(input_msg):
         else:
             res = f"Sorry, I am still learning. Please enter your message again."
             flag = False
-        
     else:
         text.append(correct_msg)
         if correct_msg == input_msg:
