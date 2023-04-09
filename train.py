@@ -5,13 +5,12 @@ import json
 import pickle
 import numpy as np
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout, GaussianNoise
+from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
 import matplotlib.pyplot as plt
-from nltk.corpus import words
 from nltk.corpus import stopwords
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
+from keras.metrics import Precision, Recall
 import random
 words=[]
 classes = []
@@ -30,8 +29,9 @@ for intent in intents['intents']:
         # add to our classes list
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
+
 # lemmaztize and lower each word and remove duplicates
-words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words or w not in stop_words]
+words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words]
 words = sorted(list(set(words)))
 # sort classes
 classes = sorted(list(tuple(classes)))
@@ -67,39 +67,59 @@ for doc in documents:
 # shuffle our features and turn into np.array
 random.shuffle(training)
 training = np.array(training)
-split_set= int(0.8 * len(training))
-
-train_set = training[:split_set]
-test_set = training[split_set:]
 # create train and test lists. X - patterns, Y - intents
-train_x = list(train_set[:,0])
-train_y = list(train_set[:,1])
-
-test_x = list(test_set[:,0])
-test_y = list(test_set[:,1])
+train_x, val_x, train_y, val_y = train_test_split(list(training[:,0]), list(training[:,1]), test_size=0.2, random_state=42)
 print("Training data created")
-# Create model - 3 layers. First layer 128 neurons, second layer 64 neurons and 3rd output layer contains number of neurons
+# Create model - 3 layers. First layer 128 neurons, second layer Dropout Layer with 0.1 value and 3rd output layer contains number of neurons
 # equal to number of intents to predict output intent with softmax
-
-kfold = KFold(n_splits=5, shuffle=True, random_state=42)
-
 model = Sequential()
 model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.1))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 # Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
 sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
-
-for train, val in kfold.split(train_x, train_y):
-    hist = model.fit(train_x, train_y, epochs=64, batch_size=10, verbose=2)
-    for i in val:
-        if i < len(test_x):
-            scores = model.evaluate(test_x[i:i+1], test_y[i:i+1], verbose=0)
-            print(f"Validation loss: {scores[0]} / Validation accuracy: {scores[1]}")
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy', Precision(), Recall()])
+#fitting and saving the model 
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=32, validation_split=0.2, verbose=2)
 model.save('model.h5', hist)
+score = model.evaluate(val_x, val_y, batch_size=64)
+print('Validation Loss: {:.4f}'.format(score[0]))
+print('Validation Accuracy: {:.4f}'.format(score[1]))
 
 
-# MODEL ACCURACY / MODEL LOSS
+####### PLOTTING
+
+plt.plot(hist.history['accuracy'])
+plt.plot(hist.history['val_accuracy'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+
+plt.plot(hist.history['precision'])
+plt.plot(hist.history['val_precision'])
+plt.title('model precision')
+plt.ylabel('precision')
+plt.xlabel('epoch')
+plt.legend(['precision', 'val_precision'], loc='upper left')
+plt.show()
+
+plt.plot(hist.history['recall'])
+plt.plot(hist.history['val_recall'])
+plt.title('model recall')
+plt.ylabel('recall')
+plt.xlabel('epoch')
+plt.legend(['recall', 'val_recall'], loc='upper left')
+plt.show()
+
+# summarize history for loss
+plt.plot(hist.history['loss'])
+plt.plot(hist.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+
 print("model created")
