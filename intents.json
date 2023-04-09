@@ -1,5 +1,5 @@
-{ 
-  "intents":[
+{  
+  "intents": [
     {
       "tag": [
         "greeting"
@@ -83,8 +83,7 @@
       "patterns": [
         "Do you have hobbies?",
         "What are your hobbies?",
-        "What is your hobby?",
-        ""
+        "What is your hobby?"
       ],
       "responses": [
         "My hobbies are answering your questions, studying, reading books, and helping students like you."
@@ -183,7 +182,7 @@
         "Where do you live?"
       ],
       "responses": [
-        "I live in Ateneo de Naga Uniersity."
+        "I live in Ateneo de Naga University."
       ],
       "context": [
         "goldy_personality"
@@ -195,8 +194,7 @@
       ],
       "patterns": [
         "What is your gender?",
-        "Are you a boy or a girl?",
-        ""
+        "Are you a boy or a girl?"
       ],
       "responses": [
         "To answer that question, I do not have a gender. I was born to assist you as a learning companion."
@@ -312,8 +310,8 @@
         "Who is Emmanuel Sumalabe"
       ],
       "responses": [
-        "Mr. Emmanuel Sumalabe is a 4th year Computer Science student which is responsible for the implemmentation of the dataset of Goldy.",
-        "A 4th year Computer Science student, Emmanuel Sumalabe is responsible for the implemmentation of the dataset of Goldy."
+        "Mr. Emmanuel Sumalabe is a 4th year Computer Science student which is responsible for the implementation of the dataset of Goldy.",
+        "A 4th year Computer Science student, Emmanuel Sumalabe is responsible for the implementation of the dataset of Goldy."
       ],
       "context": [
         "about_author"
@@ -343,7 +341,7 @@
         ""
       ],
       "responses": [
-        "Sorry, I could not understand."
+        "I'm sorry."
       ],
       "context": [
         "sorry"
@@ -1099,7 +1097,7 @@
         "count nouns"
       ],
       "responses": [
-        "A count noun is a type of noun that refers to things that can be counted or measured individually. It usually have both singular and plural forms and can be preceded by the indefinite articles \"a\" or \"an\" in their singular form. Examples of count nounns include: books, students, pencils, trees, and plants/"
+        "A count noun is a type of noun that refers to things that can be counted or measured individually. It usually have both singular and plural forms and can be preceded by the indefinite articles \"a\" or \"an\" in their singular form. Examples of count nouns include: books, students, pencils, trees, and plants/"
       ],
       "context": [
         "noun_types"
@@ -1131,7 +1129,7 @@
         "possessive noun"
       ],
       "responses": [
-        "A possessive noun shows ownership or possession of a particular person, place, thing, or idea. In most cases, you can form a possessive noun by adding an apostrophe (') and the letter \"s\" at the end of the word: Some examples of possessive noun includes: boy's shirt, teacher's things, students' perfomance, and women's jewelry."
+        "A possessive noun shows ownership or possession of a particular person, place, thing, or idea. In most cases, you can form a possessive noun by adding an apostrophe (') and the letter \"s\" at the end of the word: Some examples of possessive noun includes: boy's shirt, teacher's things, students' performance, and women's jewelry."
       ],
       "context": [
         "noun_types"
@@ -1778,7 +1776,7 @@
         "context_clues"
       ],
       "responses": [
-        "Context clues are hints that are provided withing a text to help readers understand the meaning of unfamiliar words or phrases. The context includes different words, sentences, and paragraphs surrounding a particular word. These clues may help the readed infer the meaning of an unknown word or phrase by providing clues for interpretation. Skilled readers can use context clues to enhance their understanding of the text and improve their overall comprehension."
+        "Context clues are hints that are provided within a text to help readers understand the meaning of unfamiliar words or phrases. The context includes different words, sentences, and paragraphs surrounding a particular word. These clues may help the reader infer the meaning of an unknown word or phrase by providing clues for interpretation. Skilled readers can use context clues to enhance their understanding of the text and improve their overall comprehension."
       ],
       "context": [
         "context_clues"
@@ -1827,7 +1825,7 @@
         "Inference Definition"
       ],
       "responses": [
-        "Inferences are what we figured out based on given clues and your experience. When making inferences, you need tocombine these clues and your background knowledge."
+        "Inferences are what we figured out based on given clues and your experience. When making inferences, you need to combine these clues and your background knowledge."
       ],
       "context": [
         "inference"
@@ -2163,7 +2161,7 @@
       ],
       "patterns": [
         "What is the rules of inverted sentence?",
-        "interted sentence rules",
+        "inverted sentence rules",
         "rules of inverted sentence"
       ],
       "responses": [
@@ -2327,7 +2325,7 @@
         "graphic_organizer"
       ],
       "patterns": [
-        "What is a grpahic organizer?",
+        "What is a graphic organizer?",
         "graphic organizer"
       ],
       "responses": [
@@ -2513,7 +2511,7 @@
         "signal word comparison"
       ],
       "responses": [
-        "Here are some transition words you can use to show comparison: Similarly, Likewise, In the same way, Just as... so too..., By the same token, Equally important, Correcpondingly, In comparison, In a like manner, Also, Moreover, Likewise, In contrast, On the other hand, and However."
+        "Here are some transition words you can use to show comparison: Similarly, Likewise, In the same way, Just as... so too..., By the same token, Equally important, Correspondingly, In comparison, In a like manner, Also, Moreover, Likewise, In contrast, On the other hand, and However."
       ],
       "context": [
         "transition_words"
@@ -3278,7 +3276,7 @@
         "beginning action",
         "introduction of a story",
         "introduction of short story",
-        "beggining of a story"
+        "beginning of a story"
       ],
       "responses": [
         "The beginning of a plot is one of the essential story elements. The beginning, also known as the exposition or introduction, sets up the story by introducing the characters, setting, and background information. It is the foundation of the story, setting the stage for what is to come. A well-crafted beginning draws readers in and creates a connection to the characters and setting, making them invested in the story's outcome."
@@ -3533,7 +3531,7 @@
         "types of journalistic"
       ],
       "responses": [
-        "There are several types of journalistic writing styles, including: news writing, feature writing, opition writing, investigative writing, and reviews."
+        "There are several types of journalistic writing styles, including: news writing, feature writing, option writing, investigative writing, and reviews."
       ],
       "context": [
         "journalistic_type"
@@ -3888,7 +3886,7 @@
       ],
       "patterns": [
         "what are characters in legends?",
-        "legendscharacter",
+        "legends character",
         "character legends"
       ],
       "responses": [
@@ -4009,7 +4007,7 @@
         "descriptive_adjectives"
       ],
       "patterns": [
-        "what is descriptive adjectve?",
+        "what is descriptive adjective?",
         "descriptive adjective"
       ],
       "responses": [
@@ -4529,7 +4527,7 @@
         "personal_pronouns_sentence"
       ],
       "patterns": [
-        "what is a peronal pronoun in a sentence?"
+        "what is a personal pronoun in a sentence?"
       ],
       "responses": [
         "A personal pronoun is a type of pronoun that refers to a specific person or thing. It is used to replace a person's name, and it helps to avoid repetition in sentences. Examples of personal pronouns include: I, you, he, she, it, we, and they. For example, in the sentence \"She went to the store,\" the personal pronoun \"she\" is used to replace the name of the person who went to the store."
@@ -4557,7 +4555,7 @@
         "identifying_action_verbs"
       ],
       "patterns": [
-        "how to identify action vebs?"
+        "how to identify action verbs?"
       ],
       "responses": [
         "Action verbs are verbs that describe actions or events that can be seen or physically experienced. They are used to show what someone or something is doing, feeling, or thinking. To identify action verbs in a sentence, you can look for the word that describes an action or a physical activity that is being performed by the subject of the sentence. Here are a few examples:She runs every morning. The dog chased the ball., The children are playing in the park., He cooked dinner for his family., The bird flew away. In each of these sentences, the verb describes an action that is being performed by the subject."
@@ -4571,7 +4569,7 @@
         "personal_narratives_in_recalling_past_events"
       ],
       "patterns": [
-        "what is peronal narratives in recalling past events?"
+        "what is personal narratives in recalling past events?"
       ],
       "responses": [
         "Personal narratives are stories that are told about past events or experiences that happened to an individual. These narratives are typically written or spoken in first person point of view and often include the author's personal thoughts, feelings, and emotions related to the event. Personal narratives can be used to share personal experiences with others, to entertain, to educate, or to persuade. In recalling past events, personal narratives can help individuals remember important details and emotions associated with the experience."
@@ -4585,7 +4583,7 @@
         "predicting_outcomes_through_dialouge"
       ],
       "patterns": [
-        "how to predict outcomes through dialaouge?"
+        "how to predict outcomes through dialogue?"
       ],
       "responses": [
         "Predicting outcomes through dialogue involves using clues in a conversation to anticipate what might happen next. Here are some steps to follow: Pay attention to the words used: Look for words that indicate a change or a transition in the conversation. For example, if a character says \"but,\" \"however,\" or \"on the other hand,\" it could indicate that the conversation is about to take a different turn. Consider the tone: The tone of a conversation can also provide clues about what might happen next. If the characters are arguing or getting emotional, it could indicate that the situation is about to escalate or resolve. Look for foreshadowing: Foreshadowing is when the author gives a hint about what is to come. If a character mentions something that seems insignificant at the time, but later becomes important, it could be foreshadowing. Consider the context: The context of the conversation can also provide clues about what might happen next. For example, if the conversation is taking place during a conflict or a crisis, it could foreshadow a resolution. By paying attention to these elements, you can make predictions about what might happen next in a story or conversation."
@@ -4613,7 +4611,7 @@
         "dialouge_with_feeling"
       ],
       "patterns": [
-        "how to know the feeling in a dialouge?"
+        "how to know the feeling in a dialogue?"
       ],
       "responses": [
         "To understand the feeling in a dialogue, you can look for the tone, choice of words, and context. Here are some tips: Pay attention to the tone of the speaker: The tone of voice can reveal a lot about the feeling of the speaker. For example, if the speaker is using a harsh or angry tone, it may indicate that they are upset or frustrated. Look for emotional language: The choice of words can also indicate the speaker's feelings. For example, if the speaker is using words such as \"happy,\" \"sad,\" or \"frustrated,\" it can help you understand their emotional state. Consider the context: The context of the dialogue can also give you clues about the feelings of the speaker. For example, if the dialogue takes place during a funeral, the speaker may be feeling sad or grieving. Observe body language: Non-verbal cues such as facial expressions, gestures, and body language can also provide insight into the feelings of the speaker. By paying attention to these elements, you can better understand the feeling in a dialogue and make predictions about what may happen next."
@@ -4670,7 +4668,7 @@
       ],
       "patterns": [
         "what is a comparative form?",
-        "compartive form"
+        "comparative form"
       ],
       "responses": [
         "The comparative form is a type of adjective or adverb form that compares two things or people, expressing that one has more or less of a quality than the other. The comparative form is usually formed by adding \"-er\" to the end of the adjective or adverb (e.g., \"bigger,\" \"faster\"), or by using the word \"more\" before the adjective or adverb (e.g., \"more beautiful,\" \"more quickly\"). The comparative form is often used when making comparisons between two things or people. For example, \"This apple is bigger than that one,\" or \"She runs more quickly than he does.\""
@@ -4699,7 +4697,7 @@
         "comapring_contrasting_infromation"
       ],
       "patterns": [
-        "what is comparing and contrasting infromation?"
+        "what is comparing and contrasting information?"
       ],
       "responses": [
         "Comparing and contrasting information is a process of identifying the similarities and differences between two or more things, ideas, or concepts. It involves analyzing the characteristics, features, or attributes of each item being compared or contrasted and identifying their similarities and differences. This process is often used in academic writing, research, and analysis to provide a deeper understanding of the subject matter and to help readers make connections and draw conclusions. It can be used to compare and contrast different works of literature, historical events, scientific theories, products, services, and many other things."
@@ -4872,7 +4870,7 @@
         "sentence_interrogative"
       ],
       "patterns": [
-        "what is an interrogative sentence?linterrogative sentence"
+        "what is an interrogative sentence?interrogative sentence"
       ],
       "responses": [
         "An interrogative sentence is a type of sentence that asks a question. It is usually formed by starting with a question word (such as \"who,\" \"what,\" \"when,\" \"where,\" \"why,\" or \"how\") or with an auxiliary verb (such as \"do,\" \"does,\" \"did,\" \"will,\" \"would,\" \"can,\" \"could,\" \"should,\" or \"may\"). Interrogative sentences usually end with a question mark. For example: \"Where is the nearest coffee shop?\""
@@ -5653,7 +5651,7 @@
       ],
       "patterns": [
         "What is objective pronoun case?",
-        "objective pronound case"
+        "objective pronoun case"
       ],
       "responses": [
         "The objective case of a pronoun is used when it is the object of a verb or preposition. Some common objective pronouns include me, you, him, her, it, us, and them. For example, in the sentence \"She gave him a book\", \"him\" is in the objective case as it is the object of the verb \"gave\"."
@@ -5780,7 +5778,7 @@
         "writing_purpose_entertain"
       ],
       "patterns": [
-        "to enterntain",
+        "to entertain",
         "entertain"
       ],
       "responses": [
@@ -5890,7 +5888,7 @@
       ],
       "patterns": [
         "What is a heroine?",
-        "horeine in a story",
+        "heroine in a story",
         "heroine"
       ],
       "responses": [
@@ -5941,7 +5939,7 @@
         "techniques for propaganda"
       ],
       "responses": [
-        "Propaganda techniques are normally seen and used in product advertisements, slogans, speeches, and political advertiseents. It includes card stacking, name-calling, fear appeal, bandwagon, testimonial, transfer, glittering generalities or virtue words, loaded words, plain folks, and snob appeal."
+        "Propaganda techniques are normally seen and used in product advertisements, slogans, speeches, and political advertisements. It includes card stacking, name-calling, fear appeal, bandwagon, testimonial, transfer, glittering generalities or virtue words, loaded words, plain folks, and snob appeal."
       ],
       "context": [
         "propaganda"
@@ -5968,7 +5966,7 @@
         "propaganda_name_calling"
       ],
       "patterns": [
-        "What is name-calling propagada?",
+        "What is name-calling propaganda?",
         "name-calling",
         "name calling"
       ],
@@ -7284,7 +7282,7 @@
         "vowel diphthongs",
         "diphthongs vowel",
         "diphthongs",
-        "diphtong"
+        "diphthong"
       ],
       "responses": [
         "Diphthongs are vowel sounds made by combining two vowel sounds together. English has eight diphthongs: \"oy,\" \"ow,\" \"ou,\" \"aw,\" \"au,\" \"oi,\" \"oo,\" and \"ee.\" Moving the mouth and lips in a specific way creates each diphthong. Practice can help in mastering their pronunciation."
@@ -7430,7 +7428,7 @@
         "capitalization_proper_noun"
       ],
       "patterns": [
-        "what is the correct capitalizaion of proper nouns?"
+        "what is the correct capitalization of proper nouns?"
       ],
       "responses": [
         "Proper nouns should be capitalized. Proper nouns refer to specific names of people, places, organizations, or things. Examples of proper nouns include John, Paris, Coca-Cola, Mount Everest, etc. Here are some rules to follow for correct capitalization of proper nouns: Capitalize the first letter of the first word in a sentence, title, or heading.Example: The capitalization of proper nouns is important. Capitalize the first letter of each word in a proper noun, including adjectives and conjunctions. Example: United States of America Capitalize brand names and product names, even if they contain lowercase letters or symbols. Example: iPhone, eBay, Yahoo! Capitalize geographical locations, including continents, countries, regions, cities, streets, and landmarks. Example: Asia, Spain, New York City, Eiffel Tower Capitalize people's names, including first, middle, and last names, as well as titles and honorifics. Example: John Smith, Dr. Martin Luther King Jr., Queen Elizabeth II Remember, correct capitalization of proper nouns is important for clarity and professionalism in writing."
@@ -7598,7 +7596,7 @@
         "regular_past_tense_form_of_verbs"
       ],
       "patterns": [
-        "what is a regular past tene form of a verb?"
+        "what is a regular past tense form of a verb?"
       ],
       "responses": [
         "The regular past tense form of a verb is formed by adding \"-ed\" to the base form of the verb. For example, the base form of the verb \"walk\" is \"walk\", and the regular past tense form is \"walked\". Another example is the verb \"talk\". The base form is \"talk\", and the regular past tense form is \"talked\"."
@@ -7654,7 +7652,7 @@
         "cardinal_adjective"
       ],
       "patterns": [
-        "what is a cardinal adjectve?"
+        "what is a cardinal adjective?"
       ],
       "responses": [
         "A cardinal adjective is an adjective that is used to express a quantity or a number of nouns. It refers to the cardinal numbers such as one, two, three, etc. For example, in the phrase \"two cats,\" the word \"two\" is a cardinal adjective because it expresses the number of cats. Other examples of cardinal adjectives include \"three books,\" \"five cookies,\" and \"six pencils.\""
@@ -7696,7 +7694,7 @@
         "introduce_oneself"
       ],
       "patterns": [
-        "how do i introdue my self?"
+        "how do i introduce myself?"
       ],
       "responses": [
         "A good way to introduce yourself is to start with your name and a brief description of who you are or what you do. For example, \"Hi, my name is [your name]. I'm a [your occupation or field of interest], and I'm excited to be here.\" You can also include some additional information about yourself, such as where you're from or a fun fact that relates to the situation or conversation. Remember to be friendly and approachable, and try to make a connection with the person or people you're speaking to."
@@ -7710,7 +7708,7 @@
         "following_one_step_direction"
       ],
       "patterns": [
-        "how to follow one step direcion?"
+        "how to follow one step direction?"
       ],
       "responses": [
         "Following one-step directions is a straightforward process. Here are some steps to help you: Listen carefully: When someone gives you a one-step direction, make sure you listen carefully to the instruction being given. Try to focus your attention on the speaker and avoid any distractions. Repeat the instruction: Repeat the instruction to yourself silently or out loud to help you remember it. Clarify if necessary: If you are unsure about the instruction or need further clarification, don't hesitate to ask the person to repeat it or explain it in more detail. Take action: Once you have understood the instruction, take action immediately to follow through with the direction given. Check back: After you have completed the task, double-check with the person to ensure you have followed the instruction correctly. Remember, following one-step directions is a fundamental skill that requires attention, focus, and clear communication."
@@ -7845,7 +7843,7 @@
         "prefix re examples"
       ],
       "responses": [
-        "Here are some examples of words with the prefix \"re\": Rebuild, Reconsider Rewrite All of these words with the prefix \"re\" indicate repetition, resumption, or restoration of the root word's action or state."
+        "Here are some examples of words with the prefix \"re\": Rebuild, Reconsider Rewrite All of these words with the prefix \"re\" indicate repetition, resumption, or restoration of the root word action or state."
       ],
       "context": [
         "prefix_re_example"
@@ -8521,7 +8519,7 @@
         "possessive pronoun examples"
       ],
       "responses": [
-        "Here are some examples of possessive pronouns: Mine - That book is mine. Yours - The car in the driveway is yours. His - The computer belongs to him. Hers - The bike is hers. Its - The tree lost its leaves in autumn."
+        "Here are some examples of possessive pronouns: Mine - That book is mine. Yours - The car in the driveway is yours. His - The computer belongs to him. Hers - The bike is hers. It's - The tree lost its leaves in autumn."
       ],
       "context": [
         "pronoun_possessive_example"
@@ -8652,8 +8650,8 @@
         "contextclues_types_appositive_example"
       ],
       "patterns": [
-        "contextclues types appositive example",
-        "contextclues types appositive examples"
+        "context clues types appositive example",
+        "context clues types appositive examples"
       ],
       "responses": [
         "Here is an example of an appositive in a sentence: My friend, the doctor, is always on call. In this sentence, \"the doctor\" is the appositive, renaming or explaining \"my friend\". The appositive provides additional information about \"my friend\", helping to clarify the meaning of the sentence."
@@ -9027,8 +9025,8 @@
         "authors_purpose_example"
       ],
       "patterns": [
-        "authors purpose example",
-        "authors purpose examples"
+        "author's purpose example",
+        "author's purpose examples"
       ],
       "responses": [
         "Sure, here are some examples of author's purpose: To inform: A textbook about history is written to inform the reader about past events and their significance. To persuade: A political speech is written to persuade the audience to support a particular candidate or idea. To entertain: A novel or short story is written to entertain the reader with a captivating plot and interesting characters. To express: A personal essay or memoir is written to express the author's thoughts, feelings, and experiences. To instruct: A how-to guide is written to instruct the reader on how to do something, such as cooking or repairing a car."
@@ -9286,7 +9284,7 @@
         "past form irregular verb examples"
       ],
       "responses": [
-        "Here are some examples of irregular verbs in their past tense form: go - went eat - ate swim - swamdrive - drove run - ran"
+        "Here are some examples of irregular verbs in their past tense form: go - went eat - ate swim - swam drive - drove run - ran"
       ],
       "context": [
         "past form_irregular_verb_example"
@@ -9720,7 +9718,7 @@
       ],
       "patterns": [
         "nonfiction example",
-        "nonfictionexamples"
+        "nonfiction examples"
       ],
       "responses": [
         "Here are a few examples of nonfiction: \"The Immortal Life of Henrietta Lacks\" by Rebecca Skloot: A work of narrative nonfiction that tells the story of Henrietta Lacks, a woman whose cancer cells were taken without her knowledge and used to make significant contributions to medical research. \"Into Thin Air\" by Jon Krakauer: A personal account of a disastrous expedition to climb Mount Everest, which resulted in the deaths of several climbers, and explores themes of ambition, risk-taking, and survival.These nonfiction examples are all different genres and styles, from memoir and investigative journalism to history and sociology. They all share a commitment to factual accuracy, research, and the exploration of real-world themes and issues."
@@ -9779,8 +9777,8 @@
         "myth_chracters_example"
       ],
       "patterns": [
-        "myth chracters example",
-        "myth chracters examples"
+        "myth characters example",
+        "myth characters examples"
       ],
       "responses": [
         "Here are some examples of mythological characters: Zeus (Greek Mythology): The king of the gods, god of the sky and thunder, and wielder of lightning bolts. Thor (Norse Mythology): The god of thunder and lightning, son of Odin, and wielder of the mighty hammer Mjolnir. Anansi (West African Mythology): A trickster spider who often outwits his opponents using cunning and wit. Ra (Egyptian Mythology): The god of the sun, who created and ruled over all other gods and goddesses. Shiva (Hindu Mythology): The god of destruction and transformation, who is also associated with creation and fertility.These are just a few examples of the rich and diverse cast of mythological characters from various cultures around the world. Each character has their own unique qualities, powers, and stories that have captured the imaginations of people for centuries."
@@ -10192,7 +10190,7 @@
         "figure of speech examples"
       ],
       "responses": [
-        "Sure! Here are some examples of figures of speech: Simile: \"She's as busy as a bee.\" Metaphor: \"The world is a stage.\" Hyperbole: \"I've told you a million times!\" Personification: \"The wind whispered through the trees.\" Alliteration: \"Peter Piper picked a peck of pickled peppers.\" Onomatopoeia: \"The clock tick-tocked in the background.\" Idiom: \"It's raining cats and dogs.\" Oxymoron: \"The sound of silence.\" Pun: \"I'm reading a book on anti-gravity. It's impossible to put down.\" Euphemism: \"He passed away\" instead of \"He died.\""
+        "Sure! Here are some examples of figures of speech: Simile: \"She's as busy as a bee.\" Metaphor: \"The world's a stage.\" Hyperbole: \"I've told you a million times!\" Personification: \"The wind whispered through the trees.\" Alliteration: \"Peter Piper picked a peck of pickled peppers.\" Onomatopoeia: \"The clock tick-tock in the background.\" Idiom: \"It's raining cats and dogs.\" Oxymoron: \"The sound of silence.\" Pun: \"I'm reading a book on anti-gravity. It's impossible to put down.\" Euphemism: \"He passed away\" instead of \"He died.\""
       ],
       "context": [
         "figure_of_speech_example"
@@ -10297,7 +10295,7 @@
         "personal pronouns sentence examples"
       ],
       "responses": [
-        "Sure, here are some examples of peronal pronouns sentence: She went to the store to buy some groceries. They are going to the movies tonight. He is studying for his exam tomorrow."
+        "Sure, here are some examples of personal pronouns sentence: She went to the store to buy some groceries. They are going to the movies tonight. He is studying for his exam tomorrow."
       ],
       "context": [
         "personal_pronouns_sentence_example"
@@ -10323,8 +10321,8 @@
         "dialouge_with_feeling_example"
       ],
       "patterns": [
-        "dialouge with feeling example",
-        "dialouge with feeling examples"
+        "dialogue with feeling example",
+        "dialogue with feeling examples"
       ],
       "responses": [
         "Here's an example of dialogue with feeling: \"I can't believe you did this,\" Sarah said, her voice trembling with anger. \"You promised you wouldn't and now look at what you've done. How could you be so irresponsible?\" \"I'm sorry,\" John replied, looking down at his feet. \"I know I messed up and I'll do whatever it takes to make it right.\""
@@ -10342,7 +10340,7 @@
         "noting details story examples"
       ],
       "responses": [
-        "Here's an example of noting details in a story: Title: The Red Bike As I walked down the street, I saw a bright red bike parked outside a store. It was shiny and new, with a big basket in the front. I couldn't resist taking a closer look. The handlebars were decorated with glittery streamers, and there was a bell that rang loudly when I pressed it. I noticed that the bike had a lock on the back tire, which meant someone was probably inside the store. As I waited, I noticed that the seat was covered in a soft, velvety material. The pedals were big and sturdy, and I could tell that they would be easy to push. Finally, the store owner came out and unlocked the bike. She told me it was for sale, and I couldn't resist. I bought the bike and rode it all the way home, feeling the wind in my hair and the sun on my face. In this story, the narrator takes note of several details about the red bike, such as its shiny appearance, the glittery streamers on the handlebars, and the soft material on the seat. These details help to create a vivid picture in the reader's mind and make the story more engaging."
+        "Here's an example of noting details in a story: Title: The Red Bike As I walked down the street, I saw a bright red bike parked outside a store. It was shiny and new, with a big basket in the front. I couldn't resist taking a closer look. The handlebars were decorated with glitter streamers, and there was a bell that rang loudly when I pressed it. I noticed that the bike had a lock on the back tire, which meant someone was probably inside the store. As I waited, I noticed that the seat was covered in a soft, velvety material. The pedals were big and sturdy, and I could tell that they would be easy to push. Finally, the store owner came out and unlocked the bike. She told me it was for sale, and I couldn't resist. I bought the bike and rode it all the way home, feeling the wind in my hair and the sun on my face. In this story, the narrator takes note of several details about the red bike, such as its shiny appearance, the glitter streamers on the handlebars, and the soft material on the seat. These details help to create a vivid picture in the reader's mind and make the story more engaging."
       ],
       "context": [
         "noting_details_story_example"
@@ -10687,7 +10685,7 @@
         "nonfact images examples"
       ],
       "responses": [
-        "Here are some examples of nonfactual images: Cartoon characters - While they may be based on real animals or people, cartoon characters are often exaggerated and do not represent actual physical features or proportions. Surreal artwork - Surrealism is a style of art that emphasizes the irrational and the subconscious, often featuring bizarre and dreamlike imagery that does not reflect the real world. Fantasy creatures - Creatures like unicorns, dragons, and mermaids are purely imaginative and do not exist in the real world."
+        "Here are some examples of non factual images: Cartoon characters - While they may be based on real animals or people, cartoon characters are often exaggerated and do not represent actual physical features or proportions. Surreal artwork - Surrealism is a style of art that emphasizes the irrational and the subconscious, often featuring bizarre and dreamlike imagery that does not reflect the real world. Fantasy creatures - Creatures like unicorns, dragons, and mermaids are purely imaginative and do not exist in the real world."
       ],
       "context": [
         "nonfact_images_example"
@@ -11403,8 +11401,8 @@
         "types_of_pov_first_person_example"
       ],
       "patterns": [
-        "pov first personexample",
-        "pov first personl examples"
+        "pov first person example",
+        "pov first person examples"
       ],
       "responses": [
         "Here are some examples of first person point of view (POV): \"I woke up to the sound of birds chirping outside my window. It was a beautiful morning, and I knew it was going to be a great day.\" \"As I walked down the street, I noticed a man walking towards me. I couldn't help but feel a little nervous, but I tried to stay calm and keep walking.\""
@@ -11418,8 +11416,8 @@
         "types_of_pov_second_person_example"
       ],
       "patterns": [
-        "pov second personexample",
-        " pov second personexamples"
+        "pov second person example",
+        " pov second person examples"
       ],
       "responses": [
         "Second-person point of view is used when the narrator is addressing the reader directly, using \"you\" pronouns. Here are some examples: \"You walk into the room and immediately notice the smell of freshly baked cookies. You see a plate on the counter with a note that says 'help yourself.'\" \"As you drive down the highway, you can feel the wind in your hair and the sun on your face. You turn up the radio and sing along to your favorite song.\" \"You stand on the edge of the cliff, looking down at the sparkling blue water below. You take a deep breath and jump, feeling the rush of adrenaline as you fall.\"In each of these examples, the narrator is speaking directly to the reader, inviting them to experience the events of the story as if they were happening to them."
@@ -11797,7 +11795,7 @@
         "map legend examples"
       ],
       "responses": [
-        "A map legend, also known as a key, is a table or visual explanation of the symbols used on a map. Here are some examples of map legends: Topographic map legend:Brown lines: contour lines, indicating elevation Blue lines: rivers, lakes, and other bodies of water\n Green areas: forests and other vegetation Red areas: major roads and highways Black areas: man-made features such as buildings and roads Tourist map legend: Red lines: major roads and highways Yellow lines: secondary roads Green areas: parks and other recreational areas Blue areas: bodies of waterIcons: tourist attractions, such as museums and monuments"
+        "A map legend, also known as a key, is a table or visual explanation of the symbols used on a map. Here are some examples of map legends: Topographic map legend:Brown lines: contour lines, indicating elevation Blue lines: rivers, lakes, and other bodies of water\n Green areas: forests and other vegetation Red areas: major roads and highways Black areas: man-made features such as buildings and roads Tourist map legend: Red lines: major roads and highways Yellow lines: secondary roads Green areas: parks and other recreational areas Blue areas: bodies of water Icons: tourist attractions, such as museums and monuments"
       ],
       "context": [
         "map_legend_example"
@@ -11947,7 +11945,7 @@
         "future tense forms of verbs examples"
       ],
       "responses": [
-        "Sure, here are some examples of future tense forms of verbs: I will eat breakfast at 7 AM tomorrow. She is going to watch a movie tonight. They will travel to Europe next month. We shall meet at the park later. The concert will begin at 8 PM tonight."
+        "Sure, here are some examples of future tense forms of verbs: I will eat breakfast at 7 AM tomorrow. She is going to watch a movie tonight. They will travel to Europe next month. We shall meet at the park later. The concert will begin at 8PM tonight."
       ],
       "context": [
         "future_tense_forms_of_verbs_example"
@@ -12064,7 +12062,7 @@
       ],
       "patterns": [
         "vowel letters example",
-        "vowel letters examples"
+        "vowel letters  examples"
       ],
       "responses": [
         "I apologize for the confusion earlier. Vowel letters are letters in the alphabet that represent speech sounds produced without obstruction of airflow. Examples of vowel letters in the English language include: A E I O U"
