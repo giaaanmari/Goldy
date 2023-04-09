@@ -1,5 +1,3 @@
-#### IMPORT LIBRARIES
-
 import os
 import requests
 import pathlib
@@ -16,12 +14,8 @@ from nltk.corpus import words
 from nltk.corpus import stopwords
 lemmatizer = WordNetLemmatizer()
 import pickle
-<<<<<<< Updated upstream
-from autocorrect import Speller
-=======
 # from autocorrect import Speller
 import enchant
->>>>>>> Stashed changes
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
@@ -32,16 +26,13 @@ words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 context = None
 similarity_threshold = 0.6
-<<<<<<< Updated upstream
 default_responses = ["I'm sorry, I didn't quite understand what you said. Can you please try asking me again in a different way?",
                      "I'm sorry, I don't have the answer to that question right now. But don't worry, I'll keep learning and hopefully, I'll be able to help you with your question soon.",
                      "Hmm, I'm not quite sure what you're asking. Can you please give me more information or context about your question?"]
-spell = Speller(lang='en')
-=======
+
 # spell = Speller(lang='en')
 dictionary = enchant.Dict("en_US")
->>>>>>> Stashed changes
-#### PRE-PROCCESSING
+
 
 def clean_up_sentence(sentence):
     # tokenize the pattern - split words into array
@@ -95,17 +86,17 @@ def getResponse(ints, intents_json):
             else:
                 result = random.choice(default_responses)
             break
-<<<<<<< Updated upstream
+
         else:
             result = random.choice(default_responses)
     return result
-=======
+
     return random.choice(default_responses)
 
 def spellcheck(msg):
     corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
     return corrected_words
->>>>>>> Stashed changes
+
 
 flag = False
 text = []
@@ -115,11 +106,9 @@ def chatbot_response(input_msg):
     global text
     global flag
     
-<<<<<<< Updated upstream
-    correct_msg = spell(input_msg)
-=======
+
     correct_msg = spellcheck(input_msg)
->>>>>>> Stashed changes
+
 
     if flag:
         output_word=[correct_msg for correct_msg in text]
