@@ -597,10 +597,6 @@ video {
   float: left;
 }
 
-.m-5 {
-  margin: 1.25rem;
-}
-
 .m-2 {
   margin: 0.5rem;
 }
@@ -614,6 +610,11 @@ video {
   margin-right: 1.5rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -624,8 +625,8 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
 .mt-5 {
@@ -660,8 +661,8 @@ video {
   height: 100%;
 }
 
-.h-12 {
-  height: 3rem;
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-screen {
@@ -684,8 +685,22 @@ video {
   width: 6rem;
 }
 
-.w-12 {
-  width: 3rem;
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-3\/5 {
+  width: 60%;
+}
+
+.w-2\/5 {
+  width: 40%;
 }
 
 .w-20 {
@@ -740,6 +755,10 @@ video {
   gap: 0.25rem;
 }
 
+.self-end {
+  align-self: flex-end;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -779,6 +798,11 @@ video {
 .bg-blue_bg2 {
   --tw-bg-opacity: 1;
   background-color: rgb(109 203 237 / var(--tw-bg-opacity));
+}
+
+.bg-dark_bg {
+  --tw-bg-opacity: 1;
+  background-color: rgb(32 35 48 / var(--tw-bg-opacity));
 }
 
 .bg-inputbox {
@@ -829,8 +853,8 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), #FFD700, var(--tw-gradient-to);
 }
 
-.to-white {
-  --tw-gradient-to: #FFFFFF;
+.to-dark_bg {
+  --tw-gradient-to: #202330;
 }
 
 .to-orange {
@@ -1011,6 +1035,10 @@ video {
 .disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.\[i\:i\+1\] {
+  i: i+1;
 }
 
 .hover\:border-blue_hover:hover {

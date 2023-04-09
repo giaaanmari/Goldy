@@ -28,6 +28,7 @@ module.exports = {
       blue_hover: '#229DE2',
       blue_bg: '#9CDEF6',
       blue_bg2: '#6dcbed',
+      dark_bg: '#202330',
       gold: '#FFD700',
       orange: '#FFA800',
       gray: '#363636',
