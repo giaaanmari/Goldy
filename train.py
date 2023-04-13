@@ -1,5 +1,6 @@
 import nltk
 from nltk.stem import WordNetLemmatizer
+nltk.download('wordnet')
 lemmatizer = WordNetLemmatizer()
 import json
 import pickle
@@ -12,16 +13,18 @@ from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from keras.metrics import Precision, Recall
 import random
+import re
 words=[]
 classes = []
 documents = []
-ignore_words = ['?', '!', '.']
+ignore_words = ['.','?','!',':',';','<','>',',','\'']
 data_file = open('intents.json', encoding='utf-8').read()
 intents = json.loads(data_file)
-stop_words = set(stopwords.words('english'))
+
 for intent in intents['intents']:
     for pattern in intent['patterns']:
         #tokenize each word
+        w = re.sub(r'[^\w\s]', '', pattern)
         w = nltk.word_tokenize(pattern)
         words.extend(w)
         #add documents in the corpus
@@ -31,7 +34,7 @@ for intent in intents['intents']:
             classes.append(intent['tag'])
 
 # lemmaztize and lower each word and remove duplicates
-words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words]
+words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words and w not in stopwords.words('english')]
 words = sorted(list(set(words)))
 # sort classes
 classes = sorted(list(tuple(classes)))
@@ -80,10 +83,10 @@ model.add(Dense(64, activation='relu'))
 model.add(Dense(32, activation='relu'))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 # Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
-sgd = SGD(lr=0.008, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(learning_rate=0.11, decay=1e-6, momentum=0.75, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy', Precision(), Recall()])
 #fitting and saving the model 
-hist = model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=32, validation_split=0.2, verbose=2)
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=64, batch_size=164, validation_split=0.2, verbose=2)
 model.save('model.h5', hist)
 #score = model.evaluate(val_x, val_y, batch_size=64)
 #print('Validation Loss: {:.4f}'.format(score[0]))
@@ -127,4 +130,4 @@ plt.show()
 
 
 
-print("model created")
+print(model.summary())

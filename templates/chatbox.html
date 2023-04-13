@@ -216,7 +216,8 @@
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         const msgText = data;
-        appendMessage(BOT_NAME, "static/img/knight.png", "left", msgText, "row", "r-lg", "tl-lg", "pr");
+        const formattedMsgText = msgText.replace(/\n/g, "<br>");
+        appendMessage(BOT_NAME, "static/img/knight.png", "left", formattedMsgText, "row", "r-lg", "tl-lg", "pr");
       });
     }
     
