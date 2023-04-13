@@ -26,8 +26,10 @@ intents = json.loads(open('intents.json', encoding='utf-8').read())
 words = pickle.load(open('texts.pkl','rb'))
 classes = pickle.load(open('labels.pkl','rb'))
 context = None
-similarity_threshold = 0.6
+similarity_threshold = 0.8
 dictionary = enchant.Dict("en_US")
+for word in words:
+    dictionary.add(word)
 default_responses = ["I'm sorry, I didn't quite understand what you said. Can you please try asking me again in a different way?",
                      "I'm sorry, I don't have the answer to that question right now. But don't worry, I'll keep learning and hopefully, I'll be able to help you with your question soon.",
                      "Hmm, I'm not quite sure what you're asking. Can you please give me more information or context about your question?"]
@@ -60,7 +62,7 @@ def predict_class(sentence, model):
     # filter out predictions below a threshold
     p = bow(sentence, words,show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.25
+    ERROR_THRESHOLD = 0.7
     results = [[i,r] for i,r in enumerate(res) if r>ERROR_THRESHOLD]
     # sort by strength of probability
     results.sort(key=lambda x: x[1], reverse=True)
@@ -109,6 +111,7 @@ def chatbot_response(input_msg):
         if correct_msg == "yes" or correct_msg in output_txt:
             ints = predict_class(output_txt, model)
             res = getResponse(ints, intents)
+            print(ints)
             flag = False
         elif correct_msg == "no":
             res = f"Okay. Could you please clarify your question so I can assist you better?"
@@ -120,6 +123,7 @@ def chatbot_response(input_msg):
         text.append(correct_msg)
         if correct_msg == input_msg:
             ints = predict_class(input_msg, model)
+            print(correct_msg, ints)
             res = getResponse(ints, intents)
             text.clear()
             flag = False
