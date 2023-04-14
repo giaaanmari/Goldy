@@ -17,6 +17,8 @@ from nltk.corpus import stopwords
 lemmatizer = WordNetLemmatizer()
 import pickle
 import enchant
+import re
+from PyDictionary import PyDictionary
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
@@ -90,9 +92,31 @@ def getResponse(ints, intents_json):
             break
     return random.choice(default_responses)
 
-def spellcheck(msg):
-    corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
-    return corrected_words
+# check if the user wants to search a definition of a word
+def check(msg):
+    keywords = ['meaning', 'definition', 'define']
+    for word in msg.split():
+        if word in keywords:
+            return True
+    return False
+
+def get_definition(word): # using PyDictionary
+    dict = PyDictionary()
+    definition = dict.meaning(word)
+
+    for part_of_speech, meanings in definition.items():
+        print(f"{word} ({part_of_speech}):")
+        for meaning in meanings:
+            print(f"- {meaning}")
+
+def spell(match):
+    word = match.group(0)
+    return dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word
+
+# def spellcheck(msg):
+    # doesn't include punctuation marks
+    # corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
+    # return corrected_words
 
 flag = False
 text = []
@@ -102,34 +126,39 @@ def chatbot_response(input_msg):
     global text
     global flag
     
-    correct_msg = spellcheck(input_msg)
+    correct_msg = re.sub(r"\w+", spell, input_msg)
 
-    if flag:
-        output_word=[correct_msg for correct_msg in text]
-        output_txt=" ".join(output_word)
+    res = get_definition(correct_msg)
 
-        if correct_msg == "yes" or correct_msg in output_txt:
-            ints = predict_class(output_txt, model)
-            res = getResponse(ints, intents)
-            print(ints)
-            flag = False
-        elif correct_msg == "no":
-            res = f"Okay. Could you please clarify your question so I can assist you better?"
-            flag = False
-        else:
-            res = f"Sorry, I am still learning. Please enter your message again."
-            flag = False
-    else:
-        text.append(correct_msg)
-        if correct_msg == input_msg:
-            ints = predict_class(input_msg, model)
-            print(correct_msg, ints)
-            res = getResponse(ints, intents)
-            text.clear()
-            flag = False
-        else:
-            res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
-            flag = True
+    # if(check(correct_msg)):
+    #     res = get_definition(input_msg)
+
+    # if flag:
+    #     output_word=[correct_msg for correct_msg in text]
+    #     output_txt=" ".join(output_word)
+
+    #     if correct_msg == "yes" or correct_msg in output_txt:
+    #         ints = predict_class(output_txt, model)
+    #         res = getResponse(ints, intents)
+    #         print(ints)
+    #         flag = False
+    #     elif correct_msg == "no":
+    #         res = f"Okay. Could you please clarify your question so I can assist you better?"
+    #         flag = False
+    #     else:
+    #         res = f"Sorry, I am still learning. Please enter your message again."
+    #         flag = False
+    # else:
+    #     text.append(correct_msg)
+    #     if correct_msg == input_msg:
+    #         ints = predict_class(input_msg, model)
+    #         print(correct_msg, ints)
+    #         res = getResponse(ints, intents)
+    #         text.clear()
+    #         flag = False
+    #     else:
+    #         res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
+    #         flag = True
 
     return res
 
