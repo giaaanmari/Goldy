@@ -15,13 +15,14 @@ from keras.metrics import Precision, Recall
 import random
 import re
 words=[]
-classes = []
+tags = []
+context = []
 documents = []
 ignore_words = ['.','?','!',':',';','<','>',',','\'']
 data_file = open('intents.json', encoding='utf-8').read()
 intents = json.loads(data_file)
 
-for intent in intents['intents']:
+for intent in intents['intents']:   
     for pattern in intent['patterns']:
         #tokenize each word
         w = re.sub(r'[^\w\s]', '', pattern)
@@ -30,26 +31,36 @@ for intent in intents['intents']:
         #add documents in the corpus
         documents.append((w, intent['tag']))
         # add to our classes list
-        if intent['tag'] not in classes:
-            classes.append(intent['tag'])
+        if intent['tag'] not in tags:
+            tags.append(intent['tag'])
+        for unique_context in intent['context']:
+            c = nltk.word_tokenize(unique_context)
+            context.extend(c)
+
 
 # lemmaztize and lower each word and remove duplicates
 words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words and w not in stopwords.words('english')]
 words = sorted(list(set(words)))
 # sort classes
-classes = sorted(list(tuple(classes)))
+tags = [list(c) for c in set(tuple(i) for i in tags)]
+tags = sorted(tags)
+
+context = sorted(list(set(context)))
 # documents = combination between patterns and intents
 print (len(documents), "documents")
 # classes = intents
-print (len(classes), "classes", classes)
+print (len(tags), "tags", tags)
 # words = all words, vocabulary
 print (len(words), "unique lemmatized words", words)
+
+print(len(context), "unique contexts:", context)
 pickle.dump(words,open('texts.pkl','wb'))
-pickle.dump(classes,open('labels.pkl','wb'))
+pickle.dump(tags,open('tags.pkl','wb'))
+pickle.dump(context,open('context.pkl','wb'))
 # create our training data
 training = []
 # create an empty array for our output
-output_empty = [0] * len(classes)
+output_empty = [0] * len(tags)
 # training set, bag of words for each sentence
 for doc in documents:
     # initialize our bag of words
@@ -64,7 +75,7 @@ for doc in documents:
     
     # output is a '0' for each tag and '1' for current tag (for each pattern)
     output_row = list(output_empty)
-    output_row[classes.index(doc[1])] = 1
+    output_row[tags.index(doc[1])] = 1
     
     training.append([bag, output_row])
 # shuffle our features and turn into np.array
