@@ -9,26 +9,26 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import nltk
-nltk.download('popular')
-nltk.download('words')
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import words
 from nltk.corpus import stopwords
 lemmatizer = WordNetLemmatizer()
 import pickle
 import enchant
-import re
-from PyDictionary import PyDictionary
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
 import json
 import random
+import re
+
 intents = json.loads(open('intents.json', encoding='utf-8').read())
 words = pickle.load(open('texts.pkl','rb'))
-classes = pickle.load(open('labels.pkl','rb'))
-context = None
-similarity_threshold = 0.8
+tags = pickle.load(open('tags.pkl','rb'))
+context = pickle.load(open('context.pkl','rb'))
+previous_context = []
+current_context = []
+similarity_threshold = 0.5
 dictionary = enchant.Dict("en_US")
 for word in words:
     dictionary.add(word)
@@ -64,101 +64,85 @@ def predict_class(sentence, model):
     # filter out predictions below a threshold
     p = bow(sentence, words,show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.7
+    ERROR_THRESHOLD = 0.5
     results = [[i,r] for i,r in enumerate(res) if r>ERROR_THRESHOLD]
     # sort by strength of probability
     results.sort(key=lambda x: x[1], reverse=True)
     return_list = []
     for r in results:
-        return_list.append({"intent": classes[r[0]], "probability": str(r[1])})
+        return_list.append({"intent": tags[r[0]], "probability": str(r[1])})
     return return_list
 
 def getResponse(ints, intents_json):
     global default_responses
+    global context
+    global current_context
+    global previous_context
     if len(ints) > 0:
         tag = ints[0]['intent']
     else:
-        tag = None
+        tag = None 
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
-        if(i['tag']== tag):
-            if 'context' not in intents or 'context' in intents and intents['context'] == context:
-                possible_responses = i['responses']
-                if 'context' in intents:
-                    context = intents['context']
-                else:
-                    context = None                        
+        if tag == i['tag']:
+            possible_responses = i['responses']                   
+            if current_context == None:
+                current_context = i['context']
+                print(current_context)
                 return random.choice(possible_responses)
-            break
+            else:
+                previous_context = current_context
+                current_context = i['context']
+                return random.choice(possible_responses)        
     return random.choice(default_responses)
 
-# check if the user wants to search a definition of a word
-def check(msg):
-    keywords = ['meaning', 'definition', 'define']
-    for word in msg.split():
-        if word in keywords:
-            return True
-    return False
-
-def get_definition(word): # using PyDictionary
-    dict = PyDictionary()
-    definition = dict.meaning(word)
-
-    for part_of_speech, meanings in definition.items():
-        print(f"{word} ({part_of_speech}):")
-        for meaning in meanings:
-            print(f"- {meaning}")
-
-def spell(match):
-    word = match.group(0)
-    return dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word
-
-# def spellcheck(msg):
-    # doesn't include punctuation marks
-    # corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
-    # return corrected_words
+def spellcheck(msg):
+    corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
+    return corrected_words
 
 flag = False
 text = []
 
 def chatbot_response(input_msg):
-    input_msg = input_msg.lower()
     global text
     global flag
-    
-    correct_msg = re.sub(r"\w+", spell, input_msg)
+    global context
+    input_msg = input_msg.lower()
+    input_msg = re.sub(r'[^\w\s]', '', input_msg)
+    correct_msg = spellcheck(input_msg)
+    if flag:
+        output_word=[correct_msg for correct_msg in text]
+        output_txt=" ".join(output_word)
+        if correct_msg == "yes" or correct_msg in output_txt:
+            ints = predict_class(output_txt, model)
+            res = getResponse(ints, intents)
+            print(ints)
+            flag = False
+        elif correct_msg == "no":
+            res = f"Okay. Could you please clarify your question so I can assist you better?"
+            flag = False
+        else:
+            res = f"Sorry, I am still learning. Please enter your message again."
+            flag = False
+    else:
+        text.append(correct_msg)
+        if correct_msg == input_msg:
+            ints = predict_class(input_msg, model)
+            print(correct_msg, ints)
+            res = getResponse(ints, intents)
+            print("Previous Context:", previous_context, " Current Context: ", current_context)
 
-    res = get_definition(correct_msg)
+            text.clear()
+            flag = False
+        else:
+            res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
+            flag = True
 
-    # if(check(correct_msg)):
-    #     res = get_definition(input_msg)
 
-    # if flag:
-    #     output_word=[correct_msg for correct_msg in text]
-    #     output_txt=" ".join(output_word)
-
-    #     if correct_msg == "yes" or correct_msg in output_txt:
-    #         ints = predict_class(output_txt, model)
-    #         res = getResponse(ints, intents)
-    #         print(ints)
-    #         flag = False
-    #     elif correct_msg == "no":
-    #         res = f"Okay. Could you please clarify your question so I can assist you better?"
-    #         flag = False
-    #     else:
-    #         res = f"Sorry, I am still learning. Please enter your message again."
-    #         flag = False
-    # else:
-    #     text.append(correct_msg)
-    #     if correct_msg == input_msg:
-    #         ints = predict_class(input_msg, model)
-    #         print(correct_msg, ints)
-    #         res = getResponse(ints, intents)
-    #         text.clear()
-    #         flag = False
-    #     else:
-    #         res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
-    #         flag = True
+        if any(context in current_context for context in previous_context):
+            print("The context is similar")
+        else:
+            print("The context is not similar")
 
     return res
 
