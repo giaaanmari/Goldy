@@ -16,27 +16,22 @@ from nltk.corpus import wordnet
 lemmatizer = WordNetLemmatizer()
 import pickle
 import enchant
-<<<<<<< Updated upstream
-=======
 import re
 import string
->>>>>>> Stashed changes
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
 import json
 import random
 import re
+import openai
 
-<<<<<<< Updated upstream
-=======
 nltk.download('popular')
 nltk.download('words')
 nltk.download('wordnet')
 nltk.download('punkt')
 nltk.download('stopwords')
 
->>>>>>> Stashed changes
 intents = json.loads(open('intents.json', encoding='utf-8').read())
 words = pickle.load(open('texts.pkl','rb'))
 tags = pickle.load(open('tags.pkl','rb'))
@@ -95,19 +90,19 @@ def getResponse(ints, intents_json, msg):
     global context
     global current_context
     global previous_context
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     if len(ints) > 0:
         tag = ints[0]['intent']
     else:
         tag = None 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     list_of_intents = intents_json['intents']
+
+    pos = check_POS(msg) # check if the user wants to check the POS of a word
+    if pos != False:
+        print("pos: ", pos)
+        split_msg = msg.split()
+        split_msg.remove(pos) # remove the pos to not confuse data cleaning
+        new_msg = " ".join(split_msg)
+        return get_POS(new_msg, pos)
     
     for i in list_of_intents:
         if tag == i['tag']:
@@ -119,17 +114,9 @@ def getResponse(ints, intents_json, msg):
             else:
                 previous_context = current_context
                 current_context = i['context']
-<<<<<<< Updated upstream
-                return random.choice(possible_responses)        
-    return random.choice(default_responses)
-
-def spellcheck(msg):
-    corrected_words = " ".join([dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word for word in msg.split()])
-    return corrected_words
-=======
                 return random.choice(possible_responses)    
 
-    define = get_definition(msg);
+    define = definition(msg)
     if define != "none":
         return define
       
@@ -153,23 +140,53 @@ def get_definition(input_msg): # using WordNet
             return f"The word {word} means " + definition + "."
     return f"none"
 
-# code if the user wants to know the POS of a word (not yet done here) 
-def get_POS(word, pos):
-    tag_map = {"NOUN": "n", "VERB": "v", "ADJ": "a", "ADV": "r", "ADP": "r", "CONJ": "c", "DET": "d", "PRT": "p"}
-    pos = tag_map.get(pos.upper())
+# get definition using openai
+def definition(str):
+    openai.api_key = "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"
+    cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
+    if cleaned_tokens:
+        word = cleaned_tokens[0]
+        prompt = f"Explain {word} to a primary school student."
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=prompt,
+            max_tokens=100
+        )
+        if response.choices[0].text:
+            return response.choices[0].text.strip()        
+    return f"none"
 
-    # check if the given POS is valid
-    if not pos:
-        return False
+# check if the input contains pos 
+def check_POS(str):
+    keywords = ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'preposition', 'conjunction', 'interjection']
+    for word in str.split():
+        if word in keywords:
+            # check if there is another word other than the POS
+            split_str = str.split()
+            split_str.remove(word)
+            new_str = " ".join(split_str)
+            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
+            if cleaned_tokens:
+                return word
+    return False
+
+# code if the user wants to know the POS of a word (not yet done here) 
+def get_POS(str, pos):    
+    cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
+    if cleaned_tokens:
+        word = cleaned_tokens[0]
     
-    synsets = wordnet.synsets(word, pos=pos)
-    if synsets: return "yes"
-    else: return "no"
+        synsets = wordnet.synsets(word)
+        pos_list = [synset.pos() for synset in synsets]
+        print(pos_list)
+        if pos[0] in pos_list:
+            return f"Yes. The word {word} is a/an {pos}."
+        else: 
+            return f"No. The word {word} is not a/an {pos}."
 
 def spell(match):
     word = match.group(0)
     return dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word
->>>>>>> Stashed changes
 
 flag = False
 text = []
@@ -178,40 +195,6 @@ def chatbot_response(input_msg):
     global text
     global flag
     global context
-<<<<<<< Updated upstream
-    input_msg = input_msg.lower()
-    input_msg = re.sub(r'[^\w\s]', '', input_msg)
-    correct_msg = spellcheck(input_msg)
-    if flag:
-        output_word=[correct_msg for correct_msg in text]
-        output_txt=" ".join(output_word)
-        if correct_msg == "yes" or correct_msg in output_txt:
-            ints = predict_class(output_txt, model)
-            res = getResponse(ints, intents)
-            print(ints)
-            flag = False
-        elif correct_msg == "no":
-            res = f"Okay. Could you please clarify your question so I can assist you better?"
-            flag = False
-        else:
-            res = f"Sorry, I am still learning. Please enter your message again."
-            flag = False
-    else:
-        text.append(correct_msg)
-        if correct_msg == input_msg:
-            ints = predict_class(input_msg, model)
-            print(correct_msg, ints)
-            res = getResponse(ints, intents)
-            print("Previous Context:", previous_context, " Current Context: ", current_context)
-
-            text.clear()
-            flag = False
-        else:
-            res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
-            flag = True
-
-
-=======
     global default_responses
 
     res = ["Can you please clarify what you're asking or provide more information so I can better assist you?",
@@ -254,7 +237,6 @@ def chatbot_response(input_msg):
             flag = True
 
 
->>>>>>> Stashed changes
         if any(context in current_context for context in previous_context):
             print("The context is similar")
         else:
