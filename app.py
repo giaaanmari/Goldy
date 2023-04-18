@@ -116,7 +116,7 @@ def getResponse(ints, intents_json, msg):
                 current_context = i['context']
                 return random.choice(possible_responses)    
 
-    define = definition(msg)
+    define = definition(msg, "define")
     if define != "none":
         return define
       
@@ -127,26 +127,19 @@ def clean_tokens(tokens):
     lemmatizer = WordNetLemmatizer()
     return [lemmatizer.lemmatize(token.lower()) for token in tokens if token.lower() not in stop_words and token not in string.punctuation]
 
-# get the definition of words that is not available in the intents.json
-def get_definition(input_msg): # using WordNet
-    # get the word from the input
-    cleaned_tokens = clean_tokens(nltk.word_tokenize(input_msg))
-    if cleaned_tokens:
-        word = cleaned_tokens[0]
-        # get definition
-        synsets = wordnet.synsets(word)
-        if synsets:
-            definition = synsets[0].definition()
-            return f"The word {word} means " + definition + "."
-    return f"none"
-
 # get definition using openai
-def definition(str):
+def definition(str, action):
     openai.api_key = "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"
     cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
     if cleaned_tokens:
         word = cleaned_tokens[0]
-        prompt = f"Explain {word} to a primary school student."
+        if action == "define":
+            prompt = f"Explain {word} in an easy to understand manner."
+        elif action == "syn":
+            prompt = f"Explain {word} in an easy to understand manner."
+        elif action == "ant":
+            prompt = f"Explain {word} in an easy to understand manner."
+
         response = openai.Completion.create(
             engine="text-davinci-002",
             prompt=prompt,
@@ -158,7 +151,7 @@ def definition(str):
 
 # check if the input contains pos 
 def check_POS(str):
-    keywords = ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'preposition', 'conjunction', 'interjection']
+    keywords = ['noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'interjection']
     for word in str.split():
         if word in keywords:
             # check if there is another word other than the POS
@@ -170,19 +163,59 @@ def check_POS(str):
                 return word
     return False
 
+# get the definition of words that is not available in the intents.json
+def get_definition_and_pos(word, input_pos, article, isFound): # using WordNet
+    pos_tag = {"noun": "n", "verb": "v", "adjective": "a", "adverb": "r", "preposition": "p", "conjunction": "c", "interjection": "u"}.get(input_pos)
+    
+    # get definition
+    synsets = wordnet.synsets(word)
+    if synsets:
+        pos = synsets[0].pos()
+        pos_word = {"n": "noun", "v": "verb", "a": "adjective", "r": "adverb", "p": "preposition", "c": "conjunction", "u": "interjection"}.get(pos)
+        definition = synsets[0].definition()
+        if pos_word == input_pos:
+            ans = f"Yes, {word} is {article} {pos_word}. "
+            synsets = wordnet.synsets(word, pos=pos)
+            definitions = [synset.definition() for synset in synsets]
+            # if definitions:
+            ans += f"Here are the definitions of {word}:\n"
+            for i, definition in enumerate(definitions):
+                ans += f"- {definition}\n"
+        elif isFound:
+            ans = f"Yes, {word} can also be used as {article} {input_pos}. "
+            synsets = wordnet.synsets(word, pos=pos_tag)
+            # if synsets:
+            definitions = [synset.definition() for synset in synsets]
+            # if definitions:
+            ans += f"When used as {article} {input_pos}, it means:\n"
+            for i, definition in enumerate(definitions):
+                ans += f"- {definition}\n"
+        else:
+            ans =  f"The part of speech of {word} is {pos_word}. It is defined as {definition}."
+        return ans
+    return f"none"
+
 # code if the user wants to know the POS of a word (not yet done here) 
-def get_POS(str, pos):    
+def get_POS(str, pos):
+    vowels = set("aeiouAEIOU")
+    if pos[0] in vowels:
+        article = "an"
+    else:
+        article = "a"
+
     cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
     if cleaned_tokens:
         word = cleaned_tokens[0]
-    
         synsets = wordnet.synsets(word)
         pos_list = [synset.pos() for synset in synsets]
         print(pos_list)
         if pos[0] in pos_list:
-            return f"Yes. The word {word} is a/an {pos}."
+            definition = get_definition_and_pos(word, pos, article, True)
+            return definition
         else: 
-            return f"No. The word {word} is not a/an {pos}."
+            definition = get_definition_and_pos(word, pos, article, False)
+            return f"No, the word {word} is not {article} {pos}. {definition}"
+        
 
 def spell(match):
     word = match.group(0)
