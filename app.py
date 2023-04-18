@@ -96,29 +96,39 @@ def getResponse(ints, intents_json, msg):
         tag = None 
     list_of_intents = intents_json['intents']
 
-    pos = check_POS(msg) # check if the user wants to check the POS of a word
-    if pos != False:
-        print("pos: ", pos)
+    quest = check_input(msg) # check if the user wants to check the POS, synonym, or antonyms of a word
+    if quest == "synonyms" or quest == "synonym":
         split_msg = msg.split()
-        split_msg.remove(pos) # remove the pos to not confuse data cleaning
+        split_msg.remove(quest)
         new_msg = " ".join(split_msg)
-        return get_POS(new_msg, pos)
-    
-    for i in list_of_intents:
-        if tag == i['tag']:
-            possible_responses = i['responses']                   
-            if current_context == None:
-                current_context = i['context']
-                print(current_context)
-                return random.choice(possible_responses)
-            else:
-                previous_context = current_context
-                current_context = i['context']
-                return random.choice(possible_responses)    
+        return definition(msg, "syn")
+    elif quest == "antonyms" or quest == "antonym":
+        split_msg = msg.split()
+        split_msg.remove(quest)
+        new_msg = " ".join(split_msg)
+        return definition(msg, "ant")
+    elif quest != False:
+        print("pos: ", quest)
+        split_msg = msg.split()
+        split_msg.remove(quest)
+        new_msg = " ".join(split_msg)
+        return get_POS(new_msg, quest)
+    else:
+        for i in list_of_intents:
+            if tag == i['tag']:
+                possible_responses = i['responses']                   
+                if current_context == None:
+                    current_context = i['context']
+                    print(current_context)
+                    return random.choice(possible_responses)
+                else:
+                    previous_context = current_context
+                    current_context = i['context']
+                    return random.choice(possible_responses)    
 
-    define = definition(msg, "define")
-    if define != "none":
-        return define
+        define = definition(msg, "define")
+        if define != "none":
+            return define
       
     return random.choice(default_responses)
 
@@ -136,9 +146,9 @@ def definition(str, action):
         if action == "define":
             prompt = f"Explain {word} in an easy to understand manner."
         elif action == "syn":
-            prompt = f"Explain {word} in an easy to understand manner."
+            prompt = f"what are the synonyms of {word}"
         elif action == "ant":
-            prompt = f"Explain {word} in an easy to understand manner."
+            prompt = f"what are the antonyms of {word}"
 
         response = openai.Completion.create(
             engine="text-davinci-002",
@@ -150,12 +160,23 @@ def definition(str, action):
     return f"none"
 
 # check if the input contains pos 
-def check_POS(str):
-    keywords = ['noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'interjection']
+def check_input(str):
+    pos = ['noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'interjection']
     for word in str.split():
-        if word in keywords:
-            # check if there is another word other than the POS
-            split_str = str.split()
+        split_str = str.split()
+        if word in pos:
+            split_str.remove(word)
+            new_str = " ".join(split_str)
+            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
+            if cleaned_tokens:
+                return word
+        elif word == "synonyms" or word == "synonym":
+            split_str.remove(word)
+            new_str = " ".join(split_str)
+            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
+            if cleaned_tokens:
+                return word
+        elif word == "antonyms" or word == "antonym":
             split_str.remove(word)
             new_str = " ".join(split_str)
             cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
