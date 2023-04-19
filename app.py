@@ -15,15 +15,13 @@ from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 lemmatizer = WordNetLemmatizer()
 import pickle
-import enchant
-import re
+from textblob import TextBlob
 import string
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
 import json
 import random
-import re
 import openai
 
 nltk.download('popular')
@@ -39,9 +37,7 @@ context = pickle.load(open('context.pkl','rb'))
 previous_context = []
 current_context = []
 similarity_threshold = 0.5
-dictionary = enchant.Dict("en_US")
-for word in words:
-    dictionary.add(word)
+
 default_responses = ["I'm sorry, I didn't quite understand what you said. Can you please try asking me again in a different way?",
                      "I'm sorry, I don't have the answer to that question right now. But don't worry, I'll keep learning and hopefully, I'll be able to help you with your question soon.",
                      "Hmm, I'm not quite sure what you're asking. Can you please give me more information or context about your question?",
@@ -70,7 +66,6 @@ def bow(sentence, words, show_details=True):
                 if show_details:
                     print ("found in bag: %s" % w)
     return(np.array(bag))
-
 
 def predict_class(sentence, model):
     # filter out predictions below a threshold
@@ -159,7 +154,6 @@ def definition(str, action):
             return response.choices[0].text.strip()        
     return f"none"
 
-# check if the input contains pos 
 def check_input(str):
     pos = ['noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'interjection']
     for word in str.split():
@@ -184,7 +178,6 @@ def check_input(str):
                 return word
     return False
 
-# get the definition of words that is not available in the intents.json
 def get_definition_and_pos(word, input_pos, article, isFound): # using WordNet
     pos_tag = {"noun": "n", "verb": "v", "adjective": "a", "adverb": "r", "preposition": "p", "conjunction": "c", "interjection": "u"}.get(input_pos)
     
@@ -236,11 +229,11 @@ def get_POS(str, pos):
         else: 
             definition = get_definition_and_pos(word, pos, article, False)
             return f"No, the word {word} is not {article} {pos}. {definition}"
-        
 
-def spell(match):
-    word = match.group(0)
-    return dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word
+def spell(input_str):
+    blob = TextBlob(input_str)
+    corrected = str(blob.correct())
+    return corrected
 
 flag = False
 text = []
@@ -257,7 +250,7 @@ def chatbot_response(input_msg):
 
     input_msg = input_msg.lower()
 
-    correct_msg = re.sub(r"\w+", spell, input_msg) # correct the spelling of the input_msg
+    correct_msg = spell(input_msg)
 
     if flag:
         output_word=[correct_msg for correct_msg in text]
