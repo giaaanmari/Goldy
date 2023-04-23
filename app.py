@@ -15,13 +15,15 @@ from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 lemmatizer = WordNetLemmatizer()
 import pickle
-from textblob import TextBlob
+import enchant
+import re
 import string
 import numpy as np
 from keras.models import load_model
 model = load_model('model.h5')
 import json
 import random
+import re
 import openai
 
 nltk.download('popular')
@@ -37,7 +39,9 @@ context = pickle.load(open('context.pkl','rb'))
 previous_context = []
 current_context = []
 similarity_threshold = 0.5
-
+dictionary = enchant.Dict("en_US")
+for word in words:
+    dictionary.add(word)
 default_responses = ["I'm sorry, I didn't quite understand what you said. Can you please try asking me again in a different way?",
                      "I'm sorry, I don't have the answer to that question right now. But don't worry, I'll keep learning and hopefully, I'll be able to help you with your question soon.",
                      "Hmm, I'm not quite sure what you're asking. Can you please give me more information or context about your question?",
@@ -67,6 +71,7 @@ def bow(sentence, words, show_details=True):
                     print ("found in bag: %s" % w)
     return(np.array(bag))
 
+
 def predict_class(sentence, model):
     # filter out predictions below a threshold
     p = bow(sentence, words,show_details=False)
@@ -90,41 +95,23 @@ def getResponse(ints, intents_json, msg):
     else:
         tag = None 
     list_of_intents = intents_json['intents']
+    
+    for i in list_of_intents:
+        if tag == i['tag']:
+            possible_responses = i['responses']                   
+            if current_context == None:
+                current_context = i['context']
+                print(current_context)
+                return random.choice(possible_responses)
+            else:
+                previous_context = current_context
+                current_context = i['context']
+                return random.choice(possible_responses)    
 
-    quest = check_input(msg) # check if the user wants to check the POS, synonym, or antonyms of a word
-    if quest == "synonyms" or quest == "synonym":
-        split_msg = msg.split()
-        split_msg.remove(quest)
-        new_msg = " ".join(split_msg)
-        return definition(msg, "syn")
-    elif quest == "antonyms" or quest == "antonym":
-        split_msg = msg.split()
-        split_msg.remove(quest)
-        new_msg = " ".join(split_msg)
-        return definition(msg, "ant")
-    elif quest != False:
-        print("pos: ", quest)
-        split_msg = msg.split()
-        split_msg.remove(quest)
-        new_msg = " ".join(split_msg)
-        return get_POS(new_msg, quest)
-    else:
-        for i in list_of_intents:
-            if tag == i['tag']:
-                possible_responses = i['responses']                   
-                if current_context == None:
-                    current_context = i['context']
-                    print(current_context)
-                    return random.choice(possible_responses)
-                else:
-                    previous_context = current_context
-                    current_context = i['context']
-                    return random.choice(possible_responses)    
+    define = definition(msg)
+    if define != None:
+        return define
 
-        define = definition(msg, "define")
-        if define != "none":
-            return define
-      
     return random.choice(default_responses)
 
 def clean_tokens(tokens):
@@ -132,19 +119,26 @@ def clean_tokens(tokens):
     lemmatizer = WordNetLemmatizer()
     return [lemmatizer.lemmatize(token.lower()) for token in tokens if token.lower() not in stop_words and token not in string.punctuation]
 
+# get the definition of words that is not available in the intents.json
+def get_definition(input_msg): # using WordNet
+    # get the word from the input
+    cleaned_tokens = clean_tokens(nltk.word_tokenize(input_msg))
+    if cleaned_tokens:
+        word = cleaned_tokens[0]
+        # get definition
+        synsets = wordnet.synsets(word)
+        if synsets:
+            definition = synsets[0].definition()
+            return f"The word {word} means " + definition + "."
+    return f"none"
+
 # get definition using openai
-def definition(str, action):
+def definition(str):
     openai.api_key = "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"
     cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
     if cleaned_tokens:
         word = cleaned_tokens[0]
-        if action == "define":
-            prompt = f"Explain {word} in an easy to understand manner."
-        elif action == "syn":
-            prompt = f"what are the synonyms of {word}"
-        elif action == "ant":
-            prompt = f"what are the antonyms of {word}"
-
+        prompt = f"Explain {word} to a primary school student."
         response = openai.Completion.create(
             engine="text-davinci-002",
             prompt=prompt,
@@ -154,23 +148,13 @@ def definition(str, action):
             return response.choices[0].text.strip()        
     return f"none"
 
-def check_input(str):
-    pos = ['noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'interjection']
+# check if the input contains pos 
+def check_POS(str):
+    keywords = words
     for word in str.split():
-        split_str = str.split()
-        if word in pos:
-            split_str.remove(word)
-            new_str = " ".join(split_str)
-            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
-            if cleaned_tokens:
-                return word
-        elif word == "synonyms" or word == "synonym":
-            split_str.remove(word)
-            new_str = " ".join(split_str)
-            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
-            if cleaned_tokens:
-                return word
-        elif word == "antonyms" or word == "antonym":
+        if word in keywords:
+            # check if there is another word other than the POS
+            split_str = str.split()
             split_str.remove(word)
             new_str = " ".join(split_str)
             cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
@@ -178,62 +162,23 @@ def check_input(str):
                 return word
     return False
 
-def get_definition_and_pos(word, input_pos, article, isFound): # using WordNet
-    pos_tag = {"noun": "n", "verb": "v", "adjective": "a", "adverb": "r", "preposition": "p", "conjunction": "c", "interjection": "u"}.get(input_pos)
-    
-    # get definition
-    synsets = wordnet.synsets(word)
-    if synsets:
-        pos = synsets[0].pos()
-        pos_word = {"n": "noun", "v": "verb", "a": "adjective", "r": "adverb", "p": "preposition", "c": "conjunction", "u": "interjection"}.get(pos)
-        definition = synsets[0].definition()
-        if pos_word == input_pos:
-            ans = f"Yes, {word} is {article} {pos_word}. "
-            synsets = wordnet.synsets(word, pos=pos)
-            definitions = [synset.definition() for synset in synsets]
-            # if definitions:
-            ans += f"Here are the definitions of {word}:\n"
-            for i, definition in enumerate(definitions):
-                ans += f"- {definition}\n"
-        elif isFound:
-            ans = f"Yes, {word} can also be used as {article} {input_pos}. "
-            synsets = wordnet.synsets(word, pos=pos_tag)
-            # if synsets:
-            definitions = [synset.definition() for synset in synsets]
-            # if definitions:
-            ans += f"When used as {article} {input_pos}, it means:\n"
-            for i, definition in enumerate(definitions):
-                ans += f"- {definition}\n"
-        else:
-            ans =  f"The part of speech of {word} is {pos_word}. It is defined as {definition}."
-        return ans
-    return f"none"
-
 # code if the user wants to know the POS of a word (not yet done here) 
-def get_POS(str, pos):
-    vowels = set("aeiouAEIOU")
-    if pos[0] in vowels:
-        article = "an"
-    else:
-        article = "a"
-
+def get_POS(str, pos):    
     cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
     if cleaned_tokens:
         word = cleaned_tokens[0]
+    
         synsets = wordnet.synsets(word)
         pos_list = [synset.pos() for synset in synsets]
         print(pos_list)
         if pos[0] in pos_list:
-            definition = get_definition_and_pos(word, pos, article, True)
-            return definition
+            return f"Yes. The word {word} is a/an {pos}."
         else: 
-            definition = get_definition_and_pos(word, pos, article, False)
-            return f"No, the word {word} is not {article} {pos}. {definition}"
+            return f"No. The word {word} is not a/an {pos}."
 
-def spell(input_str):
-    blob = TextBlob(input_str)
-    corrected = str(blob.correct())
-    return corrected
+def spell(match):
+    word = match.group(0)
+    return dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word
 
 flag = False
 text = []
@@ -250,7 +195,7 @@ def chatbot_response(input_msg):
 
     input_msg = input_msg.lower()
 
-    correct_msg = spell(input_msg)
+    correct_msg = re.sub(r"\w+", spell, input_msg) # correct the spelling of the input_msg
 
     if flag:
         output_word=[correct_msg for correct_msg in text]
@@ -283,6 +228,14 @@ def chatbot_response(input_msg):
             res = f"Sorry, Did you mean \"{correct_msg}\" instead of \"{input_msg}\"? Please enter yes or no."
             flag = True
 
+        if "pos" in input_msg:
+            pos = check_POS(input_msg) # check if the user wants to check the POS of a word
+            if pos != False:
+                print("pos: ", pos)
+                split_msg = input_msg.split()
+                split_msg.remove(pos) # remove the pos to not confuse data cleaning
+                new_msg = " ".join(split_msg)
+                return get_POS(new_msg, pos)
 
         if any(context in current_context for context in previous_context):
             print("The context is similar")
@@ -370,4 +323,4 @@ def server_error(e):
     return 'An internal error occurred', 500
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')
