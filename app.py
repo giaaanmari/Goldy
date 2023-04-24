@@ -3,7 +3,6 @@
 import os
 import requests
 import pathlib
-from difflib import get_close_matches
 import google.oauth2.credentials
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
@@ -180,6 +179,7 @@ def spell(match):
     word = match.group(0)
     return dictionary.suggest(word)[0] if not dictionary.check(word) and dictionary.suggest(word) else word
 
+
 flag = False
 text = []
 
@@ -196,7 +196,6 @@ def chatbot_response(input_msg):
     input_msg = input_msg.lower()
 
     correct_msg = re.sub(r"\w+", spell, input_msg) # correct the spelling of the input_msg
-
     if flag:
         output_word=[correct_msg for correct_msg in text]
         output_txt=" ".join(output_word)
@@ -216,10 +215,14 @@ def chatbot_response(input_msg):
             flag = False
     else:
         if correct_msg == input_msg: # the input is correctly spelled
-            ints = predict_class(input_msg, model)
+            if correct_msg == "type" or correct_msg == "types":
+                correct_msg = "types " + ' '.join(current_context)
+            
+            if correct_msg == "example" or correct_msg == "examples":
+                correct_msg = "examples " + ' '.join(current_context)
+            ints = predict_class(correct_msg, model)
             print(correct_msg, ints)
             res = getResponse(ints, intents, correct_msg)
-            print("Previous Context:", previous_context, " Current Context: ", current_context)
 
             text.clear()
             flag = False
@@ -237,10 +240,8 @@ def chatbot_response(input_msg):
                 new_msg = " ".join(split_msg)
                 return get_POS(new_msg, pos)
 
-        if any(context in current_context for context in previous_context):
-            print("The context is similar")
-        else:
-            print("The context is not similar")
+
+        
 
     return res
 
