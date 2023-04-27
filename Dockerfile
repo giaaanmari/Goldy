@@ -1,11 +1,21 @@
-FROM python:3.9
+FROM ubuntu:20.04
 
-RUN pip install --upgrade pip
+#Install necessary libraries
+RUN DEBIAN_FRONTEND="noninteractive" apt-get update && \
+    DEBIAN_FRONTEND="noninteractive" TZ="Asia/Taipei" apt-get install -y libenchant-2-dev
 
-WORKDIR /docker-flask
+#Install Python3 and pip3
+RUN apt install -y python3 python3-pip
 
-ADD . /docker-flask
+# Setup a working directory
+WORKDIR /app
 
-RUN pip install -r requirements.txt
+# Copy the contents of the current directory to the container at /app
+COPY . /app
 
-CMD ["python", "app.py"]
+
+# Install required dependencies from requirements.txt
+RUN pip3 install -r requirements.txt
+
+# Set the command to run when the container starts
+CMD ["python3", "app.py"]
