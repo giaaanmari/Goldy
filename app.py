@@ -3,9 +3,7 @@
 import os
 import requests
 import pathlib
-import google.oauth2.credentials
-from google.oauth2 import id_token
-from google_auth_oauthlib.flow import Flow
+from difflib import get_close_matches
 from pip._vendor import cachecontrol
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -13,6 +11,8 @@ from nltk.corpus import words
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 lemmatizer = WordNetLemmatizer()
+from nltk.corpus import stopwords
+from nltk.tag import pos_tag
 import pickle
 import enchant
 import string
@@ -24,6 +24,7 @@ import random
 import openai
 import re
 
+stop_words = set(stopwords.words('english'))
 nltk.download('popular')
 nltk.download('words')
 nltk.download('wordnet')
@@ -54,7 +55,6 @@ def clean_up_sentence(sentence):
     sentence_words = [w for w in (nltk.word_tokenize(sentence))]
     # stem each word - create short form for word
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words if word not in set(stopwords.words('english'))]
-    print("(clean_up_sentence) sentence words: ", sentence_words)
     return sentence_words
 
 # return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
@@ -74,7 +74,7 @@ def bow(sentence, words, show_details=True):
 
 def predict_class(sentence, model):
     # filter out predictions below a threshold
-    p = bow(sentence, words, show_details=False)
+    p = bow(sentence, words,show_details=False)
     res = model.predict(np.array([p]))[0]
     ERROR_THRESHOLD = 0.5
     results = [[i,r] for i,r in enumerate(res) if r>ERROR_THRESHOLD]
@@ -109,52 +109,112 @@ def getResponse(ints, intents_json, msg):
         
     previous_context = current_context
     current_context = None
+
+    backup = OpenAi(msg)
+    if backup != None:
+        return backup
     
     return random.choice(default_responses)
 
 def clean_tokens(tokens):
-    stop_words = set(stopwords.words('english'))
     lemmatizer = WordNetLemmatizer()
     return [lemmatizer.lemmatize(token.lower()) for token in tokens if token.lower() not in stop_words and token not in string.punctuation]
 
-def definition(str):
-    openai.api_key = "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"
+# get definition using openai
+def OpenAi(str):
+    openai.api_key = "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"
+
+    prompt = f"Reply to this input \"{str}\" as Goldy, a child friendly assistant for English subject"
+
     response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=f"Reply to this input \"{str}\" as Goldy, a child friendly assistant that helps with English subject",
-        max_tokens=100
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=300,
+        temperature=0.5,
+        presence_penalty=0.5,
+        frequency_penalty=0.5
     )
     if response.choices[0].text:
-        return response.choices[0].text.strip()        
-    return f"none"
+        return response.choices[0].text.strip()  
+    return None
 
-# check if the input contains pos 
-def check_POS(str):
-    keywords = words
+def check_input(str):
+    pos = ['noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'interjection']
     for word in str.split():
-        if word in keywords:
-            # check if there is another word other than the POS
-            split_str = str.split()
+        split_str = str.split()
+        if word in pos: # check if the user input a part-of-speech
             split_str.remove(word)
             new_str = " ".join(split_str)
             cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
             if cleaned_tokens:
-                return word
+                return word # return a POS
+        elif word == "synonyms" or word == "synonym": # check if the user wants to get synonyms of a word
+            split_str.remove(word)
+            new_str = " ".join(split_str)
+            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
+            if cleaned_tokens:
+                return word # return synonyms
+        elif word == "antonyms" or word == "antonym": # check if the user wants to get antonyms of a word
+            split_str.remove(word)
+            new_str = " ".join(split_str)
+            cleaned_tokens = clean_tokens(nltk.word_tokenize(new_str))
+            if cleaned_tokens:
+                return word # return antonyms
     return False
+    
+def get_definition_and_pos(word, input_pos, article, isFound): # using WordNet
+    pos_tag = {"noun": "n", "verb": "v", "adjective": "a", "adverb": "r", "preposition": "p", "conjunction": "c", "interjection": "u"}.get(input_pos)
+    tokens = string.lower().split() # convert string to lowercase and split into individual words
+    filtered_tokens = [word for word in tokens if word not in stop_words] # remove stopwords
+    word = ' '.join(filtered_tokens)
+    # get definition
+    synsets = wordnet.synsets(word)
+    if synsets:
+        pos = synsets[0].pos()
+        pos_word = {"n": "noun", "v": "verb", "a": "adjective", "r": "adverb", "p": "preposition", "c": "conjunction", "u": "interjection"}.get(pos)
+        definition = synsets[0].definition()
+        if pos_word == input_pos:
+            ans = f"Yes, {word} is {article} {pos_word}. "
+            synsets = wordnet.synsets(word, pos=pos)
+            definitions = [synset.definition() for synset in synsets]
+            # if definitions:
+            ans += f"Here are the definitions of {word}:\n"
+            for i, definition in enumerate(definitions):
+                ans += f"- {definition}\n"
+        elif isFound:
+            ans = f"Yes, {word} can also be used as {article} {input_pos}. "
+            synsets = wordnet.synsets(word, pos=pos_tag)
+            # if synsets:
+            definitions = [synset.definition() for synset in synsets]
+            # if definitions:
+            ans += f"When used as {article} {input_pos}, it means:\n"
+            for i, definition in enumerate(definitions):
+                ans += f"- {definition}\n"
+        else:
+            ans =  f"The part of speech of {word} is {pos_word}. It is defined as {definition}."
+        return ans
+    return f"none"
 
 # code if the user wants to know the POS of a word (not yet done here) 
-def get_POS(str, pos):    
+def get_POS(str, pos):
+    vowels = set("aeiouAEIOU")
+    if pos[0] in vowels:
+        article = "an"
+    else:
+        article = "a"
+
     cleaned_tokens = clean_tokens(nltk.word_tokenize(str))
     if cleaned_tokens:
         word = cleaned_tokens[0]
-    
         synsets = wordnet.synsets(word)
         pos_list = [synset.pos() for synset in synsets]
         print(pos_list)
         if pos[0] in pos_list:
-            return f"Yes. The word {word} is a/an {pos}."
+            definition = get_definition_and_pos(word, pos, article, True)
+            return definition
         else: 
-            return f"No. The word {word} is not a/an {pos}."
+            definition = get_definition_and_pos(word, pos, article, False)
+            return f"No, the word {word} is not {article} {pos}. {definition}"
 
 def spell(match):
     word = match.group(0)
@@ -172,13 +232,14 @@ def checkKey(str):
     isType = user_input.intersection(type_keyword)
     str = " ".join(user_input)
     tempKey = ""
+    key = ""
     if isExample:
         key = "example"
         tempKey = "".join(isExample)
-        str = [element for element in user_input if element != isExample]
     if isType:
         key = "type"
         tempKey = "".join(isType)
+    
     str = [element for element in user_input if element != tempKey]
 
     if len(str) == 0:
@@ -188,6 +249,7 @@ def checkKey(str):
 
 flag = False
 text = []
+
 def chatbot_response(input_msg):
     global text
     global flag
@@ -200,7 +262,8 @@ def chatbot_response(input_msg):
 
     input_msg = input_msg.lower()
     correct_msg = re.sub(r"\w+", spell, input_msg) # correct the spelling of the input_msg
-    
+
+    # for conversation continuity
     if current_context != None:
         key = checkKey(correct_msg) # check if the user_input contains keywords that asks for example or type without typing the main context
         # verify is there is a key and the current context must have a value (means this is not the first input)
@@ -208,12 +271,12 @@ def chatbot_response(input_msg):
             correct_msg = key + ' of ' + current_context[0]
             input_msg = correct_msg # change the value of input_msg to proceed to flag = False and get response from `if correct_msg == input_msg`
             print("new message: ", correct_msg)
-
+    
     if flag:
-        output_word=[correct_msg for correct_msg in text] # create a list of correct_msg everytime the user input a misspelled words
-        output_txt=" ".join(output_word) 
+        output_word=[correct_msg for correct_msg in text]
+        output_txt=" ".join(output_word)
         if correct_msg == "yes" or correct_msg in output_txt:
-            ints = predict_class(output_txt, model) # output_txt is the last correct spelling. we are sending it to find the intent because correct_msg is "yes" and there's no tag for yes
+            ints = predict_class(output_txt, model)
             res = getResponse(ints, intents, output_txt)
             print(ints)
             text.clear()
@@ -231,7 +294,7 @@ def chatbot_response(input_msg):
             flag = False
     else:
         if correct_msg == input_msg: # the input is correctly spelled
-            ints = predict_class(correct_msg, model)
+            ints = predict_class(input_msg, model)
             print(correct_msg, ints)
             res = getResponse(ints, intents, correct_msg)
             print("Previous Context:", previous_context, " Current Context: ", current_context)
@@ -245,61 +308,15 @@ def chatbot_response(input_msg):
 
 #### REFERENCE OF HTML, GOOGLE API
 
-from flask import Flask, session, abort, redirect, request, render_template
+from flask import Flask, redirect, request, render_template
 import logging
 
 app = Flask(__name__)
 app.static_folder = 'static'
-app.secret_key = "secret" #OAuth 2.0 secret key
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-GOOGLE_CLIENT_ID = "327218355433-fi8hnego4ul4jgim97venfov1hpp8cql.apps.googleusercontent.com"  #enter your client id you got from Google console
-client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")  #set the path to where the .json file you got Google console is
-
-flow = Flow.from_client_secrets_file(  #Flow is OAuth 2.0 a class that stores all the information on how we want to authorize our users
-    client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],  #here we are specifing what do we get after the authorization
-    redirect_uri="http://127.0.0.1:5000/callback"  #and the redirect URI is the point where the user will end up after the authorization
-)
-
-def login_is_required(function):  #a function to check if the user is authorized or not
-    def wrapper(*args, **kwargs):
-        if "google_id" not in session:  #authorization required
-            return abort(401)
-        else:
-            return function()
-
-    return wrapper
 
 @app.route("/")
 def home():
     return render_template("index.html")
-@app.route("/login")  #the page where the user can login
-def login():
-    authorization_url, state = flow.authorization_url()  #asking the flow class for the authorization (login) url
-    session["state"] = state
-    return redirect(authorization_url)
-@app.route("/callback")  #this is the page that will handle the callback process meaning process after the authorization
-def callback():
-    flow.fetch_token(authorization_response=request.url)
-
-    if not session["state"] == request.args["state"]:
-        abort(500)  #state does not match!
-
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
-
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID,
-        clock_skew_in_seconds=0
-    )
-
-    session["google_id"] = id_info.get("sub")  #defing the results to show on the page
-    session["name"] = id_info.get("name")
-    return redirect("/chat")  #the final page where the authorized users will end up
 
 @app.route("/chat")
 def chat():
@@ -312,7 +329,6 @@ def get_bot_response():
 
 @app.route("/logout")  #the logout page and function
 def logout():
-    session.clear()
     return redirect("/")
 
 @app.errorhandler(500)
