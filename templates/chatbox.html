@@ -74,7 +74,7 @@
           animation: hideAnimation 0.2s 2s;
           animation-fill-mode: forwards;
         }
-        
+
         @keyframes hideAnimation {
           from {
             opacity: 100%;
@@ -88,32 +88,34 @@
         }
     </style>
 
-    <div class="z-40 fixed w-screen flex-col items-stretch justify-between overflow-hidden">
-        <div class="w-screen bg-blue_bg2 flex justify-between items-center content-center drop-shadow-lg sticky object-top"> <!--header-->
-            <div class="flex items-center content-center">
-                <div class="flex-col mx-6">
-                    <p class="text-3xl text-white font-semibold pt-2 drop-shadow-lg">
-                        Goldy
-                    </p>
-                    <p class="text-white pb-1">
-                        Ateneo de Naga University Chatbot for Grade School
-                    </p>
-                </div>
-            </div>
-    
-            <div class="profile mx-6 py-1 px-2 rounded-lg border-solid border-2 border-blue_btn hover:border-blue_hover hover:drop-shadow-lg">
-              <button class="text-white text-xl flex place-items-center">
-                <img src="https://img.icons8.com/sf-black/64/FFFFFF/logout-rounded.png" class="h-8 w-8"/>
-                <a href="/">Exit</a>
-              </button>
+<div class="z-40 fixed w-screen flex-col items-stretch justify-between overflow-hidden">
+    <div class="w-screen bg-blue_bg2 flex justify-between items-center content-center drop-shadow-lg sticky object-top"> <!--header-->
+        <div class="flex items-center content-center">
+            <div class="flex-col mx-6">
+                <p class="text-3xl text-white font-semibold pt-2 drop-shadow-lg">
+                    Goldy
+                </p>
+                <p class="text-white pb-1">
+                    Ateneo de Naga University Chatbot for Grade School
+                </p>
             </div>
         </div>
+
+        <div class="profile mx-6 py-1 px-2 rounded-lg border-solid border-2 border-blue_btn hover:border-blue_hover hover:drop-shadow-lg">
+          <button class="text-white text-xl flex place-items-center">
+            <img src="https://img.icons8.com/sf-black/64/FFFFFF/logout-rounded.png" class="h-8 w-8"/>
+            <a href="/" onclick="signOut();">Sign Out</a>
+          </button>
+        </div>
+
     </div>
+</div>
+
 </head>
 
 <body class="scrollbar-hide">
   <section class="msger">
-    <main class="msger-chat px-0.5 py-20 mb-12 overflow-hidden"></main>
+    <main class="msger-chat px-0.5 py-20 mb-6 overflow-hidden"></main>
 
     <form class="fixed msger-inputarea bottom-0 h-20 w-screen flex justify-between items-center p-4 gap-2 bg-gradient-to-t from-blue_bg2 to-white">
       <input type="text" class="msger-input bg-inputbox w-full h-full rounded-l-large px-4 py-2 text-gray text-lg shadow-lg border border-gray-300" id="textInput" placeholder="Enter your message here">
@@ -191,16 +193,15 @@
       
       if(name == "You") {
         msgerChat.insertAdjacentHTML("beforeend", msgHTML);
-        // msgerChat.appendChild("beforeend", msgHTML);
       } else if(name == "Goldy") {
         goldyTyping();
         setTimeout(() => {
           msgerChat.insertAdjacentHTML("beforeend", msgHTML);
-          // msgerChat.appendChild("beforeend", msgHTML);
           send.disabled = false;
           send.classList.remove("disabled");
         }, 5000);
-      }
+      }      
+      msgerChat.scrollTop += 500;
     }
 
     function botResponse(rawText) {
@@ -221,6 +222,14 @@
     // Utils
     function get(selector, root = document) {
       return root.querySelector(selector);
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      session.clear();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
     }
   </script>
 </body>
